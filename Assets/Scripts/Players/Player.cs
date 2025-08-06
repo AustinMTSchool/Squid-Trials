@@ -7,6 +7,8 @@ using VRC.Udon;
 
 public class Player : UdonSharpBehaviour
 {
+    [SerializeField] private PlayerWalk playerWalk;
+    
     private VRCPlayerApi _vrcPlayer;
     // When the player snaps a photo
     private bool _isPlayerRegistered;
