@@ -22,11 +22,11 @@ public class ItemInstance : UdonSharpBehaviour
     
     public void SetItem(Item item)
     {
-        item = item;
+        this.item = item;
     }
 
     public void SetQuantity(int quantity)
     {
-        quantity = quantity;
+        this.quantity = quantity;
     }
 }

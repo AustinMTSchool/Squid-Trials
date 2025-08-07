@@ -11,11 +11,13 @@ public class Application : UdonSharpBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Resources resources;
     [SerializeField] private HoldablesManager holdablesManager;
+    [SerializeField] private ItemManager itemManager;
 
     public PlayerStatsManagers PlayerStatsManagers => playerStatsManagers;
     public GameManager GameManager => gameManager;
     public Player Player => player;
     public Resources Resources => resources;
     public HoldablesManager HoldablesManager => holdablesManager;
+    public ItemManager ItemManager => itemManager;
 
 }

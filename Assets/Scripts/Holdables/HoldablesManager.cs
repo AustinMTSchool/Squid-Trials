@@ -6,17 +6,17 @@ using VRC.Udon;
 
 public class HoldablesManager : UdonSharpBehaviour
 {
-    [SerializeField] private Holdable holdable;
-    public Holdable Holdable => holdable;
+    [SerializeField] private Holdable pHoldable;
+    public Holdable Holdable => pHoldable;
     
-    public Holdable GetPlayerHoldable() => holdable;
+    public Holdable GetPlayerHoldable() => pHoldable;
 
     public void SetHoldable(Holdable holdable)
     {
-        if (holdable != null)
+        if (pHoldable != null)
         {
-            Destroy(holdable.gameObject);
+            Destroy(pHoldable.gameObject);
         }
-        this.holdable = holdable;
+        pHoldable = holdable;
     }
 }

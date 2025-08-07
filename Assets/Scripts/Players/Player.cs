@@ -7,6 +7,7 @@ using VRC.Udon;
 
 public class Player : UdonSharpBehaviour
 {
+    [SerializeField] private PlayerInventory inventory;
     [SerializeField] private PlayerWalk playerWalk;
     
     private VRCPlayerApi _vrcPlayer;
@@ -14,6 +15,7 @@ public class Player : UdonSharpBehaviour
     private bool _isPlayerRegistered;
     private bool _isPersistenceRestored;
     
+    public PlayerInventory Inventory => inventory;
     public bool IsPlayerRegistered => _isPlayerRegistered;
     public bool IsPersistenceRestored => _isPersistenceRestored;
     

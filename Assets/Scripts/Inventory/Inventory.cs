@@ -10,6 +10,8 @@ public class Inventory : UdonSharpBehaviour
     [SerializeField] private GameObject container;
     [SerializeField] private Slot[] slots;
     [SerializeField] private Application application;
+    
+    public Slot[] Slots => slots;
 
     private void Start()
     {
@@ -18,7 +20,7 @@ public class Inventory : UdonSharpBehaviour
             container.SetActive(false);
         }
     }
-    
+
     public bool AddItemInstance(Item item, int quantity, out Slot foundSlot)
     {
         foundSlot = null;
@@ -63,6 +65,6 @@ public class Inventory : UdonSharpBehaviour
 
     public Slot GetSlotByIndex(int index)
     {
-        return slots[index];
+        return slots[index-1];
     }
 }

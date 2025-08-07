@@ -52,9 +52,10 @@ public class Slot : UdonSharpBehaviour
     {
         if (!_hasItem) return;
         
+        Debug.Log($"Slot {slotIndex} selected, spawning in holdable");
         var head = application.Player.VRCPlayerApi.GetTrackingData(VRCPlayerApi.TrackingDataType.Head);
         Vector3 forward = head.rotation * Vector3.forward;
-        Vector3 position = head.position + Vector3.forward * 2F;
+        Vector3 position = head.position + forward * 2F;
         GameObject holdableGameObject = Instantiate(itemInstance.Item.Holdable.gameObject);
         holdableGameObject.transform.position = position;
         holdableGameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -62,7 +63,7 @@ public class Slot : UdonSharpBehaviour
         holdable.Init(itemInstance, this);
         application.HoldablesManager.SetHoldable(holdable);
     }
-
+    
     public void ResetSlot()
     {
         icon.sprite = application.Resources.BlankSprite;
