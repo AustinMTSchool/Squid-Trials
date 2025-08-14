@@ -6,17 +6,22 @@ using VRC.Udon;
 
 public class HoldablesManager : UdonSharpBehaviour
 {
-    [SerializeField] private Holdable pHoldable;
-    public Holdable Holdable => pHoldable;
+    [SerializeField] private ItemPlayerObjectController pItemPlayerObjectController;
+    public ItemPlayerObjectController ItemPlayerObjectController => pItemPlayerObjectController;
     
-    public Holdable GetPlayerHoldable() => pHoldable;
-
-    public void SetHoldable(Holdable holdable)
+    public void SetItemPlayerObjectController(ItemPlayerObjectController itemPlayerObjectController)
     {
-        if (pHoldable != null)
+        if (Utilities.IsValid(pItemPlayerObjectController))
         {
-            Destroy(pHoldable.gameObject);
+            pItemPlayerObjectController.Holdable.Pickup.Drop();
+            pItemPlayerObjectController.SetItemActive(false);
         }
-        pHoldable = holdable;
+
+        pItemPlayerObjectController = itemPlayerObjectController;
+
+        if (Utilities.IsValid(itemPlayerObjectController))
+        {
+            itemPlayerObjectController.SetItemActive(true);
+        }
     }
 }

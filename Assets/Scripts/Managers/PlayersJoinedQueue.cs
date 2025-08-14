@@ -110,7 +110,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         {
             _isTimerActive = false;
             RequestSerialization();
-            // Begin Games
+            // Games begin
         }
     }
 

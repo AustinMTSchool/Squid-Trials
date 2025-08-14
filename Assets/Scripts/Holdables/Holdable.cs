@@ -4,13 +4,13 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-[RequireComponent(typeof(VRC_Pickup))]
-[RequireComponent(typeof(Rigidbody))]
 public class Holdable : UdonSharpBehaviour
 {
+    [SerializeField] protected Application application;
+    [SerializeField] private ItemPlayerObjectController itemPlayerObjectController;
     [SerializeField] private VRC_Pickup pickup;
     [SerializeField] private Rigidbody rigidBody;
-
+    
     private Slot _slot;
     protected ItemInstance _itemInstance;
     protected bool _isHolding;
@@ -19,6 +19,22 @@ public class Holdable : UdonSharpBehaviour
     public Rigidbody Rigidbody => rigidBody;
     public Slot Slot => _slot;
     public ItemInstance ItemInstance => _itemInstance;
+
+    public override void OnPickupUseUp()
+    {
+        if (_itemInstance.UseItem())
+        {
+            _slot.PlayerSlotPersistence.SaveItem(_itemInstance.Item, _itemInstance.Quantity);
+        }
+        else
+        {
+            _slot.PlayerSlotPersistence.DeleteItem();
+            _slot.ResetSlot();
+            pickup.Drop();
+            itemPlayerObjectController.SetItemActive(false);
+        }
+        application.Player.SetUsingItem(false);
+    }
 
     public override void OnPickup()
     {

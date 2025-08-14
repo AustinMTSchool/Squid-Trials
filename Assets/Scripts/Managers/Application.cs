@@ -12,6 +12,7 @@ public class Application : UdonSharpBehaviour
     [SerializeField] private Resources resources;
     [SerializeField] private HoldablesManager holdablesManager;
     [SerializeField] private ItemManager itemManager;
+    [SerializeField] private UsableManager usableManager;
 
     public PlayerStatsManagers PlayerStatsManagers => playerStatsManagers;
     public GameManager GameManager => gameManager;
@@ -19,5 +20,6 @@ public class Application : UdonSharpBehaviour
     public Resources Resources => resources;
     public HoldablesManager HoldablesManager => holdablesManager;
     public ItemManager ItemManager => itemManager;
+    public UsableManager UsableManager => usableManager;
 
 }

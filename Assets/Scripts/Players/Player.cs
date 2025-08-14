@@ -14,10 +14,12 @@ public class Player : UdonSharpBehaviour
     // When the player snaps a photo
     private bool _isPlayerRegistered;
     private bool _isPersistenceRestored;
+    private bool _isUsingItem;
     
     public PlayerInventory Inventory => inventory;
     public bool IsPlayerRegistered => _isPlayerRegistered;
     public bool IsPersistenceRestored => _isPersistenceRestored;
+    public bool IsUsingItem => _isUsingItem;
     
     public VRCPlayerApi VRCPlayerApi => _vrcPlayer;
     private void Start()
@@ -63,5 +65,10 @@ public class Player : UdonSharpBehaviour
     public void SetPlayerRegistered(bool value)
     {
         _isPlayerRegistered = value;
+    }
+
+    public void SetUsingItem(bool value)
+    {
+        _isUsingItem = value;
     }
 }

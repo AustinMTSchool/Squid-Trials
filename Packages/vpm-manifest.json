@@ -14,6 +14,9 @@
     },
     "sh.orels.shaders": {
       "version": "6.3.0"
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.2.1"
     }
   },
   "locked": {
@@ -48,6 +51,10 @@
     },
     "sh.orels.shaders.inspector": {
       "version": "6.3.0",
+      "dependencies": {}
+    },
+    "dev.onevr.vrworldtoolkit": {
+      "version": "3.2.1",
       "dependencies": {}
     }
   }

@@ -25,7 +25,7 @@ public class ItemManager : UdonSharpBehaviour
 
     public Item GetItemByID(string id)
     {
-        if (_allItemsByID.TryGetValue(name, TokenType.Reference, out DataToken value))
+        if (_allItemsByID.TryGetValue(id, TokenType.Reference, out DataToken value))
         {
             return (Item)value.Reference;
         }
