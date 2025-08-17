@@ -1,0 +1,10 @@
+- 8/14/25
+- Fixed UI navigations being manipulated on canvas why movement
+- Fixed audio issues where vrchat only plays 1 instantiated audio source
+- Audio walking are now networked
+
+8/15/25
+- Finished player counting for lobby
+
+8/17/25
+- Started on first game area (players get teleported)

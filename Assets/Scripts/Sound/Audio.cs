@@ -6,14 +6,12 @@ using VRC.Udon;
 
 public class Audio : UdonSharpBehaviour
 {
-    [SerializeField] private SoundFXManager _soundFXManager;
+    [SerializeField] private AudioSource soundFX;
     [SerializeField] private AudioClip[] _audioClip = null;
     [SerializeField] private int minVolume = 90;
     [SerializeField] private int maxVolume = 100;
     [SerializeField] private int minPitch = 90;
     [SerializeField] private int maxPitch = 110;
-
-    public SoundFXManager SoundFXManager => _soundFXManager;
     
     private System.Random _random;
 
@@ -24,20 +22,7 @@ public class Audio : UdonSharpBehaviour
 
     public void Play()
     {
-        _soundFXManager.placeHolderOrigin.position = transform.position;
-        _soundFXManager.PlayRandomSoundFX(_audioClip, GetVolume(), GetPitch());
-    }
-
-    public void Play(Transform origin)
-    {
-        _soundFXManager.placeHolderOrigin.position = origin.position;
-        _soundFXManager.PlayRandomSoundFX(_audioClip, _soundFXManager.placeHolderOrigin.transform, GetVolume(), GetPitch());
-    }
-    
-    public void Play(Vector3 origin)
-    {
-        _soundFXManager.placeHolderOrigin.position = origin;
-        _soundFXManager.PlayRandomSoundFX(_audioClip, _soundFXManager.placeHolderOrigin.position, GetVolume(), GetPitch());
+       PlayRandomSoundFXByDefaultPosition(_audioClip, GetVolume(), GetPitch());
     }
 
     public float GetVolume()
@@ -48,5 +33,15 @@ public class Audio : UdonSharpBehaviour
     public float GetPitch()
     {
         return (float) _random.Next(minPitch, maxPitch) / 100;
+    }
+
+    
+    private void PlayRandomSoundFXByDefaultPosition(AudioClip[] clips, float volume, float pitch)
+    {
+        _random = new System.Random();
+        soundFX.clip = clips[_random.Next(clips.Length)];
+        soundFX.volume = volume;
+        soundFX.pitch = pitch;
+        soundFX.PlayOneShot(soundFX.clip, soundFX.volume);
     }
 }

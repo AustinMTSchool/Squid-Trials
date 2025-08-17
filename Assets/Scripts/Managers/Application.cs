@@ -8,6 +8,7 @@ public class Application : UdonSharpBehaviour
 {
     [SerializeField] private PlayerStatsManagers playerStatsManagers;
     [SerializeField] private Player player;
+    [SerializeField] private PlayersManager playersManager;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Resources resources;
     [SerializeField] private HoldablesManager holdablesManager;
@@ -15,6 +16,7 @@ public class Application : UdonSharpBehaviour
     [SerializeField] private UsableManager usableManager;
 
     public PlayerStatsManagers PlayerStatsManagers => playerStatsManagers;
+    public PlayersManager PlayersManager => playersManager;
     public GameManager GameManager => gameManager;
     public Player Player => player;
     public Resources Resources => resources;

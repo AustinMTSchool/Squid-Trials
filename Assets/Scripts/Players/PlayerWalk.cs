@@ -1,22 +1,25 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using VRC.SDK3.Components;
+using VRC.SDK3.Persistence;
 using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common;
 
 public class PlayerWalk : UdonSharpBehaviour
 {
-    [SerializeField] private Audio playerWalk;
     [SerializeField] private float walkIntervalPlay = 0.7F;
     [SerializeField] private float runIntervalPlay = 0.5F;
+    [SerializeField] private Transform componentNetwork;
+    private PlayerWalkNetwork _playerWalkNetwork;
     
     private VRCPlayerApi _player;
     private float _horizontalMovement;
     private float _verticalMovement;
     private bool _inVR;
     private bool _isMoving;
-    private bool _wasGrounded = true; // Track previous grounded state
+    private bool _wasGrounded = true;
     
     void Start()
     {
@@ -25,6 +28,14 @@ public class PlayerWalk : UdonSharpBehaviour
         _wasGrounded = _player.IsPlayerGrounded();
         Movement();
         AdjustGrounded();
+    }
+
+    public override void OnPlayerRestored(VRCPlayerApi player)
+    {
+        if (!player.isLocal) return;
+
+        var comp = Networking.FindComponentInPlayerObjects(player, componentNetwork);
+        _playerWalkNetwork = comp.GetComponent<PlayerWalkNetwork>();
     }
 
     public void AdjustGrounded()
@@ -46,8 +57,7 @@ public class PlayerWalk : UdonSharpBehaviour
     {
         if (IsWalking())
         {
-            Debug.Log("Playing sound");
-            playerWalk.Play(_player.GetPosition());
+            _playerWalkNetwork.Play();
             _isMoving = true;
             SendCustomEventDelayedSeconds(nameof(Movement), walkIntervalPlay);
             return;
@@ -55,8 +65,7 @@ public class PlayerWalk : UdonSharpBehaviour
 
         if (IsRunning())
         {
-            Debug.Log("Playing sound running");
-            playerWalk.Play(_player.GetPosition());
+            _playerWalkNetwork.Play();
             _isMoving = true;
             SendCustomEventDelayedSeconds(nameof(Movement), runIntervalPlay);
             return;
@@ -66,7 +75,6 @@ public class PlayerWalk : UdonSharpBehaviour
     
     public override void InputMoveVertical(float value, UdonInputEventArgs args)
     {
-        Debug.Log("Vert: " + value);
         if (!_inVR)
         {
             if (Mathf.Approximately(value, 0.0F)) return;
@@ -82,7 +90,6 @@ public class PlayerWalk : UdonSharpBehaviour
 
     public override void InputMoveHorizontal(float value, UdonInputEventArgs args)
     {
-        Debug.Log("Horz: " + value);
         if (!_inVR)
         {
             if (Mathf.Approximately(value, 0.0F)) return;

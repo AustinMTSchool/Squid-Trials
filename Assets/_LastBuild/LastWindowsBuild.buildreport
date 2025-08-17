@@ -1,306 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!641289076 &-8997527417540724324
-AudioBuildInfo:
-  m_IsAudioDisabled: 0
-  m_AudioClipCount: 5
-  m_AudioMixerCount: 0
---- !u!1126 &-5267711311693053316
-PackedAssets:
-  m_ShortPath: BuildPlayer-VRCDefaultWorldScene.resource
-  m_Overhead: 0
-  m_Contents:
-  - fileID: 0
-    classID: 83
-    packedSize: 5088
-    offset: 0
-    sourceAssetGUID: 1b239708e53844c48b2b14f703d84c58
-    buildTimeAssetPath: Assets/Sounds/concrete_steps_2.ogg
-  - fileID: 0
-    classID: 83
-    packedSize: 6368
-    offset: 0
-    sourceAssetGUID: 4343dfc29b8b0cc429afb34a0d853c0f
-    buildTimeAssetPath: Assets/Sounds/concrete_steps_1.ogg
-  - fileID: 0
-    classID: 83
-    packedSize: 24160
-    offset: 0
-    sourceAssetGUID: 8df1bb6e97ff87f42b0bf47d627aec3d
-    buildTimeAssetPath: Assets/Sounds/clock_tick_2.ogg
-  - fileID: 0
-    classID: 83
-    packedSize: 21952
-    offset: 0
-    sourceAssetGUID: 8e5caad0afbe31a498a28ed5c61ebb24
-    buildTimeAssetPath: Assets/Sounds/bandaging_wrap.mp3
-  - fileID: 0
-    classID: 83
-    packedSize: 22080
-    offset: 0
-    sourceAssetGUID: c40bf61c3fef0a64cac7bc425a951d09
-    buildTimeAssetPath: Assets/Sounds/clock_tick_1.ogg
---- !u!382020655 &-4064700514335314357
-PluginBuildInfo:
-  m_RuntimePlugins:
-  - VRC.Udon.VM
-  - VRC.SDK3.Dynamics.PhysBone
-  - VRC.Udon.Security
-  - libvrc_fast_crypto
-  - VRCEconomy
-  - libvrc_image_loader
-  - YamlDotNet
-  - VRCSDK3
-  - nunit.framework
-  - VRCCore-Editor
-  - Serilog.Sinks.File
-  - vrc_fast_crypto
-  - VRC.SDK3.Dynamics.Contact
-  - System.Collections.Immutable
-  - OculusXRPlugin
-  - VRC.Udon.Wrapper
-  - vrc_image_loader
-  - Unity.Burst.Unsafe
-  - SemanticVersioning
-  - librsync.net
-  - OVRPlugin
-  - System.Runtime.CompilerServices.Unsafe
-  - Newtonsoft.Json
-  - Unity.Collections.LowLevel.ILSupport
-  - VRC.Udon.Common
-  - VRC.Udon.VRCWrapperModules
-  - VRC.Dynamics
-  - VRCSDKBase
-  - VRC.Utility
-  - portmidi
-  - VRC.Udon.ClientBindings
-  - SDKBase-Legacy
-  - Blake2Sharp
-  - VRC.SDK3.Dynamics.Constraint
-  - System.Text.Encoding.CodePages
-  - Serilog
-  - Collections.Pooled
-  - AudioPluginOculusSpatializer
-  m_EditorPlugins:
-  - VRC.Udon.VRCGraphModules
-  - VRC.Udon.EditorBindings
-  - 0Harmony
-  - VRC.SDK3.Dynamics.Contact.Editor
-  - libvrc_shader_compiler_plugin
-  - Mono.Cecil.Pdb
-  - JetBrains.Rider.PathLocator
-  - d3dcompiler_47
-  - vrc_shader_compiler_plugin
-  - VRCSDKBase-Editor
-  - uvgbuffergen
-  - halffloat2vb
-  - VRC.Udon.VRCTypeResolverModules
-  - optix.1
-  - optix_denoiser.6.0.0
-  - cudart64_91
-  - VRCEconomy-Editor
-  - simpleProgressBar
-  - ICSharpCode.SharpZipLib
-  - Microsoft.CodeAnalysis.CSharp
-  - cudart32_91
-  - VRC.SDK3.Dynamics.Constraint.Editor
-  - alphabuffergen
-  - AppleEventIntegration
-  - optix.6.0.0
-  - Mono.Cecil
-  - OpenImageDenoise
-  - optix.51
-  - VRC.Udon.Graph
-  - optix_denoiser.51
-  - Unity.Burst.Cecil.Pdb
-  - Mono.Cecil.Rocks
-  - Microsoft.CodeAnalysis
-  - frender
-  - VRC.Udon.Compiler
-  - xatlasLib
-  - System.Reflection.Metadata
-  - VRCSDK3-Editor
-  - Mono.Cecil.Mdb
-  - cudart64_90
-  - Serilog.Sinks.Unity3D
-  - tbbmalloc
-  - lmrebake
-  - Algolia.Search
-  - uvrepack
-  - Unity.Burst.Cecil.Mdb
-  - cudnn64_7
-  - VRC.SDK3.Dynamics.PhysBone.Editor
-  - Unity.Burst.Cecil
-  - Unity.Burst.Cecil.Rocks
-  - vpm-core-lib
-  - VRC.Udon.UAssembly
---- !u!668709126 &-3669382115589446563
-BuiltAssetBundleInfoSet:
-  bundleInfos:
-  - bundleName: scene-standalonewindows64-vrcdefaultworldscene.vrcw
-    bundleArchiveFile: 3
-    packagedFileIndices: 000000000100000002000000
-  - bundleName: Squid Trials
-    bundleArchiveFile: 6
-    packagedFileIndices: 05000000
---- !u!1126 &-263799754132602158
-PackedAssets:
-  m_ShortPath: CAB-2d121dd186c024cde36e89aa71ca69a2
-  m_Overhead: 4032
-  m_Contents:
-  - fileID: 1
-    classID: 142
-    packedSize: 104
-    offset: 4032
-    sourceAssetGUID: 00000000000000000000000000000000
-    buildTimeAssetPath: AssetBundle Object
-  - fileID: 2
-    classID: 290
-    packedSize: 120
-    offset: 4136
-    sourceAssetGUID: 00000000000000000000000000000000
-    buildTimeAssetPath: 'Built-in AssetBundleManifest: AssetBundleManifest'
---- !u!1125 &1
-BuildReport:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: LastWindowsBuild
-  m_Summary:
-    buildStartTime:
-      serializedVersion: 2
-      ticks: 638907371172884889
-    buildGUID: 00000000000000000000000000000000
-    platformName: Win64
-    platformGroupName: Standalone
-    subtarget: 0
-    options: 0
-    assetBundleOptions: 32
-    outputPath: C:/Users/Austin/AppData/Local/Temp/DefaultCompany/Squid Trials
-    crc: 3501548251
-    totalSize: 19959229
-    totalTimeTicks: 138725112
-    totalErrors: 0
-    totalWarnings: 0
-    buildType: 2
-    buildResult: 1
-  m_Files:
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene
-    role: Scene
-    id: 0
-    totalSize: 1324992
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene.sharedAssets
-    role: SharedAssets
-    id: 1
-    totalSize: 72949756
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene.resource
-    role: StreamingResourceFile
-    id: 2
-    totalSize: 79648
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw
-    role: AssetBundle
-    id: 3
-    totalSize: 19953842
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw.manifest
-    role: AssetBundleTextManifest
-    id: 4
-    totalSize: 4150
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials/CAB-2d121dd186c024cde36e89aa71ca69a2
-    role: ResourcesFile
-    id: 5
-    totalSize: 4256
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials
-    role: ManifestAssetBundle
-    id: 6
-    totalSize: 1058
-  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials.manifest
-    role: AssetBundleTextManifest
-    id: 7
-    totalSize: 179
-  m_BuildSteps:
-  - stepName: Build Asset Bundles
-    durationTicks: 138725112
-    depth: 0
-    messages: []
-  - stepName: Calculate asset bundles to be built
-    durationTicks: 222431
-    depth: 1
-    messages: []
-  - stepName: Prebuild Cleanup and Recompile
-    durationTicks: 17689828
-    depth: 1
-    messages: []
-  - stepName: Compile scripts
-    durationTicks: 17359090
-    depth: 2
-    messages: []
-  - stepName: Generate and validate platform script types
-    durationTicks: 265913
-    depth: 2
-    messages: []
-  - stepName: Build Scene AssetBundle(s)
-    durationTicks: 96724802
-    depth: 1
-    messages: []
-  - stepName: 'Build bundle: scene-standalonewindows64-vrcdefaultworldscene.vrcw'
-    durationTicks: 94718226
-    depth: 2
-    messages: []
-  - stepName: Verify Build setup
-    durationTicks: 462047
-    depth: 3
-    messages: []
-  - stepName: Prepare assets for target platform
-    durationTicks: 528291
-    depth: 3
-    messages: []
-  - stepName: Prepare splash screen
-    durationTicks: 4841
-    depth: 3
-    messages:
-    - type: 3
-      content: Including Unity Splash Screen logo because 'Show Unity Logo' is enabled.
-  - stepName: Building scenes
-    durationTicks: 14379794
-    depth: 3
-    messages: []
-  - stepName: Building scene Assets/Scenes/VRCDefaultWorldScene.unity
-    durationTicks: 14379682
-    depth: 4
-    messages:
-    - type: 3
-      content: Computed code signatures for 102 scripts of type SerializedUdonProgramAsset
-        in 5ms
-  - stepName: Writing asset files
-    durationTicks: 3610619
-    depth: 3
-    messages: []
-  - stepName: Packaging assets - archive:/BuildPlayer-VRCDefaultWorldScene/BuildPlayer-VRCDefaultWorldScene.sharedAssets
-    durationTicks: 3573401
-    depth: 4
-    messages: []
-  - stepName: Creating compressed player package
-    durationTicks: 71168076
-    depth: 3
-    messages: []
-  - stepName: Postprocess built player
-    durationTicks: 222342
-    depth: 3
-    messages: []
-  m_Appendices:
-  - {fileID: -3669382115589446563}
-  - {fileID: 6160106833831764383}
-  - {fileID: -5267711311693053316}
-  - {fileID: -4064700514335314357}
-  - {fileID: -8997527417540724324}
-  - {fileID: 3436828532789898674}
-  - {fileID: -263799754132602158}
---- !u!1521398425 &3436828532789898674
-VideoBuildInfo:
-  m_VideoClipCount: 0
-  m_IsVideoModuleDisabled: 0
---- !u!1126 &6160106833831764383
+--- !u!1126 &-8614524648760254436
 PackedAssets:
   m_ShortPath: BuildPlayer-VRCDefaultWorldScene.sharedAssets
   m_Overhead: 160173
@@ -1429,3 +1129,303 @@ PackedAssets:
     sourceAssetGUID: 8f586378b4e144a9851e7b34d9b748ee
     buildTimeAssetPath: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans
       SDF.asset
+--- !u!668709126 &-8034121772151835135
+BuiltAssetBundleInfoSet:
+  bundleInfos:
+  - bundleName: scene-standalonewindows64-vrcdefaultworldscene.vrcw
+    bundleArchiveFile: 3
+    packagedFileIndices: 000000000100000002000000
+  - bundleName: Squid Trials
+    bundleArchiveFile: 6
+    packagedFileIndices: 05000000
+--- !u!382020655 &-2647677709453528818
+PluginBuildInfo:
+  m_RuntimePlugins:
+  - VRC.Udon.VM
+  - VRC.SDK3.Dynamics.PhysBone
+  - VRC.Udon.Security
+  - libvrc_fast_crypto
+  - VRCEconomy
+  - libvrc_image_loader
+  - YamlDotNet
+  - VRCSDK3
+  - nunit.framework
+  - VRCCore-Editor
+  - Serilog.Sinks.File
+  - vrc_fast_crypto
+  - VRC.SDK3.Dynamics.Contact
+  - System.Collections.Immutable
+  - OculusXRPlugin
+  - VRC.Udon.Wrapper
+  - vrc_image_loader
+  - Unity.Burst.Unsafe
+  - SemanticVersioning
+  - librsync.net
+  - OVRPlugin
+  - System.Runtime.CompilerServices.Unsafe
+  - Newtonsoft.Json
+  - Unity.Collections.LowLevel.ILSupport
+  - VRC.Udon.Common
+  - VRC.Udon.VRCWrapperModules
+  - VRC.Dynamics
+  - VRCSDKBase
+  - VRC.Utility
+  - portmidi
+  - VRC.Udon.ClientBindings
+  - SDKBase-Legacy
+  - Blake2Sharp
+  - VRC.SDK3.Dynamics.Constraint
+  - System.Text.Encoding.CodePages
+  - Serilog
+  - Collections.Pooled
+  - AudioPluginOculusSpatializer
+  m_EditorPlugins:
+  - VRC.Udon.VRCGraphModules
+  - VRC.Udon.EditorBindings
+  - 0Harmony
+  - VRC.SDK3.Dynamics.Contact.Editor
+  - libvrc_shader_compiler_plugin
+  - Mono.Cecil.Pdb
+  - JetBrains.Rider.PathLocator
+  - d3dcompiler_47
+  - vrc_shader_compiler_plugin
+  - VRCSDKBase-Editor
+  - uvgbuffergen
+  - halffloat2vb
+  - VRC.Udon.VRCTypeResolverModules
+  - optix.1
+  - optix_denoiser.6.0.0
+  - cudart64_91
+  - VRCEconomy-Editor
+  - simpleProgressBar
+  - ICSharpCode.SharpZipLib
+  - Microsoft.CodeAnalysis.CSharp
+  - cudart32_91
+  - VRC.SDK3.Dynamics.Constraint.Editor
+  - alphabuffergen
+  - AppleEventIntegration
+  - optix.6.0.0
+  - Mono.Cecil
+  - OpenImageDenoise
+  - optix.51
+  - VRC.Udon.Graph
+  - optix_denoiser.51
+  - Unity.Burst.Cecil.Pdb
+  - Mono.Cecil.Rocks
+  - Microsoft.CodeAnalysis
+  - frender
+  - VRC.Udon.Compiler
+  - xatlasLib
+  - System.Reflection.Metadata
+  - VRCSDK3-Editor
+  - Mono.Cecil.Mdb
+  - cudart64_90
+  - Serilog.Sinks.Unity3D
+  - tbbmalloc
+  - lmrebake
+  - Algolia.Search
+  - uvrepack
+  - Unity.Burst.Cecil.Mdb
+  - cudnn64_7
+  - VRC.SDK3.Dynamics.PhysBone.Editor
+  - Unity.Burst.Cecil
+  - Unity.Burst.Cecil.Rocks
+  - vpm-core-lib
+  - VRC.Udon.UAssembly
+--- !u!1126 &-1313830173900854194
+PackedAssets:
+  m_ShortPath: CAB-2d121dd186c024cde36e89aa71ca69a2
+  m_Overhead: 4032
+  m_Contents:
+  - fileID: 1
+    classID: 142
+    packedSize: 104
+    offset: 4032
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: AssetBundle Object
+  - fileID: 2
+    classID: 290
+    packedSize: 120
+    offset: 4136
+    sourceAssetGUID: 00000000000000000000000000000000
+    buildTimeAssetPath: 'Built-in AssetBundleManifest: AssetBundleManifest'
+--- !u!1125 &1
+BuildReport:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LastWindowsBuild
+  m_Summary:
+    buildStartTime:
+      serializedVersion: 2
+      ticks: 638907824997579616
+    buildGUID: 00000000000000000000000000000000
+    platformName: Win64
+    platformGroupName: Standalone
+    subtarget: 0
+    options: 0
+    assetBundleOptions: 32
+    outputPath: C:/Users/Austin/AppData/Local/Temp/DefaultCompany/Squid Trials
+    crc: 4182369984
+    totalSize: 19959354
+    totalTimeTicks: 108272861
+    totalErrors: 0
+    totalWarnings: 0
+    buildType: 2
+    buildResult: 1
+  m_Files:
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene
+    role: Scene
+    id: 0
+    totalSize: 1325160
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene.sharedAssets
+    role: SharedAssets
+    id: 1
+    totalSize: 72949756
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw/BuildPlayer-VRCDefaultWorldScene.resource
+    role: StreamingResourceFile
+    id: 2
+    totalSize: 79648
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw
+    role: AssetBundle
+    id: 3
+    totalSize: 19953966
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/scene-standalonewindows64-vrcdefaultworldscene.vrcw.manifest
+    role: AssetBundleTextManifest
+    id: 4
+    totalSize: 4150
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials/CAB-2d121dd186c024cde36e89aa71ca69a2
+    role: ResourcesFile
+    id: 5
+    totalSize: 4256
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials
+    role: ManifestAssetBundle
+    id: 6
+    totalSize: 1059
+  - path: C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Squid Trials.manifest
+    role: AssetBundleTextManifest
+    id: 7
+    totalSize: 179
+  m_BuildSteps:
+  - stepName: Build Asset Bundles
+    durationTicks: 108272861
+    depth: 0
+    messages: []
+  - stepName: Calculate asset bundles to be built
+    durationTicks: 207165
+    depth: 1
+    messages: []
+  - stepName: Prebuild Cleanup and Recompile
+    durationTicks: 4072488
+    depth: 1
+    messages: []
+  - stepName: Compile scripts
+    durationTicks: 3739345
+    depth: 2
+    messages: []
+  - stepName: Generate and validate platform script types
+    durationTicks: 263283
+    depth: 2
+    messages: []
+  - stepName: Build Scene AssetBundle(s)
+    durationTicks: 93806131
+    depth: 1
+    messages: []
+  - stepName: 'Build bundle: scene-standalonewindows64-vrcdefaultworldscene.vrcw'
+    durationTicks: 91952235
+    depth: 2
+    messages: []
+  - stepName: Verify Build setup
+    durationTicks: 365240
+    depth: 3
+    messages: []
+  - stepName: Prepare assets for target platform
+    durationTicks: 580241
+    depth: 3
+    messages: []
+  - stepName: Prepare splash screen
+    durationTicks: 4609
+    depth: 3
+    messages:
+    - type: 3
+      content: Including Unity Splash Screen logo because 'Show Unity Logo' is enabled.
+  - stepName: Building scenes
+    durationTicks: 12970323
+    depth: 3
+    messages: []
+  - stepName: Building scene Assets/Scenes/VRCDefaultWorldScene.unity
+    durationTicks: 12970231
+    depth: 4
+    messages:
+    - type: 3
+      content: Computed code signatures for 102 scripts of type SerializedUdonProgramAsset
+        in 4ms
+  - stepName: Writing asset files
+    durationTicks: 4179483
+    depth: 3
+    messages: []
+  - stepName: Packaging assets - archive:/BuildPlayer-VRCDefaultWorldScene/BuildPlayer-VRCDefaultWorldScene.sharedAssets
+    durationTicks: 4147336
+    depth: 4
+    messages: []
+  - stepName: Creating compressed player package
+    durationTicks: 70290304
+    depth: 3
+    messages: []
+  - stepName: Postprocess built player
+    durationTicks: 225116
+    depth: 3
+    messages: []
+  m_Appendices:
+  - {fileID: -8034121772151835135}
+  - {fileID: -8614524648760254436}
+  - {fileID: 7333936654041092216}
+  - {fileID: -2647677709453528818}
+  - {fileID: 4675972373568997763}
+  - {fileID: 232805262987897875}
+  - {fileID: -1313830173900854194}
+--- !u!1521398425 &232805262987897875
+VideoBuildInfo:
+  m_VideoClipCount: 0
+  m_IsVideoModuleDisabled: 0
+--- !u!641289076 &4675972373568997763
+AudioBuildInfo:
+  m_IsAudioDisabled: 0
+  m_AudioClipCount: 5
+  m_AudioMixerCount: 0
+--- !u!1126 &7333936654041092216
+PackedAssets:
+  m_ShortPath: BuildPlayer-VRCDefaultWorldScene.resource
+  m_Overhead: 0
+  m_Contents:
+  - fileID: 0
+    classID: 83
+    packedSize: 5088
+    offset: 0
+    sourceAssetGUID: 1b239708e53844c48b2b14f703d84c58
+    buildTimeAssetPath: Assets/Sounds/concrete_steps_2.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 6368
+    offset: 0
+    sourceAssetGUID: 4343dfc29b8b0cc429afb34a0d853c0f
+    buildTimeAssetPath: Assets/Sounds/concrete_steps_1.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 24160
+    offset: 0
+    sourceAssetGUID: 8df1bb6e97ff87f42b0bf47d627aec3d
+    buildTimeAssetPath: Assets/Sounds/clock_tick_2.ogg
+  - fileID: 0
+    classID: 83
+    packedSize: 21952
+    offset: 0
+    sourceAssetGUID: 8e5caad0afbe31a498a28ed5c61ebb24
+    buildTimeAssetPath: Assets/Sounds/bandaging_wrap.mp3
+  - fileID: 0
+    classID: 83
+    packedSize: 22080
+    offset: 0
+    sourceAssetGUID: c40bf61c3fef0a64cac7bc425a951d09
+    buildTimeAssetPath: Assets/Sounds/clock_tick_1.ogg

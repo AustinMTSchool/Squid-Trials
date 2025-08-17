@@ -17,7 +17,7 @@ public class HoldableBandage : Holdable
         if (application.Player.IsUsingItem) return;
         
         application.Player.SetUsingItem(true);
-        bandagingSound.Play(transform);
+        bandagingSound.Play();
 
         VRCPlayerApi player = Networking.LocalPlayer;
         _playerWalkSpeed = player.GetWalkSpeed();
