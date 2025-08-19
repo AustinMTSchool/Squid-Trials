@@ -16,12 +16,14 @@ public class  Player : UdonSharpBehaviour
     private bool _isPersistenceRestored = false;
     private bool _isPlayerInQueue = false;
     private bool _isUsingItem = false;
+    private bool _isInGames = false;
     
     public PlayerInventory Inventory => inventory;
     public bool IsPersistenceRestored => _isPersistenceRestored;
     public bool IsUsingItem => _isUsingItem;
     public bool IsPlayerRegistered => _isPlayerRegistered;
     public bool IsPlayerInQueue => _isPlayerInQueue;
+    public bool IsInGames => _isInGames;
     
     public VRCPlayerApi VRCPlayerApi => _vrcPlayer;
     private void Start()
@@ -85,5 +87,10 @@ public class  Player : UdonSharpBehaviour
     public void SetPlayerInQueue(bool value)
     {
         _isPlayerInQueue = value;
+    }
+
+    public void SetInGames(bool value)
+    {
+        _isInGames = value;
     }
 }

@@ -6,10 +6,10 @@ using VRC.Udon;
 
 public class Game : UdonSharpBehaviour
 {
-    [SerializeField] private Application application;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private string gameName = "default";
-    [SerializeField] private string description;
+    [SerializeField] protected Application application;
+    [SerializeField] protected Transform spawnPoint;
+    [SerializeField] protected string gameName = "default";
+    [SerializeField] protected string description;
 
     public string GameName => gameName;
     
@@ -18,7 +18,12 @@ public class Game : UdonSharpBehaviour
         application.Player.VRCPlayerApi.TeleportTo(spawnPoint.position, spawnPoint.rotation);
     }
 
-    public void Initialize()
+    public virtual void Initialize()
+    {
+        SpawnPlayer();
+    }
+
+    public virtual void InitializeBeginning()
     {
         SpawnPlayer();
     }

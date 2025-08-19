@@ -136,7 +136,6 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
             Debug.LogError(result.ToString());
         }
         
-        Debug.Log($"Player entered net: {_playersReady}");
         UpdatePlayerReadyCount();
         UpdateTimer();
         UpdatePlayerReadyCount();
@@ -157,20 +156,22 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         }
         else
         {
+            // begin game
             _isTimerActive = false;
             application.GameManager.SetInLobby("game");
             RequestSerialization();
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(BeginGame));
+            application.GameManager.StartMainGame(true);
         }
     }
 
     public void BeginGame()
     {
-        var player = Networking.LocalPlayer;
         if (application.Player.IsPlayerInQueue)
         {
             Debug.Log($"Added to game (was in queue)");
-            application.GameManager.StartGame(beginningGame.GameName);
+            application.Player.SetInGames(true);
+            application.GameManager.SpawnPlayerInGame(beginningGame.GameName);
         }
         else
         {

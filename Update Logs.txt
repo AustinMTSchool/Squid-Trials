@@ -7,4 +7,5 @@
 - Finished player counting for lobby
 
 8/17/25
-- Started on first game area (players get teleported)
+- Players get teleported to beginning game now
+- Created Mesh main_floor, main_roof, main_stage, main_walls
