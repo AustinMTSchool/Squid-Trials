@@ -3,6 +3,7 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common.Interfaces;
@@ -43,22 +44,37 @@ public class MainGame : Game
         RequestSerialization();
     }
 
-    public override void OnOwnershipTransferred(VRCPlayerApi player)
+    public override void End()
     {
-        if (!player.IsOwner(gameObject)) return;
-        if (!player.isLocal) return;
+        _forceEnd = true;
+    }
+
+    public override void OnMasterTransferred(VRCPlayerApi newMaster)
+    {
+        if (!newMaster.isLocal) return;
+
+        if (_isBeginningTimeTicking)
+        {
+            OnBeginningTimerUpdateNetwork();
+        }
         
-        Debug.Log("You are the new owner, begin");
-        
-        OnBeginningTimerUpdateNetwork();
         RequestSerialization();
     }
 
+
     public void OnBeginningTimerUpdateNetwork()
     {
+        if (_forceEnd)
+        {
+            _forceEnd = false;
+            Debug.Log("Games were forces off");
+            return;
+        }
+        
         if (_currentBeginningTime > 0)
         {
             _currentBeginningTime--;
+            Debug.Log("[MainGame] Time ticking " + _currentBeginningTime);
             UpdateBeginningTimer();
             UpdateBeginningTextDisplay();
             RequestSerialization();
@@ -66,26 +82,22 @@ public class MainGame : Game
         }
         else
         {
+            Debug.Log("[MainGame] Starting next game");
             _isBeginningTimeTicking = false;
             var game = application.GameManager.GetRandomGame();
-            
-            if (application.Player.IsInGames)
-            {
-                application.GameManager.SpawnPlayerInGame(game.GameName);
-            }
-            
             application.GameManager.SetCurrentGame(game);
-            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(NextGame));
+            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(NextGame), game.GameName);
             application.GameManager.StartGame(game.GameName, true);
             RequestSerialization();
         }
     }
 
+    [NetworkCallable]
     public void NextGame(string gameName)
     {
         if (application.Player.IsInGames)
         {
-            application.GameManager.SpawnPlayerInGame(application.GameManager.GameSelected);
+            application.GameManager.SpawnPlayerInGame(gameName);
         }
     }
 

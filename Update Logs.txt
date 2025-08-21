@@ -8,4 +8,16 @@
 
 8/17/25
 - Players get teleported to beginning game now
-- Created Mesh main_floor, main_roof, main_stage, main_walls
+- Created Mesh main_floor, main_roof, main_stage, main_walls, main_entrance_roof
+
+8/19/25
+- Working on main game
+- Setup main room now has description and timer for beginning
+- Now get teleported to any of the games that are listed after timer counts down from main
+- Fixed an issue with syncing for players joining queue
+
+8/20/25
+- GameManager sycing tweaks
+- Did a ton of syncing fixes for master and laste joiners for the games
+
+public override void OnPlayerRespawn(VRCPlayerApi player) on GameManager

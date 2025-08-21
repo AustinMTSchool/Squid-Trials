@@ -11,20 +11,26 @@ public class Game : UdonSharpBehaviour
     [SerializeField] protected string gameName = "default";
     [SerializeField] protected string description;
 
+    protected bool _forceEnd = false;
+
     public string GameName => gameName;
     
     public void SpawnPlayer()
     {
+        Debug.Log("Spawning player " + application.Player.VRCPlayerApi.displayName);
         application.Player.VRCPlayerApi.TeleportTo(spawnPoint.position, spawnPoint.rotation);
     }
 
     public virtual void Initialize()
     {
-        SpawnPlayer();
     }
 
     public virtual void InitializeBeginning()
     {
-        SpawnPlayer();
+    }
+
+    public virtual void End()
+    {
+        
     }
 }
