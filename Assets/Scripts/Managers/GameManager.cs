@@ -18,19 +18,16 @@ public class GameManager : UdonSharpBehaviour
     private DataList _allPlayersInGame = new DataList();
     
     [UdonSynced] private string _gameMode = "lobby";
-    [UdonSynced] private string _gameSelected = "";
     [UdonSynced] private string _jsonAvailableGames;
     [UdonSynced] private string _jsonAllPlayersInGame;
     [UdonSynced] private bool _isGamesActive;
     [UdonSynced] private string _currentGame;
-    
     
     private System.Random random = new System.Random();
     private DataList _availableGames = new DataList();
     private DataDictionary _allGamesByName = new DataDictionary();
     
     public string Mode => _gameMode;
-    public string GameSelected => _gameSelected;
 
     private void Start()
     {
@@ -42,10 +39,15 @@ public class GameManager : UdonSharpBehaviour
         _allGamesByName.Add(mainGame.GameName, new DataToken(mainGame));
     }
 
+    public override void OnMasterTransferred(VRCPlayerApi newMaster)
+    {
+        if (!newMaster.IsOwner(gameObject))
+            Networking.SetOwner(newMaster, gameObject);
+    }
+
     public void ResetAllGames()
     {
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        if (!Networking.LocalPlayer.isMaster) return;
         
         foreach (var game in allGames)
         {
@@ -57,17 +59,14 @@ public class GameManager : UdonSharpBehaviour
 
     public void SetInLobby(string mode)
     {
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
-        
+        if (!Networking.LocalPlayer.isMaster) return;
         _gameMode = mode;
         RequestSerialization();
     }
 
     public void StartGame(string gameName, bool remove = false)
     {
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        if (!Networking.LocalPlayer.isMaster) return;
         
         if (_availableGames.Count == 0)
             ResetAllGames();
@@ -83,29 +82,37 @@ public class GameManager : UdonSharpBehaviour
                 if (remove)
                 {
                     _availableGames.Remove(gameName);
-                    RequestSerialization();
                 }
+                RequestSerialization();
             }
         }
     }
 
-    public void StartMainGame(DataList players, bool initBeginning = false)
+    public void AddPlayersToGames(DataList players)
     {
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
-        
-        _allPlayersInGame = players;
+        if (!Networking.LocalPlayer.isMaster) return;
+        for (int i = 0; i < players.Count; i++)
+        {
+            _allPlayersInGame.Add($"{players[i]}");
+        }
+        RequestSerialization();
+    }
+
+    public void StartMainGame(bool initBeginning = false)
+    {
+        if (!Networking.LocalPlayer.isMaster) return;
         if (initBeginning)
         {
             mainGame.InitializeBeginning();
             _isGamesActive = true;
-            _currentGame = mainGame.GameName;
         }
         else
         {
             mainGame.Initialize();
-            _currentGame = mainGame.GameName;
         }
+        Debug.Log("Setting Current Game to: " + mainGame.GameName);
+        _currentGame = mainGame.GameName;
+        Debug.Log("Current Game: " +  _currentGame);
         RequestSerialization();
     }
 
@@ -122,11 +129,13 @@ public class GameManager : UdonSharpBehaviour
 
     public void SpawnPlayerInMainGame()
     {
+        Debug.Log("[GameManager] SpawnPlayerInMainGame");
         mainGame.SpawnPlayer();
     }
 
     public Game GetRandomGame()
     {
+        if (!Networking.LocalPlayer.isMaster) return null;
         if (_availableGames.Count == 0) ResetAllGames();
 
         int randomIndex = random.Next(0, _availableGames.Count);
@@ -140,12 +149,6 @@ public class GameManager : UdonSharpBehaviour
         {
             return null;
         }
-    }
-
-    public void SetCurrentGame(Game game)
-    {
-        _gameSelected = game.GameName;
-        RequestSerialization();
     }
 
     public override void OnPreSerialization()
@@ -172,80 +175,74 @@ public class GameManager : UdonSharpBehaviour
             _allPlayersInGame = jsonAllPlayersInGame.DataList;
         else
             Debug.LogError(result.ToString());
-         
-        Debug.Log($"Players: {_jsonAllPlayersInGame}");
-        Debug.Log($"Games: {_jsonAvailableGames}");
+        
+        Debug.Log("Curremt Game: " +  _currentGame);
     }
 
     public override void OnPlayerLeft(VRCPlayerApi player)
     {
         Debug.Log($"Player left: {player.playerId}");
         
-        if (Networking.LocalPlayer.isMaster)
+        if (!Networking.LocalPlayer.isMaster) return;
+        if (!_allPlayersInGame.Contains($"{player.playerId}")) return;
+
+        _allPlayersInGame.Remove($"{player.playerId}");
+
+        if (_allPlayersInGame.Count <= 0)
         {
-            Debug.Log($"Master checking if game should continue");
-            if (!Networking.LocalPlayer.IsOwner(gameObject))
-                Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            
-            _allPlayersInGame.Remove($"{player.playerId}");
-            
-            if (_allPlayersInGame.Count <= 0)
-            {
-                Debug.Log($"Games are ending");
-                EndGames();
-            }
-            RequestSerialization();
+            Debug.Log($"Games are ending");
+            EndGames();
         }
+
+        RequestSerialization();
     }
 
     public override void OnPlayerRespawn(VRCPlayerApi player)
     {
         if (!player.isLocal) return;
         if (!this.player.IsInGames) return;
-        
-        if (Networking.LocalPlayer.isMaster)
-        {
-            if (!Networking.LocalPlayer.IsOwner(gameObject))
-                Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            
-            _allPlayersInGame.Remove($"{player.playerId}");
-            
-            if (_allPlayersInGame.Count <= 0)
-            {
-                EndGames();
-            }
-            else
-            {
-                Debug.Log("Player count was at: " + _allPlayersInGame.Count);
-            }
-            RequestSerialization();
-        }
 
-        if (player.isLocal)
+        Debug.Log($"{player.playerId} was in game sending event to {Networking.Master.playerId}");
+        SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PlayerRemoveFromGame), $"{player.playerId}");
+        
+        this.player.SetInGames(false);
+        RequestSerialization();
+    }
+
+    [NetworkCallable]
+    public void PlayerRemoveFromGame(string playerId)
+    {
+        if (!Networking.LocalPlayer.isMaster) return;
+            
+        _allPlayersInGame.Remove($"{playerId}");
+        RequestSerialization();
+        
+        if (_allPlayersInGame.Count <= 0)
         {
-            this.player.SetInGames(false);
+            EndGames();
         }
     }
 
     public void EndGames()
     {
         Debug.Log("Games is ending for " + _currentGame);
+        if (!Networking.LocalPlayer.isMaster) return;
 
-        if (Networking.LocalPlayer.isMaster)
+        if (_allGamesByName.TryGetValue(_currentGame, out var gameToken))
         {
-            if (_allGamesByName.TryGetValue(_currentGame, out var gameToken))
-            {
-                Game game = (Game) gameToken.Reference;
-                Debug.Log("Ending Game: " + game.GameName);
-                game.End();
-            }
-            
-            _isGamesActive = false;
-            _gameMode = "lobby";
-            _gameSelected = "";
-            ResetAllGames();
-            playersJoinedQueue.SetCanTimerStart(true);
-            RequestSerialization();
+            Game game = (Game)gameToken.Reference;
+            Debug.Log("Ending Game: " + game.GameName);
+            game.End();
         }
+        else
+        {
+            Debug.Log("current game was not found");
+        }
+
+        _isGamesActive = false;
+        _gameMode = "lobby";
+        ResetAllGames();
+        playersJoinedQueue.SetCanTimerStart(true);
+        RequestSerialization();
     }
 }

@@ -20,4 +20,8 @@
 - GameManager sycing tweaks
 - Did a ton of syncing fixes for master and laste joiners for the games
 
-public override void OnPlayerRespawn(VRCPlayerApi player) on GameManager
+8/21/25
+- Finished tones of network testing with MainGames Game and now works not complete though
+- Fixed a lot of networking issues within it
+- Fixed some bugs with player ready queue
+- All networking management is done my masters not owners of gameobjects

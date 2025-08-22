@@ -28149,7 +28149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0017263889}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.0018868438}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &973671788
@@ -31514,6 +31514,7 @@ MonoBehaviour:
   gameName: main
   description: Players get ready to face off with eachother and decide to continue
     the games
+  introTime: 0
   beginningTime: 60
   timerText: {fileID: 1125784807}
   beginningTextDisplay: {fileID: 968021923}
@@ -33133,7 +33134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0017263889}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.0018868438}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1162675432
@@ -60486,6 +60487,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 238177432}
   gameName: red_light_green_light
   description: Race to the end
+  introTime: 0
 --- !u!1 &2051891929
 GameObject:
   m_ObjectHideFlags: 0

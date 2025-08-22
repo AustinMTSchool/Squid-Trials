@@ -46,7 +46,15 @@ public class MainGame : Game
 
     public override void End()
     {
+        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndGamesNotifierAll));
         _forceEnd = true;
+        
+    }
+
+    [NetworkCallable]
+    public void EndGamesNotifierAll()
+    {
+        Debug.Log("Game is ending for Main Game");
     }
 
     public override void OnMasterTransferred(VRCPlayerApi newMaster)
@@ -67,7 +75,7 @@ public class MainGame : Game
         if (_forceEnd)
         {
             _forceEnd = false;
-            Debug.Log("Games were forces off");
+            Debug.Log("Games were forces off need to tp players");
             return;
         }
         
@@ -85,7 +93,6 @@ public class MainGame : Game
             Debug.Log("[MainGame] Starting next game");
             _isBeginningTimeTicking = false;
             var game = application.GameManager.GetRandomGame();
-            application.GameManager.SetCurrentGame(game);
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(NextGame), game.GameName);
             application.GameManager.StartGame(game.GameName, true);
             RequestSerialization();

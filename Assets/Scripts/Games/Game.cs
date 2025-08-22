@@ -10,6 +10,9 @@ public class Game : UdonSharpBehaviour
     [SerializeField] protected Transform spawnPoint;
     [SerializeField] protected string gameName = "default";
     [SerializeField] protected string description;
+    [SerializeField] protected int introTime;
+
+    [UdonSynced] protected int _currentIntroTime;
 
     protected bool _forceEnd = false;
 

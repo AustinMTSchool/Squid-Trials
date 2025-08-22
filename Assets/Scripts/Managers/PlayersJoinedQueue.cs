@@ -16,9 +16,9 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
     [SerializeField] private Audio tickSound;
     [SerializeField] private Game beginningGame;
 
-    private int _amountOfPlayers;
     private DataList _queuedPlayers = new DataList();
     
+    [UdonSynced] private int _amountOfPlayers;
     [UdonSynced] private string _queuedPlayersJSON;
     [UdonSynced] private int _playersReady;
     [UdonSynced] private bool _canTimerStart = true;
@@ -27,6 +27,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
     
     public override void OnPlayerJoined(VRCPlayerApi player)
     {
+        Debug.Log($"[PlayersJoinedQueue] OnPlayerJoined");
         _amountOfPlayers = VRCPlayerApi.GetPlayerCount();
         UpdatePlayerCount();
         
@@ -41,17 +42,14 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
     {
         if (!Networking.LocalPlayer.isMaster) return;
         
+        Debug.Log($"[PlayersJoinedQueue] OnPlayerLeft");
         _amountOfPlayers--;
         UpdatePlayerCount();
-
-        Debug.Log("Master is updating player left info");
+        
         if (_queuedPlayers.Contains($"{player.playerId}"))
         {
-            Debug.Log("Removed a player from queue");
             _queuedPlayers.Remove($"{player.playerId}");
-            Debug.Log($"{_playersReady}");
             _playersReady--;
-            Debug.Log($"{_playersReady}");
             UpdatePlayerReadyCount();
         }
         RequestSerialization();
@@ -59,7 +57,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
     
     public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {
-        Debug.Log("Player entered area");
+       
         if (player.isLocal) 
             application.Player.SetPlayerInQueue(true);
         
@@ -67,11 +65,11 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         
         if (!Networking.LocalPlayer.IsOwner(gameObject)) 
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            
+        
+        Debug.Log($"[PlayersJoinedQueue] OnPlayerTriggerEnter");
         _playersReady++;
         UpdatePlayerReadyCount();
         _queuedPlayers.Add($"{player.playerId}");
-        Debug.Log("updated for master enter queue " + _playersReady);
         RequestSerialization();
     }
 
@@ -84,7 +82,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         {
             if (!Networking.LocalPlayer.IsOwner(gameObject))
                 Networking.SetOwner(Networking.LocalPlayer, gameObject);
-            
+            Debug.Log($"[PlayersJoinedQueue] OnPlayerTriggerExit");
             _playersReady--;
             UpdatePlayerReadyCount();
             _queuedPlayers.Remove($"{player.playerId}");
@@ -103,6 +101,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         if (!_canTimerStart) return;
         if (application.GameManager.Mode != "lobby") return;
 
+        Debug.Log($"[PlayersJoinedQueue] OnClick");
         _canTimerStart = false;
         _isTimerActive = true;
         timerSeconds = 20;
@@ -114,8 +113,11 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         if (!Networking.LocalPlayer.isMaster) return;
         if (!_isTimerActive) return;
        
+        Debug.Log($"[PlayersJoinedQueue] OnMasterTransferred");
         Networking.SetOwner(Networking.LocalPlayer, gameObject);
         SendCustomEventDelayedSeconds(nameof(UpdateTimerNetwork), 1);
+        UpdatePlayerCount();
+        UpdatePlayerReadyCount();
     }
     
     public override void OnPreSerialization()
@@ -132,7 +134,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
 
     public override void OnDeserialization()
     {
-        Debug.Log($"Updating player counts queue " + _playersReady);
+        Debug.Log($"[PlayersJoinedQueue] OnDeserialization");
         if(VRCJson.TryDeserializeFromJson(_queuedPlayersJSON, out DataToken result))
         {
             _queuedPlayers = result.DataList;
@@ -142,7 +144,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
             Debug.LogError(result.ToString());
         }
         
-        UpdatePlayerReadyCount();
+        UpdatePlayerCount();
         UpdateTimer();
         UpdatePlayerReadyCount();
     }
@@ -152,6 +154,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         if (!Networking.LocalPlayer.IsOwner(gameObject) || !_isTimerActive)
             return;
         
+        Debug.Log($"[PlayersJoinedQueue] UpdateTimerNetwork");
         tickSound.Play();
         if (timerSeconds > 0)
         {
@@ -162,21 +165,32 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         }
         else
         {
-            
             Debug.Log("[PlayersJoinedQueue] BEGINNING GAME");
+            if (_playersReady <= 0)
+            {
+                _isTimerActive = false;
+                _canTimerStart = true;
+                timerSeconds = 20;
+                Debug.Log("Not enough players ready");
+                RequestSerialization();
+                return;
+            }
+            
             _isTimerActive = false;
             application.GameManager.SetInLobby("game");
             RequestSerialization();
+            application.GameManager.AddPlayersToGames(_queuedPlayers);
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(BeginGame));
-            application.GameManager.StartMainGame(_queuedPlayers, true);
+            application.GameManager.StartMainGame(true);
         }
     }
 
     public void BeginGame()
     {
+        Debug.Log($"[PlayersJoinedQueue] BeginGame");
         if (application.Player.IsPlayerInQueue)
         {
-            Debug.Log($"Added to game (was in queue)");
+            Debug.Log($"Added to game (was in queue) " + Networking.LocalPlayer.playerId);
             application.Player.SetInGames(true);
             application.GameManager.SpawnPlayerInMainGame();
         }

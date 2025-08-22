@@ -10,17 +10,10 @@ public class RedGreenLightGame : Game
 {
     public override void Initialize()
     {
-        Debug.Log("Initializing RedGreenLightGame");
+        if (!Networking.LocalPlayer.IsOwner(gameObject))
+            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        
         base.Initialize();
-        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(Worked));
-    }
-
-    [NetworkCallable]
-    public void Worked()
-    {
-        if (application.Player.IsInGames)
-        {
-            Debug.Log("Invoking actions for red green light game");
-        }
+        
     }
 }
