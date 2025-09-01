@@ -1,4 +1,5 @@
 ﻿
+using System;
 using TMPro;
 using UdonSharp;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class MainGame : Game
 {
     [Space, Header("Main Game")]
     [SerializeField] private int beginningTime = 60;
+    [SerializeField] private int currentTime = 20;
 
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI beginningTextDisplay;
@@ -29,26 +31,36 @@ public class MainGame : Game
     [UdonSynced] private int _currentBeginningTime = 60;
     [UdonSynced] private bool _isBeginningTimeTicking = false;
     [UdonSynced] private bool _startNextGame = false;
-    
+    [UdonSynced] private int _currentTime = 20;
+    [UdonSynced] private bool _isTimeTicking = false;
+
     public override void InitializeBeginning()
     {
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
+        if (!Networking.LocalPlayer.isMaster) return;
         
         base.InitializeBeginning();
         
         _currentBeginningTime = beginningTime;
         _isBeginningTimeTicking = true;
-        SetProgramVariable(nameof(_currentBeginningTime), beginningTime);
         OnBeginningTimerUpdateNetwork();
         RequestSerialization();
     }
 
-    public override void End()
+    public override void Initialize()
+    {
+        if (!Networking.LocalPlayer.isMaster) return;
+        
+        base.Initialize();
+        _currentTime = currentTime;
+        _isTimeTicking = true;
+        OnTimerUpdateNetwork();
+        RequestSerialization();
+    }
+
+    public override void Stop()
     {
         SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndGamesNotifierAll));
         _forceEnd = true;
-        
     }
 
     [NetworkCallable]
@@ -69,7 +81,6 @@ public class MainGame : Game
         RequestSerialization();
     }
 
-
     public void OnBeginningTimerUpdateNetwork()
     {
         if (_forceEnd)
@@ -83,7 +94,7 @@ public class MainGame : Game
         {
             _currentBeginningTime--;
             Debug.Log("[MainGame] Time ticking " + _currentBeginningTime);
-            UpdateBeginningTimer();
+            UpdateTimer(_currentBeginningTime);
             UpdateBeginningTextDisplay();
             RequestSerialization();
             SendCustomEventDelayedSeconds(nameof(OnBeginningTimerUpdateNetwork), 1);
@@ -92,6 +103,33 @@ public class MainGame : Game
         {
             Debug.Log("[MainGame] Starting next game");
             _isBeginningTimeTicking = false;
+            var game = application.GameManager.GetRandomGame();
+            SendCustomNetworkEvent(NetworkEventTarget.All, nameof(NextGame), game.GameName);
+            application.GameManager.StartGame(game.GameName, true);
+            RequestSerialization();
+        }
+    }
+
+    public void OnTimerUpdateNetwork()
+    {
+        Debug.Log("Starting games again");
+        if (_forceEnd)
+        {
+            _forceEnd = false;
+            Debug.Log("Games were forces off need to tp players");
+            return;
+        }
+        
+        if (_currentTime > 0)
+        {
+            _currentTime--;
+            UpdateTimer(_currentTime);
+            RequestSerialization();
+            SendCustomEventDelayedSeconds(nameof(OnTimerUpdateNetwork), 1);
+        }
+        else
+        {
+            _isTimeTicking = false;
             var game = application.GameManager.GetRandomGame();
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(NextGame), game.GameName);
             application.GameManager.StartGame(game.GameName, true);
@@ -112,15 +150,15 @@ public class MainGame : Game
     {
         if (_isBeginningTimeTicking)
         {
-            UpdateBeginningTimer();
+            UpdateTimer(_currentBeginningTime);
             UpdateBeginningTextDisplay();
         }
         
     }
 
-    private void UpdateBeginningTimer()
+    private void UpdateTimer(int time)
     {
-        timerText.text = $"{_currentBeginningTime}";
+        timerText.text = $"{time}";
     }
 
     private void UpdateBeginningTextDisplay()

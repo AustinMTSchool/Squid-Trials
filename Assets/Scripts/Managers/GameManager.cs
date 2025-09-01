@@ -14,6 +14,7 @@ public class GameManager : UdonSharpBehaviour
     [SerializeField] private Game[] allGames;
     [SerializeField] private Game mainGame;
     [SerializeField] private PlayersJoinedQueue playersJoinedQueue;
+    [SerializeField] private Transform spawnPoint;
     
     private DataList _allPlayersInGame = new DataList();
     
@@ -28,6 +29,8 @@ public class GameManager : UdonSharpBehaviour
     private DataDictionary _allGamesByName = new DataDictionary();
     
     public string Mode => _gameMode;
+    public Transform SpawnPoint => spawnPoint;
+    public DataList AllPlayersInGame  => _allPlayersInGame;
 
     private void Start()
     {
@@ -86,15 +89,16 @@ public class GameManager : UdonSharpBehaviour
                 RequestSerialization();
             }
         }
+        else
+        {
+            Debug.LogWarning($"Game {gameName} doesnt exist");
+        }
     }
 
     public void AddPlayersToGames(DataList players)
     {
         if (!Networking.LocalPlayer.isMaster) return;
-        for (int i = 0; i < players.Count; i++)
-        {
-            _allPlayersInGame.Add($"{players[i]}");
-        }
+        _allPlayersInGame = players.DeepClone();
         RequestSerialization();
     }
 
@@ -161,7 +165,7 @@ public class GameManager : UdonSharpBehaviour
         if (VRCJson.TrySerializeToJson(_allPlayersInGame, JsonExportType.Minify, out DataToken playersInGameList))
             _jsonAllPlayersInGame = playersInGameList.String;
         else
-            Debug.LogError(result.ToString());
+            Debug.LogError(playersInGameList.ToString());
     }
 
     public override void OnDeserialization()
@@ -217,6 +221,16 @@ public class GameManager : UdonSharpBehaviour
         _allPlayersInGame.Remove($"{playerId}");
         RequestSerialization();
         
+        if (_allGamesByName.TryGetValue(_currentGame, out var gameToken))
+        {
+            Game game = (Game)gameToken.Reference;
+            Debug.Log($"Removing {playerId} player from game: " + game.GameName);
+            if (game.GameController != null)
+            {
+                game.GameController.PlayerOutOfGame($"{playerId}");
+            }
+        }
+        
         if (_allPlayersInGame.Count <= 0)
         {
             EndGames();
@@ -232,7 +246,7 @@ public class GameManager : UdonSharpBehaviour
         {
             Game game = (Game)gameToken.Reference;
             Debug.Log("Ending Game: " + game.GameName);
-            game.End();
+            game.Stop();
         }
         else
         {

@@ -25,3 +25,18 @@
 - Fixed a lot of networking issues within it
 - Fixed some bugs with player ready queue
 - All networking management is done my masters not owners of gameobjects
+
+8/22/25
+- When intro is finished with games, the games toggles turn on
+
+TO send more player sounds
+have a dictionary list of sound names and the sound audio
+local players send there sound name over to tell you witch one to player
+This way is very optimized
+
+- both players die
+- 1 player dies 1 player makes it
+- both players make it
+- 1 makes it, 1 respawns
+
+when master respawned durring game active and other player died it did not end

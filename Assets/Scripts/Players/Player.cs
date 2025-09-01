@@ -5,13 +5,19 @@ using VRC.SDK3.Persistence;
 using VRC.SDKBase;
 using VRC.Udon;
 
-public class  Player : UdonSharpBehaviour
+public class Player : UdonSharpBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayersManager playersManager;
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private PlayerWalk playerWalk;
+    [SerializeField] private Transform healthReference;
+    [SerializeField] private PlayerEffects playerEffects;
+    [SerializeField] private PlayerOverlayEffects playerOverlayEffects;
     
+    public PlayerOverlayEffects PlayerOverlayEffects => playerOverlayEffects;
     private VRCPlayerApi _vrcPlayer;
+    private Health _health;
     private bool _isPlayerRegistered = false;
     private bool _isPersistenceRestored = false;
     private bool _isPlayerInQueue = false;
@@ -24,8 +30,10 @@ public class  Player : UdonSharpBehaviour
     public bool IsPlayerRegistered => _isPlayerRegistered;
     public bool IsPlayerInQueue => _isPlayerInQueue;
     public bool IsInGames => _isInGames;
-    
     public VRCPlayerApi VRCPlayerApi => _vrcPlayer;
+    public Health Health => _health;
+    public PlayerEffects PlayerEffects => playerEffects;
+    
     private void Start()
     {
         AssignLocalPlayer();
@@ -72,13 +80,21 @@ public class  Player : UdonSharpBehaviour
         {
             PlayerData.SetInt("points", 0);
         }
+
+        Component comp = Networking.FindComponentInPlayerObjects(player, healthReference);
+        _health = comp.GetComponent<Health>();
     }
 
+    public void Death()
+    {
+        if (_isInGames) _isInGames = false;
+    }
+    
     public string GetDisplayName()
     {
         return _vrcPlayer.displayName;
     }
-
+    
     public void SetUsingItem(bool value)
     {
         _isUsingItem = value;
