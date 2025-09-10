@@ -1,4 +1,5 @@
 ﻿
+using System;
 using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.Ocsp;
 using TMPro;
 using UdonSharp;
@@ -24,7 +25,18 @@ public class RedGreenLightGame : Game
     [UdonSynced] private int _currentIntroTime;
     [UdonSynced] private bool _isEnding = false;
     [UdonSynced] private int _currentEndingTime;
+    [UdonSynced] private bool _isDoorsOpened = false;
     
+    private RedGreenLightController _rgController;
+
+    private void Start()
+    {
+        if (Utilities.IsValid(gameController))
+        {
+            _rgController = (RedGreenLightController) gameController;
+        }
+    }
+
     public override void Initialize()
     {
         if (!Networking.LocalPlayer.isMaster) return;
@@ -37,6 +49,7 @@ public class RedGreenLightGame : Game
         _currentIntroTime = introTime;
         _isIntro = true;
         _forceEnd = false;
+        _isDoorsOpened = false;
         gameController.AssignCurrentPlayersInGame();
         state = GameState.INTRO;
         
@@ -64,6 +77,13 @@ public class RedGreenLightGame : Game
             Debug.Log("is intro and current intro time above 0");
             _currentIntroTime--;
             Debug.Log("Time: " + _currentIntroTime);
+
+            if (_currentIntroTime == 10)
+            {
+                _isDoorsOpened = true;
+                _UpdateDoors();
+            }
+            
             UpdateIntroDisplayText();
             RequestSerialization();
             SendCustomEventDelayedSeconds(nameof(OnIntroNetwork), 1F);
@@ -167,6 +187,11 @@ public class RedGreenLightGame : Game
         {
             UpdateIntroDisplayText();
         }
+
+        if (_currentIntroTime == 10)
+        {
+            _UpdateDoors();
+        }
     }
 
     private void UpdateIntroDisplayText()
@@ -176,5 +201,11 @@ public class RedGreenLightGame : Game
             var intro = value.String;
             introDisplay.text = intro;
         }
+    }
+
+    private void _UpdateDoors()
+    {
+        Debug.Log("Updating Doors");
+        _rgController._SetDoors(_isDoorsOpened);
     }
 }

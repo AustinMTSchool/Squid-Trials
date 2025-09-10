@@ -13,11 +13,14 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - BAKED_SPECULAR
+  - BAKERY_ENABLED
+  - BAKERY_MONOSH
   - BAKERY_SHNONLINEAR
+  - BICUBIC_LIGHTMAP
   - DETAILS_MODE_PACKED
   - GSAA
-  m_InvalidKeywords:
-  - BAKERY_NONE
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -29,7 +32,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 95569409267572b49813657ae5de18e1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DDetailsMap:
@@ -98,7 +101,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - BAKERY: 0
+    - BAKERY: 1
     - DETAILS_MODE: 0
     - UI_AdvancedSettingsHeader: 1
     - UI_BakeryHeader: 0
@@ -116,7 +119,7 @@ Material:
     - UI_LightmappingHeader: 1
     - UI_MainHeader: 1
     - UI_ParallaxDocs: 0
-    - UI_ParallaxHeader: 0
+    - UI_ParallaxHeader: 1
     - UI_VRCDocs: 0
     - UI_VRCFeaturesHeader: 0
     - UI_VRCHideCameraHeader: 0
@@ -124,11 +127,11 @@ Material:
     - UI_VRCHideMainViewHeader: 0
     - _AOChannel: 1
     - _AlbedoChannel: 0
-    - _BakedSpecular: 0
-    - _BakeryEnabled: 0
+    - _BakedSpecular: 1
+    - _BakeryEnabled: 1
     - _BakerySHNonLinear: 1
-    - _Bicubic: 0
-    - _BumpScale: 1
+    - _Bicubic: 1
+    - _BumpScale: -1
     - _CullMode: 2
     - _Cutoff: 0.5
     - _DAlbedoScale: 1
@@ -162,7 +165,7 @@ Material:
     - _HeightStepsMin: 8
     - _MappingSpace: 0
     - _MetalChannel: 0
-    - _Metallic: 0.138
+    - _Metallic: 0
     - _Mode: 0
     - _NonlinearSH: 0
     - _OcclusionStrength: 1
@@ -171,7 +174,7 @@ Material:
     - _PlanarAxisY: 2
     - _RoughnessMode: 0
     - _SmoothChannel: 3
-    - _Smoothness: 0.5
+    - _Smoothness: 0.96
     - _SmoothnessTextureChannel: 0
     - _SpecOcclusion: 0.75
     - _SpecularHighlights: 1

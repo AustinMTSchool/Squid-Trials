@@ -8,23 +8,25 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: scarecrow_planar_mat
-  m_Shader: {fileID: -8512187303908658807, guid: 77a966990a60b6849bcc5ae9e684facc,
-    type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BAKERY_SHNONLINEAR
-  - DETAILS_MODE_PACKED
-  - DITHER_FADE
-  - GSAA
+  - _ALPHATEST_ON
+  - _EMISSION
+  - _METALLICGLOSSMAP
+  - _NORMALMAP
   m_InvalidKeywords:
   - BAKERY_NONE
-  - _ALPHATEST_ON
+  - BAKERY_SHNONLINEAR
+  - DETAILS_MODE_PACKED
+  - GSAA
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -164,7 +166,7 @@ Material:
     - _ColorMode: 0
     - _Cull: 2
     - _CullMode: 2
-    - _Cutoff: 0.3
+    - _Cutoff: 1
     - _DAlbedoScale: 1
     - _DFEnd: 5
     - _DFOverrideFade: 0
@@ -189,7 +191,7 @@ Material:
     - _DstBlend: 0
     - _EmissionChannel: 0
     - _EmissionEnabled: 0
-    - _EnableDitherFade: 1
+    - _EnableDitherFade: 0
     - _EnableGSAA: 1
     - _EnableParallax: 0
     - _FlipBumpY: 0
@@ -247,7 +249,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 0.99215686}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MetallicRemap: {r: 0, g: 1, b: 0, a: 1}

@@ -27,6 +27,9 @@ public class RedGreenLightController : GameController
     [SerializeField] private Material greenLight;
     [SerializeField] private Material redLight;
 
+    [Space, Header("Animators")]
+    [SerializeField] private Animator[] doorAnimators;
+    
     [UdonSynced] private int _currentIntervalTime = 3;
     [UdonSynced] private Light _light;
     [UdonSynced] private bool _areLightsSwitching;
@@ -38,6 +41,8 @@ public class RedGreenLightController : GameController
     
     public bool DeadlyMovement => _deadlyMovement;
     public GameObject Barrier => barrier;
+    public Animator[] DoorAnimator => doorAnimators;
+    
     private void Start()
     {
         random = new System.Random();
@@ -46,6 +51,8 @@ public class RedGreenLightController : GameController
     public override void Begin()
     {
         base.Begin();
+        _SetDoors(true);
+        
         barrier.SetActive(false);
 
         if (!Networking.LocalPlayer.isMaster) return;
@@ -163,7 +170,17 @@ public class RedGreenLightController : GameController
         else
             lightMesh.material = redLight;
     }
-    
+
+    public void _SetDoors(bool state)
+    {
+        foreach (var door in doorAnimators)
+        {
+            if (state)
+                door.Play("open");
+            else
+                door.Play("close");
+        }
+    }
 }
 
 public enum Light
