@@ -172,7 +172,7 @@ Material:
     - _PlanarAxisY: 2
     - _RoughnessMode: 0
     - _SmoothChannel: 3
-    - _Smoothness: 0.5
+    - _Smoothness: 0.541
     - _SmoothnessTextureChannel: 0
     - _SpecOcclusion: 0.75
     - _SpecularHighlights: 1

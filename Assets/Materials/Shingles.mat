@@ -30,7 +30,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ae9b07f85cedd4c4cb4f3dca21e02110, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7afdba7cee629724190e6f0ed6ef183d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DDetailsMap:
@@ -172,7 +172,7 @@ Material:
     - _PlanarAxisY: 2
     - _RoughnessMode: 0
     - _SmoothChannel: 3
-    - _Smoothness: 0.5
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecOcclusion: 0.75
     - _SpecularHighlights: 1

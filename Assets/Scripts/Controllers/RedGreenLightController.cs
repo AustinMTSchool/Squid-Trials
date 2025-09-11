@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
@@ -17,6 +17,7 @@ public class RedGreenLightController : GameController
     [SerializeField] private ActiveZone activeZone;
     
     [Space, Header("Timers")]
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private int minTime = 3;
     [SerializeField] private int maxTime = 6;
     [SerializeField] private int gameTime = 120;
@@ -38,6 +39,7 @@ public class RedGreenLightController : GameController
     [UdonSynced] private bool _forceEnd;
     
     private System.Random random = new System.Random();
+    private int _nextLightSwitchTime;  // Track when next light switch should happen
     
     public bool DeadlyMovement => _deadlyMovement;
     public GameObject Barrier => barrier;
@@ -59,11 +61,15 @@ public class RedGreenLightController : GameController
             
         if (!Networking.LocalPlayer.IsOwner(gameObject))
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
-
         
         _areLightsSwitching = true;
         _currentGameTime = gameTime;
+        _nextLightSwitchTime = _currentGameTime - 3;
+        _UpdateClock();
+        
         RequestSerialization();
+        
+        SendCustomEventDelayedSeconds(nameof(GameTimerTick), 1);
         SendCustomEventDelayedSeconds(nameof(LightSwitchGameNetworked), 3);
     }
 
@@ -72,10 +78,14 @@ public class RedGreenLightController : GameController
         if (!Networking.LocalPlayer.isMaster) return;
         
         SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndNetwork));
+        
         _currentIntervalTime = _currentGameTime;
+        _currentGameTime = gameTime;
         _areLightsSwitching = false;
         _light = Light.NONE;
         UpdateLight();
+        _UpdateClock();
+        
         RequestSerialization();
         
         game.EndGame();
@@ -85,11 +95,17 @@ public class RedGreenLightController : GameController
     public void EndNetwork()
     {
         barrier.SetActive(true);
+        _SetDoors(false);
     }
 
-    public void LightSwitchGameNetworked()
+    public void GameTimerTick()
     {
         if (!Networking.LocalPlayer.isMaster) return;
+        if (!_areLightsSwitching) return;
+        
+        _currentGameTime--;
+        _UpdateClock();
+        RequestSerialization();
         
         if (_currentGameTime <= 0)
         {
@@ -98,7 +114,14 @@ public class RedGreenLightController : GameController
             return;
         }
         
-        _currentGameTime -= _currentIntervalTime;
+        SendCustomEventDelayedSeconds(nameof(GameTimerTick), 1);
+    }
+
+    public void LightSwitchGameNetworked()
+    {
+        if (!Networking.LocalPlayer.isMaster) return;
+        if (!_areLightsSwitching) return;
+        
         _currentIntervalTime = random.Next(minTime, maxTime);
         
         if (_currentIntervalTime >= _currentGameTime)
@@ -119,11 +142,12 @@ public class RedGreenLightController : GameController
         }
         
         UpdateLight();
-        Debug.Log("Time: " + _currentGameTime);
-        Debug.Log("Interval: " + _currentIntervalTime);
-        
         RequestSerialization();
-        SendCustomEventDelayedSeconds(nameof(LightSwitchGameNetworked), _currentIntervalTime);
+        
+        if (_currentGameTime > 0)
+        {
+            SendCustomEventDelayedSeconds(nameof(LightSwitchGameNetworked), _currentIntervalTime);
+        }
     }
 
     public void GracePeriodEnd()
@@ -135,6 +159,7 @@ public class RedGreenLightController : GameController
     public override void OnDeserialization()
     {
         UpdateLight();
+        _UpdateClock();
     }
 
     public override void OnMasterTransferred(VRCPlayerApi newMaster)
@@ -145,6 +170,8 @@ public class RedGreenLightController : GameController
         {
             if (_areLightsSwitching)
             {
+                // Resume both timers
+                GameTimerTick();
                 LightSwitchGameNetworked();
             }
         }
@@ -164,7 +191,7 @@ public class RedGreenLightController : GameController
     private void UpdateLight()
     {
         if (_light == Light.NONE)
-            lightMesh.material =  noneLight;
+            lightMesh.material = noneLight;
         else if (_light == Light.GREEN)
             lightMesh.material = greenLight;
         else
@@ -180,6 +207,11 @@ public class RedGreenLightController : GameController
             else
                 door.Play("close");
         }
+    }
+
+    private void _UpdateClock()
+    {
+        timerText.text = Clock.ConvertInteger(_currentGameTime);
     }
 }
 
