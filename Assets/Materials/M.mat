@@ -193,7 +193,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 10.680627, g: 10.680627, b: 10.680627, a: 1}
+    - _EmissionColor: {r: 0.40357015, g: 0.40357015, b: 0.40357015, a: 1}
     - _MetallicRemap: {r: 0, g: 1, b: 0, a: 1}
     - _SmoothnessRemap: {r: 0, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []

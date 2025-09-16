@@ -3902,3 +3902,699 @@ abort_threads: Failed aborting id: 00000000000B7C24, mono_thread_manage will ign
 
 abort_threads: Failed aborting id: 00000000000B6D00, mono_thread_manage will ignore it
 
+2025-9-14
+Rendering UV GBuffer for VRCDefaultWorldScene_LM0 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA1 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA2 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA3 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Done
+Done
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LM0.lz4" 2 0 0 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA1.lz4" 2 0 1 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA3.lz4" 2 0 3 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA2.lz4" 2 0 2 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_ao" 8 16 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_ao" 8 16 1
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_ao" 8 16 3
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_ao" 8 16 2
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_0" 1924 0 0 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_0" 1924 0 0 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_0" 1924 0 0 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_0" 1924 0 0 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_0" 1924 0 0 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_0" 1924 0 0 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_0" 1924 0 0 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_0" 1924 0 0 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_0" 1924 0 0 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_0" 1924 0 0 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_0" 1924 0 0 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_0" 1924 0 0 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_0_0_0" 1924 0 0 batchpointlight_0_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_0" 1924 0 0 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0" 4 0 0 comp_0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_1" 1924 0 1 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_1" 1924 0 1 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_1" 1924 0 1 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_1" 1924 0 1 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_1" 1924 0 1 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_1" 1924 0 1 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_1" 1924 0 1 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_1" 1924 0 1 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_1" 1924 0 1 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_1" 1924 0 1 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_1" 1924 0 1 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_1" 1924 0 1 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_1_0_0" 1924 0 1 batchpointlight_1_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_1" 1924 0 1 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1" 4 0 1 comp_1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_3" 1924 0 3 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_3" 1924 0 3 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_3" 1924 0 3 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_3" 1924 0 3 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_3" 1924 0 3 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_3" 1924 0 3 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_3" 1924 0 3 lights11.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_3" 1924 0 3 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3" 4 0 3 comp_3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_2" 1924 0 2 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_2" 1924 0 2 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_2" 1924 0 2 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_2" 1924 0 2 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_2" 1924 0 2 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_2" 1924 0 2 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_2" 1924 0 2 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_2" 1924 0 2 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_2" 1924 0 2 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_2" 1924 0 2 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_2" 1924 0 2 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_2" 1924 0 2 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_2_0_0" 1924 0 2 batchpointlight_2_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_2" 1924 0 2 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2" 4 0 2 comp_2.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM00.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA10.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA30.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA20.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM01.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA11.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA31.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA21.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM02.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA12.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA32.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA22.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM03.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA13.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA33.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA23.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final" 1924 16 0 "gi_VRCDefaultWorldScene_LM04.bin" "VRCDefaultWorldScene_LM0_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final" 1924 16 1 "gi_VRCDefaultWorldScene_LMA14.bin" "VRCDefaultWorldScene_LMA1_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final" 1924 16 3 "gi_VRCDefaultWorldScene_LMA34.bin" "VRCDefaultWorldScene_LMA3_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final" 1924 16 2 "gi_VRCDefaultWorldScene_LMA24.bin" "VRCDefaultWorldScene_LMA2_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_" 4 0 0 shcomp_0.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_L0.lz4" 4 0 0 addao_0.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "0" "VRCDefaultWorldScene_LM0_final_L0.lz4" "VRCDefaultWorldScene_LM0_final_L1x.lz4" "VRCDefaultWorldScene_LM0_final_L1y.lz4" "VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_" 4 0 1 shcomp_1.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_L0.lz4" 4 0 1 addao_1.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "1" "VRCDefaultWorldScene_LMA1_final_L0.lz4" "VRCDefaultWorldScene_LMA1_final_L1x.lz4" "VRCDefaultWorldScene_LMA1_final_L1y.lz4" "VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_" 4 0 3 shcomp_3.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_L0.lz4" 4 0 3 addao_3.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4" 512 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "3" "VRCDefaultWorldScene_LMA3_final_L0.lz4" "VRCDefaultWorldScene_LMA3_final_L1x.lz4" "VRCDefaultWorldScene_LMA3_final_L1y.lz4" "VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_" 4 0 2 shcomp_2.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_L0.lz4" 4 0 2 addao_2.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "2" "VRCDefaultWorldScene_LMA2_final_L0.lz4" "VRCDefaultWorldScene_LMA2_final_L1x.lz4" "VRCDefaultWorldScene_LMA2_final_L1y.lz4" "VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 267648595
+Total cache size after purge 267648595
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267730811
+Total cache size after purge 267730811
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267730811
+Total cache size after purge 267730811
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267730811
+Total cache size after purge 267730811
+Total cache size 267813027
+Total cache size after purge 267813027
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267813027
+Total cache size after purge 267813027
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 267813027
+Total cache size after purge 267813027
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267813027
+Total cache size after purge 267813027
+Total cache size 267895243
+Total cache size after purge 267895243
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267977459
+Total cache size after purge 267977459
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267977459
+Total cache size after purge 267977459
+Symbol file LoadedFromMemory is not a mono symbol file
+2025-9-16
+Rendering UV GBuffer for VRCDefaultWorldScene_LM0 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA1 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA2 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA3 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Done
+Done
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LM0.lz4" 2 0 0 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA1.lz4" 2 0 1 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA3.lz4" 2 0 3 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA2.lz4" 2 0 2 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_ao" 8 16 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_ao" 8 16 1
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_ao" 8 16 3
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_ao" 8 16 2
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_0" 1924 0 0 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_0" 1924 0 0 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_0" 1924 0 0 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_0" 1924 0 0 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_0" 1924 0 0 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_0" 1924 0 0 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_0" 1924 0 0 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_0" 1924 0 0 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_0" 1924 0 0 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_0" 1924 0 0 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_0" 1924 0 0 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_0" 1924 0 0 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_0_0_0" 1924 0 0 batchpointlight_0_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_0" 1924 0 0 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0" 4 0 0 comp_0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_1" 1924 0 1 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_1" 1924 0 1 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_1" 1924 0 1 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_1" 1924 0 1 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_1" 1924 0 1 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_1" 1924 0 1 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_1" 1924 0 1 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_1" 1924 0 1 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_1" 1924 0 1 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_1" 1924 0 1 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_1" 1924 0 1 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_1" 1924 0 1 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_1_0_0" 1924 0 1 batchpointlight_1_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_1" 1924 0 1 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1" 4 0 1 comp_1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_3" 1924 0 3 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_3" 1924 0 3 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_3" 1924 0 3 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_3" 1924 0 3 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_3" 1924 0 3 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_3" 1924 0 3 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_3" 1924 0 3 lights11.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_3" 1924 0 3 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3" 4 0 3 comp_3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_2" 1924 0 2 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_2" 1924 0 2 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_2" 1924 0 2 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_2" 1924 0 2 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_2" 1924 0 2 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_2" 1924 0 2 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_2" 1924 0 2 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_2" 1924 0 2 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_2" 1924 0 2 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_2" 1924 0 2 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_2" 1924 0 2 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_2" 1924 0 2 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_2_0_0" 1924 0 2 batchpointlight_2_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_2" 1924 0 2 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2" 4 0 2 comp_2.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM00.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA10.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA30.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA20.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM01.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA11.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA31.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA21.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM02.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA12.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA32.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA22.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM03.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA13.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA33.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA23.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final" 1924 16 0 "gi_VRCDefaultWorldScene_LM04.bin" "VRCDefaultWorldScene_LM0_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final" 1924 16 1 "gi_VRCDefaultWorldScene_LMA14.bin" "VRCDefaultWorldScene_LMA1_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final" 1924 16 3 "gi_VRCDefaultWorldScene_LMA34.bin" "VRCDefaultWorldScene_LMA3_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final" 1924 16 2 "gi_VRCDefaultWorldScene_LMA24.bin" "VRCDefaultWorldScene_LMA2_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_" 4 0 0 shcomp_0.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_L0.lz4" 4 0 0 addao_0.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "0" "VRCDefaultWorldScene_LM0_final_L0.lz4" "VRCDefaultWorldScene_LM0_final_L1x.lz4" "VRCDefaultWorldScene_LM0_final_L1y.lz4" "VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_" 4 0 1 shcomp_1.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_L0.lz4" 4 0 1 addao_1.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "1" "VRCDefaultWorldScene_LMA1_final_L0.lz4" "VRCDefaultWorldScene_LMA1_final_L1x.lz4" "VRCDefaultWorldScene_LMA1_final_L1y.lz4" "VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_" 4 0 3 shcomp_3.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_L0.lz4" 4 0 3 addao_3.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4" 512 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "3" "VRCDefaultWorldScene_LMA3_final_L0.lz4" "VRCDefaultWorldScene_LMA3_final_L1x.lz4" "VRCDefaultWorldScene_LMA3_final_L1y.lz4" "VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_" 4 0 2 shcomp_2.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_L0.lz4" 4 0 2 addao_2.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "2" "VRCDefaultWorldScene_LMA2_final_L0.lz4" "VRCDefaultWorldScene_LMA2_final_L1x.lz4" "VRCDefaultWorldScene_LMA2_final_L1y.lz4" "VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Loaded vertex shader: quad.vso
+Loaded pixel shader: skyOutput.pso
+Loaded pixel shader: cookieOutput.pso
+initShaders done
+initScene done
+Num alphas of 1024x256: 1
+Num alphas of 1024x1024: 1
+Num alphas of 2048x2048: 1
+Done
+Rendering UV GBuffer for VRCDefaultWorldScene_LM0 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA1 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA2 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA3 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Done
+Done
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LM0.lz4" 2 0 0 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA1.lz4" 2 0 1 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA3.lz4" 2 0 3 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA2.lz4" 2 0 2 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_ao" 8 16 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_ao" 8 16 1
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_ao" 8 16 3
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_ao" 8 16 2
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_0" 1924 0 0 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_0" 1924 0 0 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_0" 1924 0 0 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_0" 1924 0 0 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_0" 1924 0 0 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_0" 1924 0 0 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_0" 1924 0 0 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_0" 1924 0 0 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_0" 1924 0 0 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_0" 1924 0 0 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_0" 1924 0 0 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_0" 1924 0 0 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_0_0_0" 1924 0 0 batchpointlight_0_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_0" 1924 0 0 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0" 4 0 0 comp_0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_1" 1924 0 1 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_1" 1924 0 1 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_1" 1924 0 1 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_1" 1924 0 1 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_1" 1924 0 1 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_1" 1924 0 1 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_1" 1924 0 1 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_1" 1924 0 1 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_1" 1924 0 1 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_1" 1924 0 1 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_1" 1924 0 1 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_1" 1924 0 1 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_1_0_0" 1924 0 1 batchpointlight_1_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_1" 1924 0 1 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1" 4 0 1 comp_1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_3" 1924 0 3 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_3" 1924 0 3 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_3" 1924 0 3 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_3" 1924 0 3 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_3" 1924 0 3 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_3" 1924 0 3 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_3" 1924 0 3 lights11.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_3" 1924 0 3 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3" 4 0 3 comp_3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_2" 1924 0 2 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_2" 1924 0 2 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_2" 1924 0 2 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_2" 1924 0 2 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_2" 1924 0 2 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_2" 1924 0 2 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_2" 1924 0 2 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_2" 1924 0 2 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_2" 1924 0 2 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_2" 1924 0 2 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_2" 1924 0 2 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_2" 1924 0 2 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_2_0_0" 1924 0 2 batchpointlight_2_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_2" 1924 0 2 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2" 4 0 2 comp_2.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM00.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA10.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA30.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA20.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM01.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA11.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA31.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA21.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM02.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA12.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA32.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA22.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM03.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA13.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA33.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA23.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final" 1924 16 0 "gi_VRCDefaultWorldScene_LM04.bin" "VRCDefaultWorldScene_LM0_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final" 1924 16 1 "gi_VRCDefaultWorldScene_LMA14.bin" "VRCDefaultWorldScene_LMA1_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final" 1924 16 3 "gi_VRCDefaultWorldScene_LMA34.bin" "VRCDefaultWorldScene_LMA3_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final" 1924 16 2 "gi_VRCDefaultWorldScene_LMA24.bin" "VRCDefaultWorldScene_LMA2_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_" 4 0 0 shcomp_0.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_L0.lz4" 4 0 0 addao_0.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "0" "VRCDefaultWorldScene_LM0_final_L0.lz4" "VRCDefaultWorldScene_LM0_final_L1x.lz4" "VRCDefaultWorldScene_LM0_final_L1y.lz4" "VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_" 4 0 1 shcomp_1.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_L0.lz4" 4 0 1 addao_1.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "1" "VRCDefaultWorldScene_LMA1_final_L0.lz4" "VRCDefaultWorldScene_LMA1_final_L1x.lz4" "VRCDefaultWorldScene_LMA1_final_L1y.lz4" "VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_" 4 0 3 shcomp_3.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_L0.lz4" 4 0 3 addao_3.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4" 512 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "3" "VRCDefaultWorldScene_LMA3_final_L0.lz4" "VRCDefaultWorldScene_LMA3_final_L1x.lz4" "VRCDefaultWorldScene_LMA3_final_L1y.lz4" "VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_" 4 0 2 shcomp_2.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_L0.lz4" 4 0 2 addao_2.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "2" "VRCDefaultWorldScene_LMA2_final_L0.lz4" "VRCDefaultWorldScene_LMA2_final_L1x.lz4" "VRCDefaultWorldScene_LMA2_final_L1y.lz4" "VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Loaded vertex shader: quad.vso
+Loaded pixel shader: skyOutput.pso
+Loaded pixel shader: cookieOutput.pso
+initShaders done
+initScene done
+Num alphas of 1024x256: 1
+Num alphas of 1024x1024: 1
+Num alphas of 2048x2048: 1
+Done
+Rendering UV GBuffer for VRCDefaultWorldScene_LM0 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA1 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA2 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Rendering UV GBuffer for VRCDefaultWorldScene_LMA3 179
+RGBA32F...RGBA8...RGBA8_SRGB...RGBA16F...states...
+Rendering UV normal...
+Rendering faceted UV normal...
+Rendering UV pos...
+Rendering smooth UV pos...
+Done
+Done
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LM0.lz4" 2 0 0 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA1.lz4" 2 0 1 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA3.lz4" 2 0 3 0
+Running ftraceRTX fixpos12 "C:\Users\Austin\AppData\Local\Temp\frender" "uvpos_VRCDefaultWorldScene_LMA2.lz4" 2 0 2 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_ao" 8 16 0
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_ao" 8 16 1
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_ao" 8 16 3
+Running ftraceRTX ao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_ao" 8 16 2
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_0" 1924 0 0 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_0" 1924 0 0 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_0" 1924 0 0 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_0" 1924 0 0 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_0" 1924 0 0 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_0" 1924 0 0 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_0" 1924 0 0 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_0" 1924 0 0 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_0" 1924 0 0 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_0" 1924 0 0 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_0" 1924 0 0 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_0" 1924 0 0 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_0_0_0" 1924 0 0 batchpointlight_0_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_0" 1924 0 0 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0" 4 0 0 comp_0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_1" 1924 0 1 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_1" 1924 0 1 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_1" 1924 0 1 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_1" 1924 0 1 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_1" 1924 0 1 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_1" 1924 0 1 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_1" 1924 0 1 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_1" 1924 0 1 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_1" 1924 0 1 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_1" 1924 0 1 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_1" 1924 0 1 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_1" 1924 0 1 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_1_0_0" 1924 0 1 batchpointlight_1_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_1" 1924 0 1 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1" 4 0 1 comp_1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_3" 1924 0 3 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_3" 1924 0 3 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_3" 1924 0 3 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_3" 1924 0 3 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_3" 1924 0 3 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_3" 1924 0 3 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_3" 1924 0 3 lights11.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_3" 1924 0 3 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3" 4 0 3 comp_3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_1_2" 1924 0 2 lights0.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_2_2" 1924 0 2 lights1.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_3_2" 1924 0 2 lights2.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_4_2" 1924 0 2 lights3.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_5_2" 1924 0 2 lights4.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_6_2" 1924 0 2 lights5.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_7_2" 1924 0 2 lights6.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_8_2" 1924 0 2 lights7.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_9_2" 1924 0 2 lights8.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_10_2" 1924 0 2 lights9.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_11_2" 1924 0 2 lights10.bin
+Running ftraceRTX arealightsh "C:\Users\Austin\AppData\Local\Temp\frender" "light_12_2" 1924 0 2 lights11.bin
+Running ftraceRTX batchpointlightshlegacy "C:\Users\Austin\AppData\Local\Temp\frender" "PointBatch_2_0_0" 1924 0 2 batchpointlight_2_0_0.bin
+Running ftraceRTX skysh "C:\Users\Austin\AppData\Local\Temp\frender" "light_13_2" 1924 0 2 sky0.bin
+Running ftraceRTX addmul "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2" 4 0 2 comp_2.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM00.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA10.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA30.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA20.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM01.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA11.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA31.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA21.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM02.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA12.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA32.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA22.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_diffuse" 4 16 0 "gi_VRCDefaultWorldScene_LM03.bin" "VRCDefaultWorldScene_LM0_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_diffuse" 4 16 1 "gi_VRCDefaultWorldScene_LMA13.bin" "VRCDefaultWorldScene_LMA1_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_diffuse" 4 16 3 "gi_VRCDefaultWorldScene_LMA33.bin" "VRCDefaultWorldScene_LMA3_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgi "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_diffuse" 4 16 2 "gi_VRCDefaultWorldScene_LMA23.bin" "VRCDefaultWorldScene_LMA2_diffuse0_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final" 1924 16 0 "gi_VRCDefaultWorldScene_LM04.bin" "VRCDefaultWorldScene_LM0_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final" 1924 16 1 "gi_VRCDefaultWorldScene_LMA14.bin" "VRCDefaultWorldScene_LMA1_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final" 1924 16 3 "gi_VRCDefaultWorldScene_LMA34.bin" "VRCDefaultWorldScene_LMA3_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX texgish "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final" 1924 16 2 "gi_VRCDefaultWorldScene_LMA24.bin" "VRCDefaultWorldScene_LMA2_lights_HDR.lz4" vbTraceTex.bin
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_" 4 0 0 shcomp_0.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LM0_final_L0.lz4" 4 0 0 addao_0.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "0" "VRCDefaultWorldScene_LM0_final_L0.lz4" "VRCDefaultWorldScene_LM0_final_L1x.lz4" "VRCDefaultWorldScene_LM0_final_L1y.lz4" "VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_" 4 0 1 shcomp_1.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA1_final_L0.lz4" 4 0 1 addao_1.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "1" "VRCDefaultWorldScene_LMA1_final_L0.lz4" "VRCDefaultWorldScene_LMA1_final_L1x.lz4" "VRCDefaultWorldScene_LMA1_final_L1y.lz4" "VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_" 4 0 3 shcomp_3.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA3_final_L0.lz4" 4 0 3 addao_3.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4" 512 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "3" "VRCDefaultWorldScene_LMA3_final_L0.lz4" "VRCDefaultWorldScene_LMA3_final_L1x.lz4" "VRCDefaultWorldScene_LMA3_final_L1y.lz4" "VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running ftraceRTX addsh "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_" 4 0 2 shcomp_2.bin
+Running ftraceRTX addao "C:\Users\Austin\AppData\Local\Temp\frender" "VRCDefaultWorldScene_LMA2_final_L0.lz4" 4 0 2 addao_2.bin
+Running denoiserOIDN s "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4" 2048 0
+Running seamfixer "C:\Users\Austin\AppData\Local\Temp\frender" "2" "VRCDefaultWorldScene_LMA2_final_L0.lz4" "VRCDefaultWorldScene_LMA2_final_L1x.lz4" "VRCDefaultWorldScene_LMA2_final_L1y.lz4" "VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LM0_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LM0_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA1_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA1_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA3_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA3_final_L1z.lz4"
+Running halffloat2hdr "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L0.lz4" "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L0.hdr" 1024
+Running combineSH  "C:/Users/Austin/Desktop/VRCHAT WORLDS/Squid Trials/Assets/BakeryLightmaps/VRCDefaultWorldScene_LMA2_L1.tga" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1x.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1y.lz4" "C:\Users\Austin\AppData\Local\Temp\frender/VRCDefaultWorldScene_LMA2_final_L1z.lz4"
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268306323
+Total cache size after purge 268306323
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268306323
+Total cache size after purge 268306323
+Total cache size 268388539
+Total cache size after purge 268388539
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268470755
+Total cache size after purge 268385791
+Symbol file LoadedFromMemory is not a mono symbol file
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268468007
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268196091
+Total cache size after purge 268196091
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268196091
+Total cache size after purge 268196091
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268278307
+Total cache size after purge 268278307
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268360523
+Total cache size after purge 268360523
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268360523
+Total cache size after purge 268360523
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268442739
+Total cache size after purge 267932903
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267932903
+Total cache size after purge 267932903
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267932903
+Total cache size after purge 267932903
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267932903
+Total cache size after purge 267932903
+Total cache size 267932903
+Total cache size after purge 267932903
+Total cache size 267932903
+Total cache size after purge 267932903
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 268015119
+Total cache size after purge 268015119
+Symbol file LoadedFromMemory is not a mono symbol file

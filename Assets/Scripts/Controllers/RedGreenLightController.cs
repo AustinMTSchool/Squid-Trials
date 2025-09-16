@@ -27,6 +27,8 @@ public class RedGreenLightController : GameController
 
     [Space, Header("Animators")]
     [SerializeField] private Animator[] doorAnimators;
+
+    [SerializeField] private Animator scareCrowAnimator;
     
     [Space, Header("Sounds")]
     [SerializeField] private Audio lightSwitchSound;
@@ -35,6 +37,7 @@ public class RedGreenLightController : GameController
     [UdonSynced] private Light _light;
     [UdonSynced] private bool _areLightsSwitching;
     [UdonSynced] private bool _deadlyMovement;
+    [UdonSynced] private ScareCrowState _scareCrowState;
     
     private System.Random random = new System.Random();
     private int _nextLightSwitchTime;
@@ -66,6 +69,7 @@ public class RedGreenLightController : GameController
     {
         base.OnDeserialization();
         UpdateLight();
+        _UpdateScareCrow();
     }
 
     public override void _Begin()
@@ -99,6 +103,9 @@ public class RedGreenLightController : GameController
         _currentIntervalTime = _currentGameTime;
         _areLightsSwitching = false;
         _light = Light.None;
+        _scareCrowState =  ScareCrowState.None;
+        
+        _UpdateScareCrow();
         UpdateLight();
         
         RequestSerialization();
@@ -128,16 +135,20 @@ public class RedGreenLightController : GameController
 
         if (_light == Light.None || _light == Light.Green)
         {
+            _scareCrowState = ScareCrowState.Looking;
             _light = Light.Red;
             SendCustomEventDelayedSeconds(nameof(GracePeriodEnd), graceTime);
         }
         else
         {
+            _scareCrowState = ScareCrowState.Hiding;
             _light = Light.Green;
             _deadlyMovement = false;
         }
         
+        _UpdateScareCrow();
         UpdateLight();
+        
         RequestSerialization();
         
         if (_currentGameTime > 0)
@@ -172,6 +183,16 @@ public class RedGreenLightController : GameController
             lightMesh.material = redLight;
     }
 
+    private void _UpdateScareCrow()
+    {
+        if (_scareCrowState == ScareCrowState.None)
+            scareCrowAnimator.Play("none");
+        else if (_scareCrowState == ScareCrowState.Looking)
+            scareCrowAnimator.Play("looking");
+        else
+            scareCrowAnimator.Play("hiding");
+    }
+
     public void _SetDoors(bool state)
     {
         foreach (var door in doorAnimators)
@@ -196,4 +217,11 @@ public enum Light
     None,
     Green = 1,
     Red = 2
+}
+
+public enum ScareCrowState
+{
+    None,
+    Looking,
+    Hiding
 }

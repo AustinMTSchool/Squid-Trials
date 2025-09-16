@@ -13,7 +13,6 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BAKERY_ENABLED
   - BAKERY_MONOSH
   - BAKERY_SHNONLINEAR
   - DETAILS_MODE_PACKED
@@ -126,7 +125,7 @@ Material:
     - _AOChannel: 1
     - _AlbedoChannel: 0
     - _BakedSpecular: 0
-    - _BakeryEnabled: 1
+    - _BakeryEnabled: 0
     - _BakerySHNonLinear: 1
     - _Bicubic: 0
     - _BumpScale: 1

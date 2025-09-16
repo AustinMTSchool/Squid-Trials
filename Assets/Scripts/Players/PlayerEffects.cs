@@ -18,6 +18,7 @@ public class PlayerEffects : UdonSharpBehaviour
 
     public void _Reset()
     {
+        // TODO need to add class speeds
         _player.SetWalkSpeed(walkSpeed); // + class
         _player.SetRunSpeed(runSpeed);
     }
