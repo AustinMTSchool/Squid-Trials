@@ -32,8 +32,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DDetailsMap:
-        m_Texture: {fileID: 2800000, guid: ab89d0b40a0410c4aa787b95750cb036, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: dae5e0f5e19dd67429b73c7ddb28c7a9, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _DDetailsNormal:
         m_Texture: {fileID: 0}
@@ -130,9 +130,9 @@ Material:
     - _BumpScale: 1
     - _CullMode: 2
     - _Cutoff: 0.5
-    - _DAlbedoScale: 0.855
+    - _DAlbedoScale: 0.349
     - _DIgnoreMask: 0
-    - _DMappingSpace: 1
+    - _DMappingSpace: 0
     - _DNormalFlipY: 0
     - _DNormalScale: 1
     - _DPlanarAxisX: 0
@@ -170,7 +170,7 @@ Material:
     - _PlanarAxisY: 2
     - _RoughnessMode: 0
     - _SmoothChannel: 3
-    - _Smoothness: 0.624
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecOcclusion: 0.971
     - _SpecularHighlights: 1

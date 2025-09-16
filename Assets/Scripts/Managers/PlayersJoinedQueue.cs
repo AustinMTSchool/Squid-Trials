@@ -14,7 +14,6 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
     [SerializeField] private TextMeshProUGUI playersReadyText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Audio tickSound;
-    [SerializeField] private Game beginningGame;
 
     private DataList _queuedPlayers = new DataList();
     
@@ -99,7 +98,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
 
         if (!_canTimerStart) return;
-        if (application.GameManager.Mode != "lobby") return;
+        if (application.GameManager.Mode != "hub") return;
 
         Debug.Log($"[PlayersJoinedQueue] OnClick");
         _canTimerStart = false;
@@ -181,7 +180,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
             RequestSerialization();
             application.GameManager.AddPlayersToGames(_queuedPlayers);
             SendCustomNetworkEvent(NetworkEventTarget.All, nameof(BeginGame));
-            application.GameManager.StartMainGame(true);
+            application.GameManager.StartLobby(true);
         }
     }
 
@@ -192,7 +191,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         {
             Debug.Log($"Added to game (was in queue) " + Networking.LocalPlayer.playerId);
             application.Player.SetInGames(true);
-            application.GameManager.SpawnPlayerInMainGame();
+            application.GameManager.SpawnPlayerInLobby();
         }
         else
         {

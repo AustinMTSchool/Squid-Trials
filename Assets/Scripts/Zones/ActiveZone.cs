@@ -26,7 +26,7 @@ public class ActiveZone : UdonSharpBehaviour
         if (!player.isLocal) return;
         
         _isInZone = true;
-        if (game.State != GameState.ACTIVE) return;
+        if (game.State != GameState.Active) return;
 
         if (_player.IsUserInVR())
             WatchPlayerMovementVR();
@@ -43,7 +43,7 @@ public class ActiveZone : UdonSharpBehaviour
     public void WatchPlayerMovement()
     {
         if (!_isInZone) return;
-        if (game.State != GameState.ACTIVE) return;
+        if (game.State != GameState.Active) return;
         
         if (controller.DeadlyMovement)
         {

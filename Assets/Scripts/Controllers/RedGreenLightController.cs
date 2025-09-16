@@ -10,17 +10,14 @@ using VRC.Udon.Common.Interfaces;
 
 public class RedGreenLightController : GameController
 {
-    [SerializeField] private Game game;
     [SerializeField] private float graceTime = 0.5F;
     [SerializeField] private GameObject barrier;
     [SerializeField] private FinishZone finishZone;
     [SerializeField] private ActiveZone activeZone;
     
-    [Space, Header("Timers")]
-    [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private int minTime = 3;
-    [SerializeField] private int maxTime = 6;
-    [SerializeField] private int gameTime = 120;
+    [Space, Header("Timers RGL")]
+    [SerializeField] private int minIntervalTime = 5;
+    [SerializeField] private int maxIntervalTime = 9;
 
     [Space, Header("Light")] 
     [SerializeField] private Renderer lightMesh;
@@ -31,15 +28,16 @@ public class RedGreenLightController : GameController
     [Space, Header("Animators")]
     [SerializeField] private Animator[] doorAnimators;
     
+    [Space, Header("Sounds")]
+    [SerializeField] private Audio lightSwitchSound;
+    
     [UdonSynced] private int _currentIntervalTime = 3;
     [UdonSynced] private Light _light;
     [UdonSynced] private bool _areLightsSwitching;
-    [UdonSynced] private int _currentGameTime;
     [UdonSynced] private bool _deadlyMovement;
-    [UdonSynced] private bool _forceEnd;
     
     private System.Random random = new System.Random();
-    private int _nextLightSwitchTime;  // Track when next light switch should happen
+    private int _nextLightSwitchTime;
     
     public bool DeadlyMovement => _deadlyMovement;
     public GameObject Barrier => barrier;
@@ -49,80 +47,78 @@ public class RedGreenLightController : GameController
     {
         random = new System.Random();
     }
-
-    public override void Begin()
+    
+    public override void OnMasterTransferred(VRCPlayerApi newMaster)
     {
-        base.Begin();
-        _SetDoors(true);
+        if (!newMaster.isLocal) return;
         
+        base.OnMasterTransferred(newMaster);
+        if (game.State == GameState.Active)
+        {
+            if (_areLightsSwitching)
+            {
+                LightSwitchGameNetworked();
+            }
+        }
+    }
+    
+    public override void OnDeserialization()
+    {
+        base.OnDeserialization();
+        UpdateLight();
+    }
+
+    public override void _Begin()
+    {
+        base._Begin();
+        
+        _SetDoors(true);
         barrier.SetActive(false);
 
         if (!Networking.LocalPlayer.isMaster) return;
-            
-        if (!Networking.LocalPlayer.IsOwner(gameObject))
-            Networking.SetOwner(Networking.LocalPlayer, gameObject);
         
         _areLightsSwitching = true;
-        _currentGameTime = gameTime;
         _nextLightSwitchTime = _currentGameTime - 3;
-        _UpdateClock();
         
         RequestSerialization();
         
-        SendCustomEventDelayedSeconds(nameof(GameTimerTick), 1);
         SendCustomEventDelayedSeconds(nameof(LightSwitchGameNetworked), 3);
     }
+    
+    public override void _OnTick()
+    {
+        base._OnTick();
+    }
 
-    public override void End()
+    public override void _End()
     {
         if (!Networking.LocalPlayer.isMaster) return;
         
-        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndNetwork));
+        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndLocalSide));
         
         _currentIntervalTime = _currentGameTime;
-        _currentGameTime = gameTime;
         _areLightsSwitching = false;
-        _light = Light.NONE;
+        _light = Light.None;
         UpdateLight();
-        _UpdateClock();
         
         RequestSerialization();
-        
-        game.EndGame();
+        base._End();
     }
 
     [NetworkCallable]
-    public void EndNetwork()
+    public void EndLocalSide()
     {
         barrier.SetActive(true);
         _SetDoors(false);
     }
-
-    public void GameTimerTick()
-    {
-        if (!Networking.LocalPlayer.isMaster) return;
-        if (!_areLightsSwitching) return;
-        
-        _currentGameTime--;
-        _UpdateClock();
-        RequestSerialization();
-        
-        if (_currentGameTime <= 0)
-        {
-            Debug.Log("Game ended due to time");
-            End();
-            return;
-        }
-        
-        SendCustomEventDelayedSeconds(nameof(GameTimerTick), 1);
-    }
-
+    
     public void LightSwitchGameNetworked()
     {
         if (!Networking.LocalPlayer.isMaster) return;
         if (!_areLightsSwitching) return;
         
-        _currentIntervalTime = random.Next(minTime, maxTime);
+        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(PlayLightSwitchSound));
+        _currentIntervalTime = random.Next(minIntervalTime, maxIntervalTime);
         
         if (_currentIntervalTime >= _currentGameTime)
         {
@@ -130,14 +126,14 @@ public class RedGreenLightController : GameController
             Debug.Log("_currentIntervalTime >= _currentGameTime");
         }
 
-        if (_light == Light.NONE || _light == Light.GREEN)
+        if (_light == Light.None || _light == Light.Green)
         {
-            _light = Light.RED;
+            _light = Light.Red;
             SendCustomEventDelayedSeconds(nameof(GracePeriodEnd), graceTime);
         }
         else
         {
-            _light = Light.GREEN;
+            _light = Light.Green;
             _deadlyMovement = false;
         }
         
@@ -156,31 +152,9 @@ public class RedGreenLightController : GameController
         RequestSerialization();
     }
 
-    public override void OnDeserialization()
-    {
-        UpdateLight();
-        _UpdateClock();
-    }
-
-    public override void OnMasterTransferred(VRCPlayerApi newMaster)
-    {
-        if (!newMaster.isLocal) return;
-        
-        if (game.State == GameState.ACTIVE)
-        {
-            if (_areLightsSwitching)
-            {
-                // Resume both timers
-                GameTimerTick();
-                LightSwitchGameNetworked();
-            }
-        }
-    }
-
     public override void PlayerOutOfGame(string id)
     {
         base.PlayerOutOfGame(id);
-        if (_currentPlayersInGame.Count == 0) End();
     }
 
     public override void PlayerActiveGame(string id)
@@ -190,9 +164,9 @@ public class RedGreenLightController : GameController
 
     private void UpdateLight()
     {
-        if (_light == Light.NONE)
+        if (_light == Light.None)
             lightMesh.material = noneLight;
-        else if (_light == Light.GREEN)
+        else if (_light == Light.Green)
             lightMesh.material = greenLight;
         else
             lightMesh.material = redLight;
@@ -209,15 +183,17 @@ public class RedGreenLightController : GameController
         }
     }
 
-    private void _UpdateClock()
+    [NetworkCallable]
+    public void PlayLightSwitchSound()
     {
-        timerText.text = Clock.ConvertInteger(_currentGameTime);
+        if (!application.Player.IsInGames) return;
+        lightSwitchSound.Play();
     }
 }
 
 public enum Light
 {
-    NONE,
-    GREEN = 1,
-    RED = 2
+    None,
+    Green = 1,
+    Red = 2
 }

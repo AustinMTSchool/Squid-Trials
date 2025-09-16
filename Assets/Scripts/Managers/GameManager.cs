@@ -12,13 +12,13 @@ public class GameManager : UdonSharpBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private Game[] allGames;
-    [SerializeField] private Game mainGame;
+    [SerializeField] private Lobby lobby;
     [SerializeField] private PlayersJoinedQueue playersJoinedQueue;
     [SerializeField] private Transform spawnPoint;
     
     private DataList _allPlayersInGame = new DataList();
     
-    [UdonSynced] private string _gameMode = "lobby";
+    [UdonSynced] private string _gameMode = "hub";
     [UdonSynced] private string _jsonAvailableGames;
     [UdonSynced] private string _jsonAllPlayersInGame;
     [UdonSynced] private bool _isGamesActive;
@@ -39,7 +39,6 @@ public class GameManager : UdonSharpBehaviour
         {
             _allGamesByName.Add(game.GameName, new DataToken(game));
         }
-        _allGamesByName.Add(mainGame.GameName, new DataToken(mainGame));
     }
 
     public override void OnMasterTransferred(VRCPlayerApi newMaster)
@@ -80,7 +79,7 @@ public class GameManager : UdonSharpBehaviour
             {
                 Game game = (Game) gameToken.Reference;
                 Debug.Log("Beginning game: " + game.GameName);
-                game.Initialize();
+                game._BeginIntro();
                 _currentGame = game.GameName;
                 if (remove)
                 {
@@ -102,21 +101,17 @@ public class GameManager : UdonSharpBehaviour
         RequestSerialization();
     }
 
-    public void StartMainGame(bool initBeginning = false)
+    public void StartLobby(bool initTutorial = false)
     {
         if (!Networking.LocalPlayer.isMaster) return;
-        if (initBeginning)
+        
+        if (initTutorial)
         {
-            mainGame.InitializeBeginning();
             _isGamesActive = true;
         }
-        else
-        {
-            mainGame.Initialize();
-        }
-        Debug.Log("Setting Current Game to: " + mainGame.GameName);
-        _currentGame = mainGame.GameName;
-        Debug.Log("Current Game: " +  _currentGame);
+        
+        _currentGame = "lobby";
+        lobby._Begin(initTutorial);
         RequestSerialization();
     }
 
@@ -131,10 +126,10 @@ public class GameManager : UdonSharpBehaviour
         }
     }
 
-    public void SpawnPlayerInMainGame()
+    public void SpawnPlayerInLobby()
     {
-        Debug.Log("[GameManager] SpawnPlayerInMainGame");
-        mainGame.SpawnPlayer();
+        Debug.Log("[GameManager] Spawning player in lobby");
+        lobby._SpawnPlayer();
     }
 
     public Game GetRandomGame()
@@ -246,15 +241,17 @@ public class GameManager : UdonSharpBehaviour
         {
             Game game = (Game)gameToken.Reference;
             Debug.Log("Ending Game: " + game.GameName);
-            game.Stop();
+            game._Stop();
         }
-        else
+
+        if (_currentGame == "lobby")
         {
-            Debug.Log("current game was not found");
+            Debug.Log("Ending lobby");
+            lobby._Stop();
         }
 
         _isGamesActive = false;
-        _gameMode = "lobby";
+        _gameMode = "hub";
         ResetAllGames();
         playersJoinedQueue.SetCanTimerStart(true);
         RequestSerialization();

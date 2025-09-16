@@ -9,8 +9,9 @@ using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common.Interfaces;
 
-public class MainGame : Game
+public class MainGame : UdonSharpBehaviour
 {
+    /**
     [Space, Header("Main Game")]
     [SerializeField] private int beginningTime = 60;
     [SerializeField] private int currentTime = 20;
@@ -30,7 +31,6 @@ public class MainGame : Game
     
     [UdonSynced] private int _currentBeginningTime = 60;
     [UdonSynced] private bool _isBeginningTimeTicking = false;
-    [UdonSynced] private bool _startNextGame = false;
     [UdonSynced] private int _currentTime = 20;
     [UdonSynced] private bool _isTimeTicking = false;
 
@@ -153,7 +153,6 @@ public class MainGame : Game
             UpdateTimer(_currentBeginningTime);
             UpdateBeginningTextDisplay();
         }
-        
     }
 
     private void UpdateTimer(int time)
@@ -168,4 +167,5 @@ public class MainGame : Game
             beginningTextDisplay.text = value.String;
         }
     }
+    **/
 }

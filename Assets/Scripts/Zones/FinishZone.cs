@@ -19,7 +19,7 @@ public class FinishZone : UdonSharpBehaviour
     {
         if (!Networking.LocalPlayer.isMaster) return;
         
-        if (game.State == GameState.ACTIVE)
+        if (game.State == GameState.Active)
         {
             Debug.Log("PLAYER ENTERED");
             game.GameController.PlayerOutOfGame($"{player.playerId}");
@@ -30,7 +30,7 @@ public class FinishZone : UdonSharpBehaviour
     {
         if (!Networking.LocalPlayer.isMaster) return;
         
-        if (game.State == GameState.ACTIVE)
+        if (game.State == GameState.Active)
         {
             Debug.Log("PLAYER EXITED");
             game.GameController.PlayerActiveGame($"{player.playerId}");
