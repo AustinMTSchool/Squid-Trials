@@ -13,12 +13,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BAKED_SPECULAR
   - BAKERY_MONOSH
   - BAKERY_SHNONLINEAR
   - BICUBIC_LIGHTMAP
   - DETAILS_MODE_PACKED
-  - DETAILS_OVERLAY
   - GSAA
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -127,14 +125,14 @@ Material:
     - UI_VRCHideMainViewHeader: 0
     - _AOChannel: 1
     - _AlbedoChannel: 0
-    - _BakedSpecular: 1
+    - _BakedSpecular: 0
     - _BakeryEnabled: 0
     - _BakerySHNonLinear: 1
     - _Bicubic: 1
     - _BumpScale: 1
     - _CullMode: 2
     - _Cutoff: 0.5
-    - _DAlbedoScale: 0.398
+    - _DAlbedoScale: 0
     - _DIgnoreMask: 0
     - _DMappingSpace: 0
     - _DNormalFlipY: 0
@@ -146,7 +144,7 @@ Material:
     - _DetailAsTintMask: 0
     - _DetailMaskChannel: 2
     - _DetailNormalMapScale: 1
-    - _DetailsOverlay: 1
+    - _DetailsOverlay: 0
     - _DstBlend: 0
     - _EmissionChannel: 0
     - _EmissionEnabled: 0
@@ -176,9 +174,9 @@ Material:
     - _SmoothChannel: 3
     - _Smoothness: 0.726
     - _SmoothnessTextureChannel: 0
-    - _SpecOcclusion: 1
+    - _SpecOcclusion: 0.605
     - _SpecularHighlights: 1
-    - _SpecularRoughnessMod: 1
+    - _SpecularRoughnessMod: 0.447
     - _SrcBlend: 1
     - _UVSec: 0
     - _VRCFallbackTag: 0

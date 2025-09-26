@@ -201,10 +201,12 @@ public class GameManager : UdonSharpBehaviour
         if (!player.isLocal) return;
         if (!this.player.IsInGames) return;
 
-        Debug.Log($"{player.playerId} was in game sending event to {Networking.Master.playerId}");
         SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PlayerRemoveFromGame), $"{player.playerId}");
         
         this.player.SetInGames(false);
+        this.player.PlayerEffects._Reset();
+        this.player.Health._ResetHealth();
+        
         RequestSerialization();
     }
 

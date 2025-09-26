@@ -14,6 +14,8 @@ public class RedGreenLightController : GameController
     [SerializeField] private GameObject barrier;
     [SerializeField] private FinishZone finishZone;
     [SerializeField] private ActiveZone activeZone;
+    [SerializeField] private TrafficLightManager trafficLightManager;
+    
     
     [Space, Header("Timers RGL")]
     [SerializeField] private int minIntervalTime = 5;
@@ -68,7 +70,7 @@ public class RedGreenLightController : GameController
     public override void OnDeserialization()
     {
         base.OnDeserialization();
-        UpdateLight();
+        _UpdateLights();
         _UpdateScareCrow();
     }
 
@@ -106,7 +108,7 @@ public class RedGreenLightController : GameController
         _scareCrowState =  ScareCrowState.None;
         
         _UpdateScareCrow();
-        UpdateLight();
+        _UpdateLights();
         
         RequestSerialization();
         base._End();
@@ -143,11 +145,12 @@ public class RedGreenLightController : GameController
         {
             _scareCrowState = ScareCrowState.Hiding;
             _light = Light.Green;
+            trafficLightManager.SetGreen();
             _deadlyMovement = false;
         }
         
         _UpdateScareCrow();
-        UpdateLight();
+        _UpdateLights();
         
         RequestSerialization();
         
@@ -173,14 +176,29 @@ public class RedGreenLightController : GameController
         base.PlayerActiveGame(id);
     }
 
-    private void UpdateLight()
+    private void _UpdateLights()
     {
         if (_light == Light.None)
+        {
             lightMesh.material = noneLight;
+            trafficLightManager.SetYellow();
+        }
         else if (_light == Light.Green)
+        {
             lightMesh.material = greenLight;
+            trafficLightManager.SetGreen();
+        }
         else
+        {
             lightMesh.material = redLight;
+            trafficLightManager.SetRed();
+        }
+    }
+
+    public void _ResetLights()
+    {
+        lightMesh.material = noneLight;
+        trafficLightManager.Reset();
     }
 
     private void _UpdateScareCrow()

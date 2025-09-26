@@ -57,6 +57,7 @@ public class PlayerWalk : UdonSharpBehaviour
     {
         if (IsWalking())
         {
+            if (!Utilities.IsValid(_playerWalkNetwork)) SendCustomEventDelayedSeconds(nameof(Movement), walkIntervalPlay);
             _playerWalkNetwork.Play();
             _isMoving = true;
             SendCustomEventDelayedSeconds(nameof(Movement), walkIntervalPlay);
@@ -65,6 +66,7 @@ public class PlayerWalk : UdonSharpBehaviour
 
         if (IsRunning())
         {
+            if (!Utilities.IsValid(_playerWalkNetwork)) SendCustomEventDelayedSeconds(nameof(Movement), runIntervalPlay);
             _playerWalkNetwork.Play();
             _isMoving = true;
             SendCustomEventDelayedSeconds(nameof(Movement), runIntervalPlay);

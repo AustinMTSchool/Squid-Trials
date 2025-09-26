@@ -70,6 +70,7 @@ public class RedGreenLightGame : Game
         if (_currentOutroTIme <= 0)
         {
             _isDoorsOpened = false;
+            _rgController._ResetLights();
         }
     }
 

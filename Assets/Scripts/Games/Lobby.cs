@@ -18,16 +18,7 @@ public class Lobby : UdonSharpBehaviour
     [SerializeField] private TextMeshProUGUI announcementText;
     [SerializeField] protected Application application;
     [SerializeField] protected Transform spawnPoint;
-    
-    private DataDictionary _tutortialDialogue = new DataDictionary()
-    {
-        { 55, "Welcome to the squid trials. You will be competing against other players for a prize pool of." },
-        { 45, "There are several different games ranging from different difficulties depending on the players left"},
-        { 35, "The games will continue to keep going until 1 player is the last one standing"},
-        { 25, "You can use classes in the hub to change your playstyle to your liking"},
-        { 15, "Items are also a good way to gain some advantages but you will lose them after dying"},
-        { 5, "Good luck and enjoy the games!"}
-    };
+    [SerializeField] protected Dialogue tutorialDialogue;
 
     [UdonSynced] private int _currentTutorialTime = 60;
     [UdonSynced] private bool _isTutorialTimeTicking = false;
@@ -162,7 +153,7 @@ public class Lobby : UdonSharpBehaviour
 
     private void _UpdateTutorialTextDisplay()
     {
-        if (_tutortialDialogue.TryGetValue(_currentTutorialTime, out DataToken value))
+        if (tutorialDialogue.DialogueList.TryGetValue(_currentTutorialTime, out DataToken value))
         {
             announcementText.text = value.String;
         }

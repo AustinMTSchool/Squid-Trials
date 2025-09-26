@@ -25,6 +25,9 @@ public class Game : UdonSharpBehaviour
     [SerializeField] protected int outroTime = 10;
     [SerializeField] protected TextMeshProUGUI introDisplay;
     
+    [Space, Header("Dialogue")]
+    [SerializeField] protected Dialogue introDialogue;
+    
     protected readonly string DefaultGame = "main";
     
     [UdonSynced] protected GameState state = 0;
@@ -33,12 +36,6 @@ public class Game : UdonSharpBehaviour
     [UdonSynced] protected bool _isIntro = false;
     [UdonSynced] protected int _currentOutroTIme;
     [UdonSynced] protected bool _isOutro = false;
-    
-    protected DataDictionary _introDic = new DataDictionary()
-    {
-        {15, "You will have a set amount of time to get to the end of the game. You can move on green, but must be still on red"},
-        {7, "If you do not finish fast enough or break the rules you will be eliminated"}
-    };
 
     public GameState State => state;
     public string GameName => gameName;
@@ -192,7 +189,7 @@ public class Game : UdonSharpBehaviour
     
     private void _UpdateIntroDisplayText()
     {
-        if (_introDic.TryGetValue(_currentIntroTime, out var value))
+        if (introDialogue.DialogueList.TryGetValue(_currentIntroTime, out var value))
         {
             var intro = value.String;
             introDisplay.text = intro;

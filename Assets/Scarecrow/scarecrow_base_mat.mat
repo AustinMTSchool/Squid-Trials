@@ -26,9 +26,11 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - BAKED_SPECULAR
   - BAKERY_ENABLED
   - BAKERY_MONOSH
   - BAKERY_SHNONLINEAR
+  - BICUBIC_LIGHTMAP
   - DETAILS_MODE_PACKED
   - GSAA
   m_InvalidKeywords:
@@ -137,7 +139,7 @@ Material:
     - UI_DetailAlbedoNote: 0
     - UI_DetailSmoothNote: 0
     - UI_DetailsDocs: 0
-    - UI_DetailsHeader: 0
+    - UI_DetailsHeader: 1
     - UI_DetailsMapNote: 0
     - UI_DetailsMapNoteSeparate: 0
     - UI_GSAAHeader: 0
@@ -148,18 +150,18 @@ Material:
     - UI_LightmappingHeader: 1
     - UI_MainHeader: 1
     - UI_ParallaxDocs: 0
-    - UI_ParallaxHeader: 0
+    - UI_ParallaxHeader: 1
     - UI_VRCDocs: 0
-    - UI_VRCFeaturesHeader: 0
+    - UI_VRCFeaturesHeader: 1
     - UI_VRCHideCameraHeader: 0
     - UI_VRCHideInMirrorHeader: 0
     - UI_VRCHideMainViewHeader: 0
     - _AOChannel: 1
     - _AlbedoChannel: 0
-    - _BakedSpecular: 0
+    - _BakedSpecular: 1
     - _BakeryEnabled: 1
     - _BakerySHNonLinear: 1
-    - _Bicubic: 0
+    - _Bicubic: 1
     - _BumpScale: 1
     - _CullMode: 2
     - _Cutoff: 0.5
@@ -189,7 +191,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HeightRefPlane: 0.5
-    - _HeightScale: 0.006
+    - _HeightScale: 0.0244
     - _HeightStepsMax: 16
     - _HeightStepsMin: 8
     - _MappingSpace: 0
@@ -205,7 +207,7 @@ Material:
     - _QueueOffset: 0
     - _RoughnessMode: 0
     - _SmoothChannel: 3
-    - _Smoothness: 0.5
+    - _Smoothness: 0.338
     - _SmoothnessTextureChannel: 0
     - _SpecOcclusion: 0.75
     - _SpecularHighlights: 1

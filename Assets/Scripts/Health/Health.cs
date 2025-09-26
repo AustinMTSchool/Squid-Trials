@@ -39,7 +39,7 @@ public class Health : UdonSharpBehaviour
         RequestSerialization();
     }
 
-    // True, if dies otherwise a live
+    // True if dies otherwise a live
     public bool _RemoveHealth(uint health)
     {
         _health -= health;
