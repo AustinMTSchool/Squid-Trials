@@ -94,6 +94,13 @@ public class RedGreenLightController : GameController
     public override void _OnTick()
     {
         base._OnTick();
+        
+        if (!Networking.LocalPlayer.isMaster) return;
+
+        if (activeZone.HashShotInInterval)
+        {
+            activeZone._SetHashShotInInterval(false);
+        }
     }
 
     public override void _End()

@@ -24,6 +24,7 @@ public class Game : UdonSharpBehaviour
     [SerializeField] protected int introTime = 30;
     [SerializeField] protected int outroTime = 10;
     [SerializeField] protected TextMeshProUGUI introDisplay;
+    [SerializeField] protected TextMeshProUGUI introTimeDisplay;
     
     [Space, Header("Dialogue")]
     [SerializeField] protected Dialogue introDialogue;
@@ -55,7 +56,11 @@ public class Game : UdonSharpBehaviour
 
     public override void OnDeserialization()
     {
-        if (_isIntro) _UpdateIntroDisplayText();
+        if (_isIntro)
+        {
+            introTimeDisplay.text = _currentIntroTime.ToString();
+            _UpdateIntroDisplayText();
+        }
     }
 
     public void SpawnPlayer()
@@ -103,6 +108,7 @@ public class Game : UdonSharpBehaviour
         if (_isIntro && _currentIntroTime > 0)
         {
             _currentIntroTime--;
+            introTimeDisplay.text = _currentIntroTime.ToString();
             _UpdateIntroDisplayText();
             RequestSerialization();
             SendCustomEventDelayedSeconds(nameof(_OnIntroTick), 1F);
@@ -187,7 +193,7 @@ public class Game : UdonSharpBehaviour
         }
     }
     
-    private void _UpdateIntroDisplayText()
+    protected virtual void _UpdateIntroDisplayText()
     {
         if (introDialogue.DialogueList.TryGetValue(_currentIntroTime, out var value))
         {

@@ -14,7 +14,13 @@ public class PushManager : UdonSharpBehaviour
     [SerializeField] private Transform desktopHandContainer;
     [SerializeField] private DesktopHand desktopHand;
     
+    [Header("Virtual Reality"), Space(1)]
+    [SerializeField] private Transform vrHandContainer;
+    [SerializeField] private HandVR leftHandVR;
+    [SerializeField] private HandVR rightHandVR;
+    
     private int _currentCooldown;
+    private bool _isOnCooldown;
     private VRCPlayerApi _player;
 
     private void Start()
@@ -42,15 +48,27 @@ public class PushManager : UdonSharpBehaviour
         if (!value) return;
         
         Debug.Log("Pushing time: " + _currentCooldown);
-        if (_IsOnCooldown()) return;
+        Debug.Log($"Args: {args.handType}");
+        
+        if (_isOnCooldown) return;
         
         if (!Networking.LocalPlayer.IsUserInVR())
         {
+            _isOnCooldown = true;
             desktopHand._Push();
         }
         else
         {
-            
+            Debug.Log($"Used in VR");
+            _isOnCooldown = true;
+            if (args.handType == HandType.LEFT)
+            {
+                leftHandVR._Push();
+            }
+            else
+            {
+                rightHandVR._Push();
+            }
         }
         
         SendCustomEventDelayedSeconds(nameof(_CooldownTick), 1F);
@@ -61,16 +79,12 @@ public class PushManager : UdonSharpBehaviour
         _currentCooldown++;
         if (_currentCooldown >= cooldown)
         {
+            _isOnCooldown = false;
             _currentCooldown = 0;
         }
         else
         {
             SendCustomEventDelayedSeconds(nameof(_CooldownTick), 1F);
         }
-    }
-
-    private bool _IsOnCooldown()
-    {
-        return _currentCooldown != 0;
     }
 }

@@ -24,6 +24,7 @@ public class Player : UdonSharpBehaviour
     private bool _isUsingItem = false;
     private bool _isInGames = false;
     
+    
     public PlayerInventory Inventory => inventory;
     public bool IsPersistenceRestored => _isPersistenceRestored;
     public bool IsUsingItem => _isUsingItem;

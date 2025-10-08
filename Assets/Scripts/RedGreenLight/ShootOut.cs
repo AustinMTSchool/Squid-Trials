@@ -10,7 +10,7 @@ public class ShootOut : UdonSharpBehaviour
     [SerializeField] private ParticleSystem smoke;
     [SerializeField] private Audio shoot;
 
-    [NetworkCallable]
+    [NetworkCallable(40)]
     public void Fire()
     {
         Debug.Log("Fired from " + gameObject.name);

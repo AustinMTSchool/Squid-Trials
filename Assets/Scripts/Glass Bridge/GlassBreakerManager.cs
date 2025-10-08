@@ -25,8 +25,7 @@ public class GlassBreakerManager : UdonSharpBehaviour
 
     public void _Initialize()
     {
-        int totalbreakables = (int) Math.Ceiling((double) gameManager.AllPlayersInGame.Count / breakablesPerPlayerCount);
-        int breakables = Math.Min(totalbreakables, glassBreakerGroups.Length);
+        int breakables = _GetPossiblePieceBreakables();
         Debug.Log("Amount of breakables: " + breakables);
         
         for (int i = 0; i < breakables; i++)
@@ -37,6 +36,13 @@ public class GlassBreakerManager : UdonSharpBehaviour
             glassBreakerGroups[breakableIndex]._Initialize(true);
             _availableBreakables.RemoveAt(index);
         }
+    }
+
+    public int _GetPossiblePieceBreakables()
+    {
+        int totalbreakables = (int) Math.Ceiling((double) gameManager.AllPlayersInGame.Count / breakablesPerPlayerCount);
+        int breakables = Math.Min(totalbreakables, glassBreakerGroups.Length);
+        return breakables;
     }
 
     public void _Reset()

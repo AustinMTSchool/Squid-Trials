@@ -10,7 +10,10 @@ public class Health : UdonSharpBehaviour
     [SerializeField] private Player player;
     [SerializeField] private uint maxHealthPoints;
     [SerializeField] private float speedDebuff = 0.1F;
+    
     private int debuffIntervals = 20;
+    // percentage
+    private int _damageReduction = 0;
     
     [UdonSynced] private uint _health = 100;
     
@@ -42,7 +45,11 @@ public class Health : UdonSharpBehaviour
     // True if dies otherwise a live
     public bool _RemoveHealth(uint health)
     {
-        _health -= health;
+        var deducation = maxHealthPoints - _damageReduction;
+        var totalDamage = (deducation * health) / maxHealthPoints;
+        _health -= (uint) totalDamage;
+        Debug.Log("Player health: " + _health);
+        
         player.PlayerOverlayEffects._DamageOverlay(_health);
         
         if (_health == 0)
@@ -54,6 +61,11 @@ public class Health : UdonSharpBehaviour
         
         RequestSerialization();
         return false;
+    }
+
+    public void _SetDamageReduction(int reduction)
+    {
+        _damageReduction = reduction;
     }
 
     public override void OnDeserialization()

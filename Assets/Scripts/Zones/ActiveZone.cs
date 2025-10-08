@@ -13,9 +13,14 @@ public class ActiveZone : UdonSharpBehaviour
     [SerializeField] private RedGreenLightController controller;
     [SerializeField] private float updateInterval = 0.05f;
     [SerializeField] private ShootOutManager shootOutManager;
+    [SerializeField] private bool canFire = true;
+	[SerializeField] int shootingInterval = 1;
     
     private VRCPlayerApi _player;
     private bool _isInZone = false;
+    private bool _hasShotInInterval = false;
+    
+    public bool HashShotInInterval => _hasShotInInterval;
     
     private void Start()
     {
@@ -50,7 +55,12 @@ public class ActiveZone : UdonSharpBehaviour
         {
             if (_player.GetVelocity().magnitude != 0F)
             {
-                shootOutManager.Fire();
+				if (!_hasShotInInterval)
+				{
+					_hasShotInInterval = true;
+					shootOutManager.Fire();
+				}
+                
                 if (application.Player.Health._RemoveHealth(20))
                 {
                     application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
@@ -78,5 +88,10 @@ public class ActiveZone : UdonSharpBehaviour
     {
         application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity);
         application.Player.PlayerEffects._Reset();
+    }
+
+    public void _SetHashShotInInterval(bool value)
+    {
+        _hasShotInInterval = value;
     }
 }

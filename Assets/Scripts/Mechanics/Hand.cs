@@ -14,55 +14,48 @@ public class Hand : UdonSharpBehaviour
 {
     [SerializeField] protected Transform pushComponent;
     [SerializeField] protected PushManager pushManager;
+    [SerializeField] protected int maxPlayerPush = 2;
     
     protected DataList _playersContactList = new DataList();
     protected VRCPlayerApi _playerApi;
     
     public DataList PlayersContactList => _playersContactList;
 
-    private void Start()
+    protected virtual void Start()
     {
         _playerApi = Networking.LocalPlayer;
-        _OnUpdate();
-        _Push();
-    }
-
-    protected virtual void _OnUpdate()
-    {
-        
-    }
-
-    public override void OnPlayerJoined(VRCPlayerApi player)
-    {
-        if (player.isLocal) return;
-        
-        _playersContactList.Add(new DataToken(player.playerId).Int);
     }
 
     public virtual void _Push()
     {
-        // TODO put a cap on how many players could be pushed
         for (int i = 0; i < _playersContactList.Count; i++)
         {
-            var player = VRCPlayerApi.GetPlayerById(_playersContactList[i].Int);
-            var component = Networking.FindComponentInPlayerObjects(player, pushComponent);
+            if (i == 2) break;
+            Debug.Log("Pushing: " + _playersContactList[i].Int);
+            var targetPlayer = VRCPlayerApi.GetPlayerById(_playersContactList[i].Int);
+            var component = Networking.FindComponentInPlayerObjects(targetPlayer, pushComponent);
             var push = component.GetComponent<Push>();
-            push.PushPlayer(_playerApi.playerId);
+            Debug.Log("Sending on: " + component.gameObject.name);
+            push.PushPlayerNetwork(_playerApi.playerId, _playersContactList[i].Int);
         }
+        _playersContactList.Clear();
     }
 
-    public override void OnPlayerCollisionEnter(VRCPlayerApi player)
+    public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {
-        if (!player.isLocal) return;
+        Debug.Log("Entering: " + player.playerId);
+        if (player.isLocal) return;
 
         if (_playersContactList.Contains(player.playerId)) return;
         
-        _playersContactList.Add(new DataToken(player.playerId).Int);
+        Debug.Log("Added a player to push list");
+        _playersContactList.Add(new DataToken(player.playerId));
     }
 
-    public override void OnPlayerCollisionExit(VRCPlayerApi player)
+    public override void OnPlayerTriggerExit(VRCPlayerApi player)
     {
-        if (!player.isLocal) return;
+        Debug.Log("Exiting: " + player.playerId);
+        if (player.isLocal) return;
         
         _playersContactList.Remove(player.playerId);
     }
