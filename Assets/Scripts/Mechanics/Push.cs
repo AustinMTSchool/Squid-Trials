@@ -32,6 +32,7 @@ public class Push : UdonSharpBehaviour
     {
         Debug.Log("Applied damage reduction");
         _player.Health._SetDamageReduction(90);
+        _player._SetIsPushed(true);
         _sender = VRCPlayerApi.GetPlayerById(senderID);
         
         if (_sender != null && _sender.IsValid())
@@ -72,6 +73,7 @@ public class Push : UdonSharpBehaviour
         {
             Debug.Log("Player regrounded");
             _player.Health._SetDamageReduction(0);
+            _player._SetIsPushed(false);
             return;
         }
         else

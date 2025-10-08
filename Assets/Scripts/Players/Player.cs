@@ -23,6 +23,7 @@ public class Player : UdonSharpBehaviour
     private bool _isPlayerInQueue = false;
     private bool _isUsingItem = false;
     private bool _isInGames = false;
+    private bool _IsPushed = false;
     
     
     public PlayerInventory Inventory => inventory;
@@ -34,6 +35,7 @@ public class Player : UdonSharpBehaviour
     public VRCPlayerApi VRCPlayerApi => _vrcPlayer;
     public Health Health => _health;
     public PlayerEffects PlayerEffects => playerEffects;
+    public bool IsPushed => _IsPushed;
     
     private void Start()
     {
@@ -109,5 +111,10 @@ public class Player : UdonSharpBehaviour
     public void SetInGames(bool value)
     {
         _isInGames = value;
+    }
+
+    public void _SetIsPushed(bool value)
+    {
+        _IsPushed = value;
     }
 }

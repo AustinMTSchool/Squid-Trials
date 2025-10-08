@@ -3,8 +3,10 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.Udon.Common.Interfaces;
 
 public class GameController : UdonSharpBehaviour
 {
@@ -100,11 +102,35 @@ public class GameController : UdonSharpBehaviour
         _forceEnd = true;
         _currentGameTime = gameTime;
         _UpdateClock();
+        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(KillPlayersDidNotFinish), _jsonCurrentPlayersInGame);
         
         RequestSerialization();
         game._Outro();
     }
+    
+    [NetworkCallable]
+    public void KillPlayersDidNotFinish(string playersInGame)
+    {
+        var players = new DataList();
+        if (VRCJson.TryDeserializeFromJson(playersInGame, out DataToken playersList))
+        {
+            players = playersList.DataList;
+        }
+        else
+            Debug.LogError(playersList.ToString());
 
+        var id = Networking.LocalPlayer.playerId;
+
+        if (players.Contains(id))
+        {
+            Debug.Log("[GameController] You didnt finish the game so you DIED");
+            application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
+            application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity);
+            application.Player.PlayerEffects._Reset();
+        }
+    }
+
+    // when a player finishes the game
     public virtual void PlayerOutOfGame(string id)
     {
         _currentPlayersInGame.Remove(id);
@@ -119,6 +145,8 @@ public class GameController : UdonSharpBehaviour
         RequestSerialization();
     }
 
+    // if a player crosses the finish zone but goes back into the active zone, re add them
+    // to the game
     public virtual void PlayerActiveGame(string id)
     {
         if (_currentPlayersInGame.Contains(id)) return;
@@ -127,6 +155,7 @@ public class GameController : UdonSharpBehaviour
         RequestSerialization();
     }
 
+    // clone all players currently going into the game
     public void AssignCurrentPlayersInGame()
     {
         _currentPlayersInGame = gameManager.AllPlayersInGame.DeepClone();
@@ -137,4 +166,6 @@ public class GameController : UdonSharpBehaviour
         timerText.text = Clock.ConvertInteger(_currentGameTime);
         clockSound.Play();
     }
+
+    
 }
