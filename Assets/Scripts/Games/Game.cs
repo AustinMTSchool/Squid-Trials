@@ -136,6 +136,7 @@ public class Game : UdonSharpBehaviour
         _forceEnd = true;
         if (state == GameState.Active)
         {
+            Debug.Log("_stop => _End");
             gameController._End();
         }
     }

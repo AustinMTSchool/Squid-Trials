@@ -3,6 +3,7 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
 using VRC.Udon.Common.Interfaces;
@@ -184,6 +185,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         }
     }
 
+    [NetworkCallable]
     public void BeginGame()
     {
         Debug.Log($"[PlayersJoinedQueue] BeginGame");

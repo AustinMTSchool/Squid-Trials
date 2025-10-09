@@ -6712,3 +6712,40 @@ Total cache size after purge 267242795
 Total cache size 267242795
 CreateDirectoryW failed to create C:\Users\Austin\AppData\Roaming\Unity\cache\bee\trash
 Total cache size after purge 267242795
+Total cache size 267325011
+Total cache size after purge 267325011
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227
+Symbol file LoadedFromMemory is not a mono symbol file
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 267407227
+Total cache size after purge 267407227
+Total cache size 267407227
+Total cache size after purge 267407227

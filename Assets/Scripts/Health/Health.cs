@@ -8,21 +8,29 @@ using VRC.Udon;
 public class Health : UdonSharpBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private uint maxHealthPoints;
+    [SerializeField] private int maxHealthPoints;
     [SerializeField] private float speedDebuff = 0.1F;
     
     private int debuffIntervals = 20;
     // percentage
     private int _damageReduction = 0;
     
-    [UdonSynced] private uint _health = 100;
+    [UdonSynced] private int _health = 100;
     
-    public uint GetHealth => _health;
-    public uint MaxHealthPoints => maxHealthPoints;
+    public int GetHealth => _health;
+    public int MaxHealthPoints => maxHealthPoints;
 
-    public void _SetHealth(uint health)
+    public void _SetHealth(int health)
     {
         _health = health;
+        
+        if (_health <= 0)
+        {
+            _health = maxHealthPoints;
+            player.Death();
+            return;
+        }
+        
         RequestSerialization();
     }
 
@@ -32,7 +40,7 @@ public class Health : UdonSharpBehaviour
         RequestSerialization();
     }
 
-    public void _AddHealth(uint health)
+    public void _AddHealth(int health)
     {
         _health += health;
         
@@ -43,16 +51,17 @@ public class Health : UdonSharpBehaviour
     }
 
     // True if dies otherwise a live
-    public bool _RemoveHealth(uint health)
+    public bool _RemoveHealth(int damage)
     {
-        var deducation = maxHealthPoints - _damageReduction;
-        var totalDamage = (deducation * health) / maxHealthPoints;
-        _health -= (uint) totalDamage;
+        var damageMultiplier = 100 - _damageReduction;
+        var totalDamage = (damage * damageMultiplier) / 100;
+        
+        _health -= (int) totalDamage;
         Debug.Log("Player health: " + _health);
         
         player.PlayerOverlayEffects._DamageOverlay(_health);
         
-        if (_health == 0)
+        if (_health <= 0)
         {
             _health = maxHealthPoints;
             player.Death();

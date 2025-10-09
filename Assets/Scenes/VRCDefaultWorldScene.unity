@@ -1404,7 +1404,7 @@ MonoBehaviour:
   gameManager: {fileID: 1812934937}
   game: {fileID: 2048979326}
   timerText: {fileID: 1922424397}
-  gameTime: 120
+  gameTime: 60
   clockSound: {fileID: 1300196654}
   graceTime: 0.3
   barrier: {fileID: 1814024890}
@@ -6437,7 +6437,6 @@ Transform:
   - {fileID: 543450653470113033}
   - {fileID: 543450653406240375}
   - {fileID: 392670495}
-  - {fileID: 768547145}
   - {fileID: 13554438}
   - {fileID: 45713298}
   - {fileID: 592360231}
@@ -32927,12 +32926,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768547144}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.5699997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 172414764}
+  m_Father: {fileID: 1422245658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &768547146
 BoxCollider:
@@ -39323,7 +39322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0018640677}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.00021518768}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &973671788
@@ -50754,7 +50753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0018640677}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.00021518768}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1162675432
@@ -61306,6 +61305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2065414906}
+  - {fileID: 768547145}
   m_Father: {fileID: 837917356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426479566
@@ -87305,7 +87305,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -101104,6 +101104,10 @@ MonoBehaviour:
     - VRC.Udon.UdonBehaviour
   - gameObject: {fileID: 1810291649}
     ID: 169
+    SerializedTypeNames:
+    - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 2065414905}
+    ID: 170
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}

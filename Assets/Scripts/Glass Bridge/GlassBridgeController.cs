@@ -32,6 +32,7 @@ public class GlassBridgeController : GameController
         SendCustomNetworkEvent(NetworkEventTarget.All, nameof(EndLocalSide));
         RequestSerialization();
         
+        Debug.Log("gb._End => _End");
         base._End();
     }
     

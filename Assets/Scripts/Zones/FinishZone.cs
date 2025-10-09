@@ -21,7 +21,7 @@ public class FinishZone : UdonSharpBehaviour
         
         if (game.State == GameState.Active)
         {
-            Debug.Log("PLAYER ENTERED");
+            Debug.Log("[FinishZone] PLAYER ENTERED");
             game.GameController.PlayerOutOfGame($"{player.playerId}");
         }
     }

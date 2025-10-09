@@ -1,4 +1,5 @@
 ﻿
+using System;
 using TMPro;
 using UdonSharp;
 using UnityEngine;
@@ -56,6 +57,7 @@ public class GameController : UdonSharpBehaviour
             Debug.LogError(jsonCurrentPlayersInGame.ToString());
         
         _UpdateClock();
+        Debug.Log("Player list: " + _jsonCurrentPlayersInGame);
     }
 
     public virtual void _Begin()
@@ -98,51 +100,80 @@ public class GameController : UdonSharpBehaviour
     public virtual void _End()
     {
         if (!Networking.LocalPlayer.isMaster) return;
+        
+        Debug.Log("ENDING GAME _End");
 
         _forceEnd = true;
         _currentGameTime = gameTime;
         _UpdateClock();
+        RequestSerialization();
+        
+        
+        if (VRCJson.TrySerializeToJson(_currentPlayersInGame, JsonExportType.Minify, out DataToken allPlayers))
+            _jsonCurrentPlayersInGame = allPlayers.String;
+        else
+            Debug.LogError(allPlayers.ToString());
+        
         SendCustomNetworkEvent(NetworkEventTarget.All, nameof(KillPlayersDidNotFinish), _jsonCurrentPlayersInGame);
         
-        RequestSerialization();
+        // SendCustomEventDelayedSeconds(nameof(_Delay), 3);
+        // or send the json string directly from master
         game._Outro();
     }
-    
-    [NetworkCallable]
-    public void KillPlayersDidNotFinish(string playersInGame)
+
+    public void _Delay(NetworkEventTarget target, string name)
     {
-        var players = new DataList();
-        if (VRCJson.TryDeserializeFromJson(playersInGame, out DataToken playersList))
-        {
-            players = playersList.DataList;
-        }
+        SendCustomNetworkEvent(target, name);
+    }
+    
+    [NetworkCallable(40)]
+    public void KillPlayersDidNotFinish(string jsonPlayers)
+    {
+        string id = $"{Networking.LocalPlayer.playerId}";
+        Debug.Log($"[GameController] You are {id}, people who didnt finish: {jsonPlayers}");
+        
+        var playersLeft = new DataList();
+        if(VRCJson.TryDeserializeFromJson(jsonPlayers, out DataToken jsonCurrentPlayersInGame))
+            playersLeft = jsonCurrentPlayersInGame.DataList;
         else
-            Debug.LogError(playersList.ToString());
+            Debug.LogError(jsonCurrentPlayersInGame.ToString());
 
-        var id = Networking.LocalPlayer.playerId;
-
-        if (players.Contains(id))
+        if (playersLeft.Contains(id))
         {
-            Debug.Log("[GameController] You didnt finish the game so you DIED");
+            Debug.Log("[GameController] You will die");
+            application.Player.Death();
             application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
             application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity);
             application.Player.PlayerEffects._Reset();
+        }
+        else
+        {
+            Debug.Log($"[GameController] You will not die");
         }
     }
 
     // when a player finishes the game
     public virtual void PlayerOutOfGame(string id)
     {
+        if (_forceEnd)
+        {
+            Debug.Log("[GameController] Ignoring removal of player game is ending");
+            return;
+        }
+        
         _currentPlayersInGame.Remove(id);
+        RequestSerialization();
 
         for (int i = 0; i < _currentPlayersInGame.Count; i++)
         {
             Debug.Log($"Players: {_currentPlayersInGame[i]}");
         }
-        
-        if (_currentPlayersInGame.Count == 0) _End();
-        
-        RequestSerialization();
+
+        if (_currentPlayersInGame.Count == 0)
+        {
+            Debug.Log("PlayerOutOfGame => _End");
+            _End();
+        }
     }
 
     // if a player crosses the finish zone but goes back into the active zone, re add them

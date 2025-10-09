@@ -28,7 +28,7 @@ public class PlayerOverlayEffects : UdonSharpBehaviour
         _isPlayerInVR = Networking.LocalPlayer.IsUserInVR();
     }
 
-    public void _DamageOverlay(uint health)
+    public void _DamageOverlay(int health)
     {
         float multiplier = (float) player.Health.MaxHealthPoints / health;
         float opacity = multiplier * defaultDamageOpacity;

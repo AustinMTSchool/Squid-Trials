@@ -97,6 +97,7 @@ public class GameManager : UdonSharpBehaviour
     public void AddPlayersToGames(DataList players)
     {
         if (!Networking.LocalPlayer.isMaster) return;
+        _allPlayersInGame.Clear();
         _allPlayersInGame = players.DeepClone();
         RequestSerialization();
     }
@@ -210,18 +211,22 @@ public class GameManager : UdonSharpBehaviour
         RequestSerialization();
     }
 
+    
+    // Remove a player from the game by id
+    // if game is active,
     [NetworkCallable]
     public void PlayerRemoveFromGame(string playerId)
     {
         if (!Networking.LocalPlayer.isMaster) return;
-            
-        _allPlayersInGame.Remove($"{playerId}");
+
+        if (!_allPlayersInGame.Remove($"{playerId}")) return;
         RequestSerialization();
         
         if (_allGamesByName.TryGetValue(_currentGame, out var gameToken))
         {
             Game game = (Game)gameToken.Reference;
             Debug.Log($"Removing {playerId} player from game: " + game.GameName);
+            
             if (game.GameController != null)
             {
                 game.GameController.PlayerOutOfGame($"{playerId}");
@@ -230,6 +235,7 @@ public class GameManager : UdonSharpBehaviour
         
         if (_allPlayersInGame.Count <= 0)
         {
+            Debug.Log("EndGames()"); // this is the issue is called a ton
             EndGames();
         }
     }

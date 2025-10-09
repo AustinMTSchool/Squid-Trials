@@ -14,10 +14,9 @@ public class DeahZone : UdonSharpBehaviour
     {
         Debug.Log("Player entered");
         if (!player.isLocal || !application.Player.IsInGames) return;
-
-        application.Player.Health._SetHealth(0);
-            
+        
         Debug.Log("Player is dead");
+        application.Player.Health._SetHealth(0);
         application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
         application.Player.VRCPlayerApi.SetWalkSpeed(0);
         application.Player.VRCPlayerApi.SetRunSpeed(0);
