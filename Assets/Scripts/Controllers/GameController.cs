@@ -14,6 +14,7 @@ public class GameController : UdonSharpBehaviour
     [SerializeField] protected Application application;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected Game game;
+    [SerializeField] protected int totalPlayersCanPassPercent = 80;
     
     [Space, Header("Timers")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -28,8 +29,11 @@ public class GameController : UdonSharpBehaviour
     [UdonSynced] protected string _jsonCurrentPlayersInGame;
     [UdonSynced] protected int _currentGameTime;
     [UdonSynced] protected bool _forceEnd;
+    [UdonSynced] protected int _totalPlayersThatCanPass = 1;
+    [UdonSynced] protected int _currenTotalPlayersPassed = 0;
     
     public DataList CurrentPlayersInGame => _currentPlayersInGame;
+    public int TotalPlayersThatCanPass => _totalPlayersThatCanPass;
 
     public override void OnMasterTransferred(VRCPlayerApi newMaster)
     {
@@ -105,6 +109,8 @@ public class GameController : UdonSharpBehaviour
 
         _forceEnd = true;
         _currentGameTime = gameTime;
+        _currenTotalPlayersPassed = 0;
+        _totalPlayersThatCanPass = 1;
         _UpdateClock();
         RequestSerialization();
         
@@ -116,14 +122,7 @@ public class GameController : UdonSharpBehaviour
         
         SendCustomNetworkEvent(NetworkEventTarget.All, nameof(KillPlayersDidNotFinish), _jsonCurrentPlayersInGame);
         
-        // SendCustomEventDelayedSeconds(nameof(_Delay), 3);
-        // or send the json string directly from master
         game._Outro();
-    }
-
-    public void _Delay(NetworkEventTarget target, string name)
-    {
-        SendCustomNetworkEvent(target, name);
     }
     
     [NetworkCallable(40)]
@@ -171,9 +170,21 @@ public class GameController : UdonSharpBehaviour
 
         if (_currentPlayersInGame.Count == 0)
         {
-            Debug.Log("PlayerOutOfGame => _End");
+            Debug.Log("[GameController] PlayerOutOfGame => _End");
             _End();
         }
+
+        Debug.Log($"[GameController] _currenTotalPlayersPassed {_currenTotalPlayersPassed} == _totalPlayersThatCanPass {_totalPlayersThatCanPass}");
+        if (_currenTotalPlayersPassed >= _totalPlayersThatCanPass)
+        {
+            _End();
+        }
+    }
+
+    public void _AddCurrentTotalPlayersPassed(int totalPlayersPassed)
+    {
+        _currenTotalPlayersPassed = _currenTotalPlayersPassed + totalPlayersPassed;
+        RequestSerialization();
     }
 
     // if a player crosses the finish zone but goes back into the active zone, re add them
@@ -183,6 +194,7 @@ public class GameController : UdonSharpBehaviour
         if (_currentPlayersInGame.Contains(id)) return;
         
         _currentPlayersInGame.Add(id);
+        _currenTotalPlayersPassed--;
         RequestSerialization();
     }
 
@@ -190,13 +202,22 @@ public class GameController : UdonSharpBehaviour
     public void AssignCurrentPlayersInGame()
     {
         _currentPlayersInGame = gameManager.AllPlayersInGame.DeepClone();
+        _AssignTotalPlayersThatCanPass();
     }
-    
+
+    protected virtual void _AssignTotalPlayersThatCanPass()
+    {
+        int totalPlayers = _currentPlayersInGame.Count;
+        
+        int total = totalPlayersCanPassPercent * totalPlayers;
+        _totalPlayersThatCanPass = (int) Math.Floor((double) total / 100);
+        Debug.Log("Max players to pass: " + _totalPlayersThatCanPass);
+        RequestSerialization();
+    }
+
     private void _UpdateClock()
     {
         timerText.text = Clock.ConvertInteger(_currentGameTime);
         clockSound.Play();
     }
-
-    
 }

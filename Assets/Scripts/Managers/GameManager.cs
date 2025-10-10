@@ -15,6 +15,7 @@ public class GameManager : UdonSharpBehaviour
     [SerializeField] private Lobby lobby;
     [SerializeField] private PlayersJoinedQueue playersJoinedQueue;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private int numberOfWinners = 1;
     
     private DataList _allPlayersInGame = new DataList();
     
@@ -23,6 +24,7 @@ public class GameManager : UdonSharpBehaviour
     [UdonSynced] private string _jsonAllPlayersInGame;
     [UdonSynced] private bool _isGamesActive;
     [UdonSynced] private string _currentGame;
+    [UdonSynced] private int _lastPlayerWinner = 0;
     
     private System.Random random = new System.Random();
     private DataList _availableGames = new DataList();
@@ -31,6 +33,7 @@ public class GameManager : UdonSharpBehaviour
     public string Mode => _gameMode;
     public Transform SpawnPoint => spawnPoint;
     public DataList AllPlayersInGame  => _allPlayersInGame;
+    public int NumberOfWinners => numberOfWinners;
 
     private void Start()
     {
@@ -176,7 +179,7 @@ public class GameManager : UdonSharpBehaviour
         else
             Debug.LogError(result.ToString());
         
-        Debug.Log("Curremt Game: " +  _currentGame);
+        Debug.Log("Current Game: " +  _currentGame);
     }
 
     public override void OnPlayerLeft(VRCPlayerApi player)
@@ -186,13 +189,7 @@ public class GameManager : UdonSharpBehaviour
         if (!Networking.LocalPlayer.isMaster) return;
         if (!_allPlayersInGame.Contains($"{player.playerId}")) return;
 
-        _allPlayersInGame.Remove($"{player.playerId}");
-
-        if (_allPlayersInGame.Count <= 0)
-        {
-            Debug.Log($"Games are ending");
-            EndGames();
-        }
+        SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PlayerRemoveFromGame), $"{player.playerId}");
 
         RequestSerialization();
     }
@@ -214,30 +211,52 @@ public class GameManager : UdonSharpBehaviour
     
     // Remove a player from the game by id
     // if game is active,
-    [NetworkCallable]
+    [NetworkCallable(40)]
     public void PlayerRemoveFromGame(string playerId)
     {
         if (!Networking.LocalPlayer.isMaster) return;
 
+        Debug.Log("Player Count: " + _allPlayersInGame.Count);
         if (!_allPlayersInGame.Remove($"{playerId}")) return;
         RequestSerialization();
         
         if (_allGamesByName.TryGetValue(_currentGame, out var gameToken))
         {
             Game game = (Game)gameToken.Reference;
-            Debug.Log($"Removing {playerId} player from game: " + game.GameName);
-            
             if (game.GameController != null)
             {
                 game.GameController.PlayerOutOfGame($"{playerId}");
             }
         }
         
-        if (_allPlayersInGame.Count <= 0)
+        if (_allPlayersInGame.Count == numberOfWinners)
         {
-            Debug.Log("EndGames()"); // this is the issue is called a ton
+            // respawn and reset all players in the game
+            Debug.Log("EndGames() : " + _allPlayersInGame.Count);
+
+            for (int i = 0; i < _allPlayersInGame.Count; i++)
+            {
+                string winnerPlayerId = _allPlayersInGame[i].String;
+                Debug.Log($"[GameManager] Winners: {winnerPlayerId}");
+                SendCustomNetworkEvent(NetworkEventTarget.All, nameof(DetermineWinner), $"{winnerPlayerId}");
+            }
             EndGames();
         }
+    }
+
+    [NetworkCallable(40)]
+    public void DetermineWinner(string winnerID)
+    {
+        var localID = Networking.LocalPlayer.playerId.ToString();
+        if (localID != winnerID) return;
+        
+        // if no one finishes, a random player is decided the winner
+        Debug.Log("[GameManager] WINNER WINNER WINNER WINNER WINNER");
+        player.SetInGames(false);
+        SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PlayerRemoveFromGame), $"{winnerID}");
+        player.VRCPlayerApi.TeleportTo(spawnPoint.position, spawnPoint.rotation);
+        player.PlayerEffects._Reset();
+        player.Health._ResetHealth();
     }
 
     public void EndGames()
@@ -262,6 +281,7 @@ public class GameManager : UdonSharpBehaviour
         _gameMode = "hub";
         ResetAllGames();
         playersJoinedQueue.SetCanTimerStart(true);
+        _allPlayersInGame.Clear();
         RequestSerialization();
     }
 }

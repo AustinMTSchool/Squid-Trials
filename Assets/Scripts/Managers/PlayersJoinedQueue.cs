@@ -166,7 +166,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         else
         {
             Debug.Log("[PlayersJoinedQueue] BEGINNING GAME");
-            if (_playersReady <= 0)
+            if (_playersReady <= application.GameManager.NumberOfWinners)
             {
                 _isTimerActive = false;
                 _canTimerStart = true;

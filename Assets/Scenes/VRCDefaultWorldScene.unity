@@ -1403,6 +1403,7 @@ MonoBehaviour:
   application: {fileID: 286035627}
   gameManager: {fileID: 1812934937}
   game: {fileID: 2048979326}
+  totalPlayersCanPassPercent: 80
   timerText: {fileID: 1922424397}
   gameTime: 60
   clockSound: {fileID: 1300196654}
@@ -2966,7 +2967,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 87836190}
+  player: {fileID: 1866079305}
   game: {fileID: 2048979326}
+  gameManager: {fileID: 1812934937}
 --- !u!1 &87872674
 GameObject:
   m_ObjectHideFlags: 0
@@ -22797,8 +22800,9 @@ MonoBehaviour:
   application: {fileID: 286035627}
   gameManager: {fileID: 1812934937}
   game: {fileID: 837917358}
+  totalPlayersCanPassPercent: 80
   timerText: {fileID: 2103855631}
-  gameTime: 120
+  gameTime: 60
   clockSound: {fileID: 50098477}
   glassBreakerManager: {fileID: 1140546166}
   barrier: {fileID: 8250076135141892237}
@@ -39322,7 +39326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.00021518768}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.000068785164}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &973671788
@@ -50753,7 +50757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.00021518768}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.000068785164}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1162675432
@@ -67742,7 +67746,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1580681367}
-  cooldown: 1
+  cooldown: 15
   desktopHandContainer: {fileID: 1521734347}
   desktopHand: {fileID: 1123563702}
   vrHandContainer: {fileID: 964005592}
@@ -76138,9 +76142,11 @@ MonoBehaviour:
   player: {fileID: 1866079305}
   allGames:
   - {fileID: 2048979326}
+  - {fileID: 837917358}
   lobby: {fileID: 1095834630}
   playersJoinedQueue: {fileID: 264154950}
   spawnPoint: {fileID: 3480278762663400089}
+  numberOfWinners: 1
 --- !u!1 &1813652181
 GameObject:
   m_ObjectHideFlags: 0
@@ -87359,7 +87365,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 2065414908}
+  player: {fileID: 1866079305}
   game: {fileID: 837917358}
+  gameManager: {fileID: 1812934937}
 --- !u!1 &2067685067
 GameObject:
   m_ObjectHideFlags: 0
