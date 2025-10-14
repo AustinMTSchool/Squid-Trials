@@ -14,8 +14,10 @@ public class Player : UdonSharpBehaviour
     [SerializeField] private Transform healthReference;
     [SerializeField] private PlayerEffects playerEffects;
     [SerializeField] private PlayerOverlayEffects playerOverlayEffects;
+    [SerializeField] private ClassesManager classesManager;
     
     public PlayerOverlayEffects PlayerOverlayEffects => playerOverlayEffects;
+    public ClassesManager ClassesManager => classesManager;
     private VRCPlayerApi _vrcPlayer;
     private Health _health;
     private bool _isPlayerRegistered = false;
@@ -24,7 +26,6 @@ public class Player : UdonSharpBehaviour
     private bool _isUsingItem = false;
     private bool _isInGames = false;
     private bool _IsPushed = false;
-    
     
     public PlayerInventory Inventory => inventory;
     public bool IsPersistenceRestored => _isPersistenceRestored;

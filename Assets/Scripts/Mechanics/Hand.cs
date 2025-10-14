@@ -12,6 +12,7 @@ using VRC.Udon.Common.Interfaces;
 [RequireComponent(typeof(Collider))]
 public class Hand : UdonSharpBehaviour
 {
+    [SerializeField] protected Player player;
     [SerializeField] protected Transform pushComponent;
     [SerializeField] protected PushManager pushManager;
     [SerializeField] protected int maxPlayerPush = 2;
@@ -36,7 +37,14 @@ public class Hand : UdonSharpBehaviour
             var component = Networking.FindComponentInPlayerObjects(targetPlayer, pushComponent);
             var push = component.GetComponent<Push>();
             Debug.Log("Sending on: " + component.gameObject.name);
-            push.PushPlayerNetwork(_playerApi.playerId, _playersContactList[i].Int);
+            if (player.ClassesManager.CurrentClass != null)
+            {
+                push.PushPlayerNetwork(_playerApi.playerId, player.ClassesManager.CurrentClass.ForceKnockbackPercentage);
+            }
+            else
+            {
+                push.PushPlayerNetwork(_playerApi.playerId, 0);
+            }
         }
         _playersContactList.Clear();
     }

@@ -113,6 +113,7 @@ public class RedGreenLightController : GameController
         _areLightsSwitching = false;
         _light = Light.None;
         _scareCrowState =  ScareCrowState.None;
+        _deadlyMovement = false;
         
         _UpdateScareCrow();
         _UpdateLights();

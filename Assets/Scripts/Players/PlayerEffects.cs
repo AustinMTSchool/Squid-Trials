@@ -23,7 +23,7 @@ public class PlayerEffects : UdonSharpBehaviour
         _player.SetRunSpeed(runSpeed);
     }
 
-    public void _AddSpeed(float percent)
+    public void _AddSpeedPercent(float percent)
     {
         float currentWalk = walkSpeed;
         float currentRun = runSpeed;
@@ -38,7 +38,16 @@ public class PlayerEffects : UdonSharpBehaviour
         _player.SetRunSpeed(currentRun);
     }
 
-    public void _RemoveSpeed(float percent)
+    public void _AddSpeed(float amount)
+    {
+        var walk = _player.GetWalkSpeed() + amount;
+        var run = _player.GetRunSpeed() + (amount * 2);
+        
+        _player.SetWalkSpeed(walk);
+        _player.SetRunSpeed(run);
+    }
+    
+    public void _RemoveSpeedPercent(float percent)
     {
         float currentWalk = walkSpeed;
         float currentRun = runSpeed;
@@ -53,5 +62,14 @@ public class PlayerEffects : UdonSharpBehaviour
         
         _player.SetWalkSpeed(currentWalk);
         _player.SetRunSpeed(currentRun);
+    }
+    
+    public void _RemoveSpeed(float amount)
+    {
+        var walk = _player.GetWalkSpeed() - amount;
+        var run = _player.GetRunSpeed() - (amount * 2);
+        
+        _player.SetWalkSpeed(walk);
+        _player.SetRunSpeed(run);
     }
 }

@@ -18,17 +18,17 @@ public class Push : UdonSharpBehaviour
     
     [Header("Push Settings")]
     [SerializeField] private float pushForceHorizontal = 5f;
-    [SerializeField] private float pushForceVertical = 2f;
+    [SerializeField] private float pushForceVertical = 3f;
 
     [NetworkCallable]
-    public void PushPlayerNetwork(int senderID, int targetID)
+    public void PushPlayerNetwork(int senderID, float pushForce)
     {
         Debug.Log("Owner: " + Networking.GetOwner(gameObject).displayName + " of " + gameObject.name);
-        SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PushPlayer), senderID, targetID);
+        SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PushPlayer), senderID, pushForce);
     }
     
     [NetworkCallable]
-    public void PushPlayer(int senderID, int targetID)
+    public void PushPlayer(int senderID, float pushForce)
     {
         Debug.Log("Applied damage reduction");
         _player.Health._SetDamageReduction(90);
@@ -48,6 +48,20 @@ public class Push : UdonSharpBehaviour
             
             // Combine horizontal push with upward force
             _pushDirection = (horizontalDirection * pushForceHorizontal) + (Vector3.up * pushForceVertical);
+            Debug.Log("Before Pushed: " + _pushDirection);
+            
+            var pushForceMath =  (pushForce + 100) * _pushDirection;
+            _pushDirection = pushForceMath / 100;
+
+            Debug.Log("Pushed No Anti: " + _pushDirection);
+            
+            if (_player.ClassesManager.CurrentClass != null)
+            {
+                // Convert percentage to decimal (20% -> 0.2) and reduce push force
+                _pushDirection *= (1f - _player.ClassesManager.CurrentClass.AntiKnockbackPercentage / 100f);
+            }
+
+            Debug.Log("Pushed: " + _pushDirection);
             
             SendCustomEventDelayedFrames(nameof(ApplyVelocity), 1, EventTiming.LateUpdate);
         }
@@ -62,7 +76,6 @@ public class Push : UdonSharpBehaviour
             return;
         }
         
-        // Apply the calculated push direction
         Networking.LocalPlayer.SetVelocity(_pushDirection);
         SendCustomEventDelayedFrames(nameof(ApplyVelocity), 1, EventTiming.LateUpdate);
     }

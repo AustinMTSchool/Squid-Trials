@@ -73,12 +73,12 @@ public class ActiveZone : UdonSharpBehaviour
                     if (application.Player.IsPushed)
                     {
                         Debug.Log("Pushed 1.5%");
-                        application.Player.PlayerEffects._RemoveSpeed(1.5F);
+                        application.Player.PlayerEffects._RemoveSpeedPercent(1.5F);
                     }
                     else
                     {
                         Debug.Log("Red 8%");
-                        application.Player.PlayerEffects._RemoveSpeed(8F);
+                        application.Player.PlayerEffects._RemoveSpeedPercent(8F);
                     }
                 }
             }

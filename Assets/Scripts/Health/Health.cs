@@ -12,8 +12,9 @@ public class Health : UdonSharpBehaviour
     [SerializeField] private float speedDebuff = 0.1F;
     
     private int debuffIntervals = 20;
-    // percentage
+    // percentages
     private int _damageReduction = 0;
+    private int _defense = 0;
     
     [UdonSynced] private int _health = 100;
     
@@ -53,8 +54,11 @@ public class Health : UdonSharpBehaviour
     // True if dies otherwise a live
     public bool _RemoveHealth(int damage)
     {
-        var damageMultiplier = 100 - _damageReduction;
-        var totalDamage = (damage * damageMultiplier) / 100;
+        var defensePercent = 100 - _defense;
+        var subDamage = (damage * defensePercent) / 100;
+        
+        var damagePercent = 100 - _damageReduction;
+        var totalDamage = (subDamage * damagePercent) / 100;
         
         _health -= (int) totalDamage;
         Debug.Log("Player health: " + _health);
@@ -75,6 +79,30 @@ public class Health : UdonSharpBehaviour
     public void _SetDamageReduction(int reduction)
     {
         _damageReduction = reduction;
+    }
+
+    public void _AddDefense(int amount)
+    {
+        _defense += amount;
+    }
+
+    public void _RemoveDefense(int amount)
+    {
+        _defense -= amount;
+    }
+    
+    public void AddMaxHealth(int amount)
+    {
+        maxHealthPoints += amount;
+        _health = maxHealthPoints;
+        RequestSerialization();
+    }
+
+    public void RemoveMaxHealth(int amount)
+    {
+        maxHealthPoints -= amount;
+        _health = maxHealthPoints;
+        RequestSerialization();
     }
 
     public override void OnDeserialization()
