@@ -28,12 +28,17 @@
 	"100278": [
 		[
 			{
-				"_className": "Strategist"
+				"_className": "Tanker"
 			}
 		]
 	],
 	"100131": [
-		
+		[
+			{
+				"_itemID": "",
+				"_quantity": 0
+			}
+		]
 	],
 	"100133": [
 		
