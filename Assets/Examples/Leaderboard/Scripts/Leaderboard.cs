@@ -28,6 +28,7 @@ public class Leaderboard : UdonSharpBehaviour
 
     private void UpdateSlotPosition(VRCPlayerApi player)
     {
+        
         LeaderboardSlot leaderboardSlot = PersistenceUtilities.GetPlayerObjectComponent<LeaderboardSlot>(player);
         if (!Utilities.IsValid(leaderboardSlot))
         {

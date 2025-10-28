@@ -15,11 +15,11 @@ public class Player : UdonSharpBehaviour
     [SerializeField] private PlayerEffects playerEffects;
     [SerializeField] private PlayerOverlayEffects playerOverlayEffects;
     [SerializeField] private ClassesManager classesManager;
+    [SerializeField] private Transform playerStatReference;
     
-    public PlayerOverlayEffects PlayerOverlayEffects => playerOverlayEffects;
-    public ClassesManager ClassesManager => classesManager;
     private VRCPlayerApi _vrcPlayer;
     private Health _health;
+    private PlayerStat _playerStat;
     private bool _isPlayerRegistered = false;
     private bool _isPersistenceRestored = false;
     private bool _isPlayerInQueue = false;
@@ -27,6 +27,8 @@ public class Player : UdonSharpBehaviour
     private bool _isInGames = false;
     private bool _IsPushed = false;
     
+    public ClassesManager ClassesManager => classesManager;
+    public PlayerOverlayEffects PlayerOverlayEffects => playerOverlayEffects;
     public PlayerInventory Inventory => inventory;
     public bool IsPersistenceRestored => _isPersistenceRestored;
     public bool IsUsingItem => _isUsingItem;
@@ -37,6 +39,7 @@ public class Player : UdonSharpBehaviour
     public Health Health => _health;
     public PlayerEffects PlayerEffects => playerEffects;
     public bool IsPushed => _IsPushed;
+    public PlayerStat PlayerStat => _playerStat;
     
     private void Start()
     {
@@ -60,33 +63,11 @@ public class Player : UdonSharpBehaviour
     {
         if (!player.isLocal) return;
         
-        if (!PlayerData.HasKey(player, "skill_rating"))
-        { 
-            PlayerData.SetFloat("skill_rating", 1.0F);
-        }
-        
-        if (!PlayerData.HasKey(player, "level")) 
-        { 
-            PlayerData.SetInt("level", 1);
-        }
-        
-        if (!PlayerData.HasKey(player, "wins")) 
-        { 
-            PlayerData.SetInt("wins", 0);
-        }
-
-        if (!PlayerData.HasKey(player, "kills"))
-        {
-            PlayerData.SetInt("kills", 0);
-        }
-        
-        if (!PlayerData.HasKey(player, "points"))
-        {
-            PlayerData.SetInt("points", 0);
-        }
-
         Component comp = Networking.FindComponentInPlayerObjects(player, healthReference);
         _health = comp.GetComponent<Health>();
+        
+        Component stats = Networking.FindComponentInPlayerObjects(player, playerStatReference);
+        _playerStat = stats.GetComponent<PlayerStat>();
     }
 
     public void Death()

@@ -5,25 +5,31 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Data;
 using VRC.SDK3.Persistence;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.Udon.Common.Interfaces;
 
 public class PlayerStatsManagers : UdonSharpBehaviour
 {
-    [SerializeField] private string key;
     [SerializeField] private Transform parentSlot;
+    [SerializeField] private PlayerStat playerStats;
+    
     private PlayerStat[] _playerStats;
+    private bool isInitialized = false;
 
-    public override void OnPlayerDataUpdated(VRCPlayerApi player, PlayerData.Info[] infos)
+    public override void OnPlayerRestored(VRCPlayerApi player)
     {
-        if (PlayerData.HasKey(player, key))
-        {
-            UpdateSlotPosition(player);
-        }
+        isInitialized = true;
+        SendCustomNetworkEvent(NetworkEventTarget.All, nameof(UpdateSlotPosition), Networking.LocalPlayer.playerId, playerStats.LevelStat.Level);
     }
 
-    private void UpdateSlotPosition(VRCPlayerApi player)
+    [NetworkCallable(40)]
+    public void UpdateSlotPosition(int playerID, int level)
     {
+        VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerID);
+        Debug.Log("Updating Slot position");
+        
         PlayerStat playerStat = PersistenceUtilities.GetPlayerObjectComponent<PlayerStat>(player);
         if (!Utilities.IsValid(playerStat))
         {
@@ -31,41 +37,42 @@ public class PlayerStatsManagers : UdonSharpBehaviour
             return;
         }
 
-        int playerLevel = GetPlayerLevel(player);
-        playerStat.SetLevel(playerLevel);
-        
+        if (!isInitialized) return;
+
+        int playerLevel = level;
+        Debug.Log("player level: " + playerLevel);
+
         int siblingIndex = playerStat.transform.GetSiblingIndex();
-        
+
         _playerStats = parentSlot.GetComponentsInChildren<PlayerStat>(true);
 
-        if (siblingIndex > 0 && playerLevel > _playerStats[siblingIndex - 1].GetLevel())
+        if (siblingIndex > 0 && playerLevel > _playerStats[siblingIndex - 1].LevelStat.Level)
         {
-            PlayerStat displacedPlayer = _playerStats[siblingIndex - 1];
+            Debug.Log("Moving Up");
             playerStat.transform.SetSiblingIndex(siblingIndex - 1);
-            displacedPlayer.SetPosition(siblingIndex + 1);
-            UpdateSlotPosition(player);
+            _playerStats[siblingIndex].SetPosition(siblingIndex + 1);
+            UpdateSlotPosition(player.playerId, level);
         }
-        else if (siblingIndex + 1 < _playerStats.Length && playerLevel <= _playerStats[siblingIndex + 1].GetLevel())
+        else if (siblingIndex + 1 < _playerStats.Length && playerLevel <= _playerStats[siblingIndex + 1].LevelStat.Level)
         {
-            PlayerStat displacedPlayer = _playerStats[siblingIndex + 1];
+            Debug.Log("Moving Down");
             playerStat.transform.SetSiblingIndex(siblingIndex + 1);
-            displacedPlayer.SetPosition(siblingIndex + 1);
-            UpdateSlotPosition(player);
+            _playerStats[siblingIndex].SetPosition(siblingIndex + 1);
+            UpdateSlotPosition(player.playerId, level);
         }
         else
         {
-            playerStat.SetPosition(siblingIndex + 1);
+            UpdateAllRanks();
         }
     }
-
-    private int GetPlayerLevel(VRCPlayerApi player)
+    
+    private void UpdateAllRanks()
     {
-        if (!PlayerData.HasKey(player, key))
+        _playerStats = parentSlot.GetComponentsInChildren<PlayerStat>(true);
+        for (int i = 0; i < _playerStats.Length; i++)
         {
-            return 1;
+            _playerStats[i].SetPosition(i + 1);
         }
-
-        return PlayerData.GetInt(player, key);
     }
 
     public void SetupSlot(PlayerStat playerStat)
@@ -73,16 +80,16 @@ public class PlayerStatsManagers : UdonSharpBehaviour
         playerStat.transform.parent = parentSlot;
         _playerStats = parentSlot.GetComponentsInChildren<PlayerStat>(true);
         playerStat.SetPosition(_playerStats.Length);
-        playerStat.SetLevel(GetPlayerLevel(playerStat.GetPlayer()));
-        UpdateSlotPosition(playerStat.GetPlayer());
+        UpdateSlotPosition(playerStat.GetPlayer().playerId, playerStat.LevelStat.Level);
     }
 
     public void RefreshStats()
     {
         _playerStats = parentSlot.GetComponentsInChildren<PlayerStat>(true);
-        foreach (var stat in _playerStats)
+
+        foreach (var slot in _playerStats)
         {
-            UpdateSlotPosition(stat.GetPlayer());
+            UpdateSlotPosition(slot.GetPlayer().playerId, slot.LevelStat.Level);
         }
     }
 }
