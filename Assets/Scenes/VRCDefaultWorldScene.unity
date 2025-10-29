@@ -43401,7 +43401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0010335717}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.000585923}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &973671788
@@ -55988,7 +55988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0059834872, y: 0.0010335717}
+  m_AnchoredPosition: {x: -0.0059834872, y: 0.000585923}
   m_SizeDelta: {x: 0, y: 4309.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1162675432
@@ -73728,6 +73728,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 1549827267}
+  pointStat: {fileID: 7728249169314332594}
 --- !u!1 &1552964576
 GameObject:
   m_ObjectHideFlags: 0
@@ -108469,6 +108470,8 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 4115812671983242011}
   manager: {fileID: 921251}
   display: {fileID: 2906696223737932519}
+  allLevels: 2c0100002c01000050140000a816000000190000581b0000b01d0000082000006022000080250000a0280000c02b0000e02e0000003200002035000040380000603b0000803e0000a0410000c0440000e0470000004b0000204e0000405100006054000080570000a05a0000c05d0000e060000000640000b0680000606d0000c0760000707b000020800000d084000080890000308e0000e092000090970000409c0000f0a00000a0a5000050aa000000af0000b0b3000060b8000010bd0000c0c1000070c6000020cb0000d0cf000080d4000030d90000e0dd000090e2000060ea000030f20000e8fd0000f8240100
+  pointStat: {fileID: 7728249169314332594}
 --- !u!4 &4171593742377143014
 Transform:
   m_ObjectHideFlags: 0
@@ -111985,6 +111988,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 7408095514241379036}
   display: {fileID: 2103457202936660510}
+  pointStat: {fileID: 7728249169314332594}
 --- !u!1 &7459275035984956032
 GameObject:
   m_ObjectHideFlags: 0
@@ -113007,6 +113011,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8626690295605181895}
   display: {fileID: 2942557308932147390}
+  pointStat: {fileID: 7728249169314332594}
 --- !u!33 &8629190794707804321
 MeshFilter:
   m_ObjectHideFlags: 0

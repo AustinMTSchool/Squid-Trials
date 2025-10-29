@@ -73,6 +73,8 @@ public class Player : UdonSharpBehaviour
     public void Death()
     {
         if (_isInGames) _isInGames = false;
+        Debug.Log("PLAYER HAD DIED");
+        _playerStat.DeathStat.AddDeath(1);
     }
     
     public string GetDisplayName()

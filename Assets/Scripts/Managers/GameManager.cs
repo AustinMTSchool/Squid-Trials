@@ -25,10 +25,13 @@ public class GameManager : UdonSharpBehaviour
     [UdonSynced] private bool _isGamesActive;
     [UdonSynced] private string _currentGame;
     [UdonSynced] private int _lastPlayerWinner = 0;
+    [UdonSynced] private int _totalPlayersJoinedSession;
     
     private System.Random random = new System.Random();
     private DataList _availableGames = new DataList();
     private DataDictionary _allGamesByName = new DataDictionary();
+    
+    public int TotalPlayersJoinedSession => _totalPlayersJoinedSession;
     
     public string Mode => _gameMode;
     public Transform SpawnPoint => spawnPoint;
@@ -102,6 +105,7 @@ public class GameManager : UdonSharpBehaviour
         if (!Networking.LocalPlayer.isMaster) return;
         _allPlayersInGame.Clear();
         _allPlayersInGame = players.DeepClone();
+        _totalPlayersJoinedSession = players.Count;
         RequestSerialization();
     }
 
@@ -242,18 +246,31 @@ public class GameManager : UdonSharpBehaviour
             }
             EndGames();
         }
+        Debug.Log("UPDATING YOUR SKILL RATING BY GAMEMANAGER");
+        player.PlayerStat.SkillRatingStat.UpdateSkillRating();
     }
 
     [NetworkCallable(40)]
     public void DetermineWinner(string winnerID)
     {
         var localID = Networking.LocalPlayer.playerId.ToString();
-        if (localID != winnerID) return;
         
-        // if no one finishes, a random player is decided the winner
+        if (localID != winnerID)
+        {
+            if (player.IsInGames)
+            {
+                player.Death();
+            }
+            return;
+        }
+        
+        // if no one finishes, a random player is decided the winner TODO for now
         Debug.Log("[GameManager] WINNER WINNER WINNER WINNER WINNER");
         player.SetInGames(false);
         SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PlayerRemoveFromGame), $"{winnerID}");
+        player.PlayerStat.WinStat.AddWins(1);
+        player.PlayerStat.LevelStat.AddExperience(350 * (_totalPlayersJoinedSession-1));
+        player.PlayerStat.PointStat.AddPoints(40 * (_totalPlayersJoinedSession-1));
         player.VRCPlayerApi.TeleportTo(spawnPoint.position, spawnPoint.rotation);
         player.PlayerEffects._Reset();
         player.Health._ResetHealth();

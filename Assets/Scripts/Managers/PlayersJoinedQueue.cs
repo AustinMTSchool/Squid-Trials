@@ -192,6 +192,7 @@ public class PlayersJoinedQueue : UdonSharpBehaviour
         if (application.Player.IsPlayerInQueue)
         {
             Debug.Log($"Added to game (was in queue) " + Networking.LocalPlayer.playerId);
+            application.Player.PlayerStat.GamesPlayedStat.AddGamesPlayed(1);
             application.Player.SetInGames(true);
             application.GameManager.SpawnPlayerInLobby();
         }

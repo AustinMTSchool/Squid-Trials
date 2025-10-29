@@ -8,6 +8,7 @@ using VRC.Udon;
 public class WinStat : UdonSharpBehaviour
 {
     [SerializeField] private TextMeshProUGUI display;
+    [SerializeField] private PointStat pointStat;
 
     [UdonSynced] private int _wins = 0;
 

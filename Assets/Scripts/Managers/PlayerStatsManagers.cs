@@ -27,8 +27,10 @@ public class PlayerStatsManagers : UdonSharpBehaviour
     [NetworkCallable(40)]
     public void UpdateSlotPosition(int playerID, int level)
     {
+        if (!isInitialized) return;
+        
         VRCPlayerApi player = VRCPlayerApi.GetPlayerById(playerID);
-        Debug.Log("Updating Slot position");
+        if (player == null) return;
         
         PlayerStat playerStat = PersistenceUtilities.GetPlayerObjectComponent<PlayerStat>(player);
         if (!Utilities.IsValid(playerStat))
@@ -37,25 +39,18 @@ public class PlayerStatsManagers : UdonSharpBehaviour
             return;
         }
 
-        if (!isInitialized) return;
-
         int playerLevel = level;
-        Debug.Log("player level: " + playerLevel);
-
         int siblingIndex = playerStat.transform.GetSiblingIndex();
-
         _playerStats = parentSlot.GetComponentsInChildren<PlayerStat>(true);
 
         if (siblingIndex > 0 && playerLevel > _playerStats[siblingIndex - 1].LevelStat.Level)
         {
-            Debug.Log("Moving Up");
             playerStat.transform.SetSiblingIndex(siblingIndex - 1);
             _playerStats[siblingIndex].SetPosition(siblingIndex + 1);
             UpdateSlotPosition(player.playerId, level);
         }
         else if (siblingIndex + 1 < _playerStats.Length && playerLevel <= _playerStats[siblingIndex + 1].LevelStat.Level)
         {
-            Debug.Log("Moving Down");
             playerStat.transform.SetSiblingIndex(siblingIndex + 1);
             _playerStats[siblingIndex].SetPosition(siblingIndex + 1);
             UpdateSlotPosition(player.playerId, level);

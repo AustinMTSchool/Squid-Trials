@@ -139,15 +139,15 @@ public class GameController : UdonSharpBehaviour
 
         if (playersLeft.Contains(id))
         {
-            Debug.Log("[GameController] You will die");
-            application.Player.Death();
+            Debug.Log("[GameController] Removing you from game");
             application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
-            application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity);
+            application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity); // TODO rewards all players in session. Move to outro ?
             application.Player.PlayerEffects._Reset();
         }
         else
         {
-            Debug.Log($"[GameController] You will not die");
+            application.Player.PlayerStat.StageCompletedStat.AddStagesCompleted(1);
+            Debug.Log($"[GameController] You completed a stage");
         }
     }
 
