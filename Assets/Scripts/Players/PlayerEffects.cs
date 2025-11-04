@@ -9,6 +9,7 @@ public class PlayerEffects : UdonSharpBehaviour
 {
     private VRCPlayerApi _player;
     private readonly float walkSpeed = 2;
+    private readonly float strafeSpeed = 2;
     private readonly float runSpeed = 4;
 
     private void Start()
@@ -21,6 +22,7 @@ public class PlayerEffects : UdonSharpBehaviour
         // TODO need to add class speeds
         _player.SetWalkSpeed(walkSpeed); // + class
         _player.SetRunSpeed(runSpeed);
+        _player.SetStrafeSpeed(strafeSpeed);
     }
 
     public void _AddSpeedPercent(float percent)
@@ -36,6 +38,7 @@ public class PlayerEffects : UdonSharpBehaviour
         
         _player.SetWalkSpeed(currentWalk);
         _player.SetRunSpeed(currentRun);
+        _player.SetStrafeSpeed(currentWalk);
     }
 
     public void _AddSpeed(float amount)
@@ -45,6 +48,7 @@ public class PlayerEffects : UdonSharpBehaviour
         
         _player.SetWalkSpeed(walk);
         _player.SetRunSpeed(run);
+        _player.SetStrafeSpeed(walk);
     }
     
     public void _RemoveSpeedPercent(float percent)
@@ -62,6 +66,7 @@ public class PlayerEffects : UdonSharpBehaviour
         
         _player.SetWalkSpeed(currentWalk);
         _player.SetRunSpeed(currentRun);
+        _player.SetStrafeSpeed(currentWalk);
     }
     
     public void _RemoveSpeed(float amount)
@@ -71,5 +76,6 @@ public class PlayerEffects : UdonSharpBehaviour
         
         _player.SetWalkSpeed(walk);
         _player.SetRunSpeed(run);
+        _player.SetStrafeSpeed(walk);
     }
 }

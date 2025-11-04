@@ -50,6 +50,7 @@ public class ActiveZone : UdonSharpBehaviour
     {
         if (!_isInZone) return;
         if (game.State != GameState.Active) return;
+        if (application.Player.IsDead) return;
         
         if (controller.DeadlyMovement)
         {
@@ -60,12 +61,15 @@ public class ActiveZone : UdonSharpBehaviour
 					_hasShotInInterval = true;
 					shootOutManager.Fire();
 				}
-                
+
                 if (application.Player.Health._RemoveHealth(20))
                 {
+                    application.Player._SetIsDead(true);
                     application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
-                    application.Player.VRCPlayerApi.SetWalkSpeed(0);
-                    application.Player.VRCPlayerApi.SetRunSpeed(0);
+                    VRCPlayerApi player = Networking.LocalPlayer;
+                    player.SetWalkSpeed(0);
+                    player.SetRunSpeed(0);
+                    player.SetStrafeSpeed(0);
                     SendCustomEventDelayedSeconds(nameof(_ManagePlayer), 3);
                 }
                 else
@@ -97,6 +101,7 @@ public class ActiveZone : UdonSharpBehaviour
     {
         application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity);
         application.Player.PlayerEffects._Reset();
+        application.Player._SetIsDead(false);
     }
 
     public void _SetHashShotInInterval(bool value)

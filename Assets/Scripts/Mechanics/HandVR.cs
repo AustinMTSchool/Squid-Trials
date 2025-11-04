@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -12,17 +13,12 @@ public class HandVR : Hand
     protected override void Start()
     {
         _playerApi = Networking.LocalPlayer;
-
-        if (_playerApi.IsUserInVR())
-        {
-            _UpdateVRHand();
-        }
     }
 
-    public void _UpdateVRHand()
+    private void LateUpdate()
     {
         VRCPlayerApi.TrackingData data = _playerApi.GetTrackingData(type);
         hand.position = data.position;
-        SendCustomEventDelayedSeconds(nameof(_UpdateVRHand), 0.1f);
+
     }
 }

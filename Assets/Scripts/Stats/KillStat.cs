@@ -9,6 +9,7 @@ public class KillStat : UdonSharpBehaviour
 {
     [SerializeField] private TextMeshProUGUI display;
     [SerializeField] private PointStat pointStat;
+    [SerializeField] private LevelStat levelStat;
 
     [UdonSynced] private int _kills = 0;
 
@@ -28,6 +29,7 @@ public class KillStat : UdonSharpBehaviour
         _kills += amount;
         display.text = _kills.ToString();
         pointStat.AddPoints(150);
+        levelStat.AddExperience(800);
         RequestSerialization();
     }
     

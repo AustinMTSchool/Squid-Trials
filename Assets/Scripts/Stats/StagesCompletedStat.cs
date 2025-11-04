@@ -8,6 +8,7 @@ using VRC.Udon;
 public class StagesCompletedStat : UdonSharpBehaviour
 {
     [SerializeField] private PointStat pointStat;
+    [SerializeField] private LevelStat levelStat;
     
     [UdonSynced] private int _stagesCompleted = 0;
 
@@ -25,7 +26,7 @@ public class StagesCompletedStat : UdonSharpBehaviour
     {
         _stagesCompleted += amount;
         pointStat.AddPoints(amount * 150);
-        Debug.Log("STAGE WAS COMPLETED");
+        levelStat.AddExperience(500);
         RequestSerialization();
     }
 }

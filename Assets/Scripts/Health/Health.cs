@@ -15,6 +15,8 @@ public class Health : UdonSharpBehaviour
     // percentages
     private int _damageReduction = 0;
     private int _defense = 0;
+    private int _currentTicksOfHealth = 0;
+    private int _healthPerTick = 0;
     
     [UdonSynced] private int _health = 100;
     
@@ -28,9 +30,12 @@ public class Health : UdonSharpBehaviour
         if (_health <= 0)
         {
             _health = maxHealthPoints;
+            player.HudManager.Hud.SetHealth(_health);
             player.Death();
             return;
         }
+        
+        player.HudManager.Hud.SetHealth(_health);
         
         RequestSerialization();
     }
@@ -38,6 +43,7 @@ public class Health : UdonSharpBehaviour
     public void _ResetHealth()
     {
         _health = maxHealthPoints;
+        player.HudManager.Hud.SetHealth(_health);
         RequestSerialization();
     }
 
@@ -48,7 +54,29 @@ public class Health : UdonSharpBehaviour
         if (_health > maxHealthPoints)
             _health = maxHealthPoints;
         
+        player.HudManager.Hud.SetHealth(_health);
         RequestSerialization();
+    }
+
+    public void _AddHealthOverTicks(int seconds, int healthPerTick)
+    {
+        _currentTicksOfHealth = seconds;
+        _healthPerTick = healthPerTick;
+        _HealthPerTick();
+    }
+
+    public void _HealthPerTick()
+    {
+        _currentTicksOfHealth--;
+        if (_currentTicksOfHealth < 0)
+        {
+            _healthPerTick = 0;
+            return;
+        }
+        
+        _AddHealth(_healthPerTick);
+        Debug.Log("Healing: " + _healthPerTick + " for " + _currentTicksOfHealth);
+        SendCustomEventDelayedSeconds(nameof(_HealthPerTick), 1F);
     }
 
     // True if dies otherwise a live
@@ -61,7 +89,6 @@ public class Health : UdonSharpBehaviour
         var totalDamage = (subDamage * damagePercent) / 100;
         
         _health -= (int) totalDamage;
-        Debug.Log("Player health: " + _health);
         
         player.PlayerOverlayEffects._DamageOverlay(_health);
         
@@ -69,9 +96,11 @@ public class Health : UdonSharpBehaviour
         {
             _health = maxHealthPoints;
             player.Death();
+            player.HudManager.Hud.SetHealth(_health);
             return true;
         }
         
+        player.HudManager.Hud.SetHealth(_health);
         RequestSerialization();
         return false;
     }
@@ -95,6 +124,8 @@ public class Health : UdonSharpBehaviour
     {
         maxHealthPoints += amount;
         _health = maxHealthPoints;
+        player.HudManager.Hud.SetHealth(_health);
+        player.HudManager.Hud.SetMaxHealth(maxHealthPoints);
         RequestSerialization();
     }
 
@@ -102,6 +133,8 @@ public class Health : UdonSharpBehaviour
     {
         maxHealthPoints -= amount;
         _health = maxHealthPoints;
+        player.HudManager.Hud.SetHealth(_health);
+        player.HudManager.Hud.SetMaxHealth(maxHealthPoints);
         RequestSerialization();
     }
 

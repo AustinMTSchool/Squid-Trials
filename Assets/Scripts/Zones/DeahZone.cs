@@ -12,10 +12,9 @@ public class DeahZone : UdonSharpBehaviour
     
     public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {
-        Debug.Log("Player entered");
         if (!player.isLocal || !application.Player.IsInGames) return;
         
-        Debug.Log("Player is dead");
+        Debug.Log("[DeahZone] Player is dead to zone");
         application.Player.Health._SetHealth(0);
         application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
         // TODO death action?

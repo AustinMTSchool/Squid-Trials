@@ -9,6 +9,7 @@ using VRC.Udon.Common.Interfaces;
 public class GlassBreaker : UdonSharpBehaviour
 {
     [SerializeField, UdonSynced] private bool breakable = false;
+    [SerializeField] private Player player;
     
     public override void OnPlayerTriggerEnter(VRCPlayerApi player)
     {

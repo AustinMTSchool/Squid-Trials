@@ -8,6 +8,7 @@ public class HoldableBandage : Holdable
 {
     [SerializeField] protected Audio bandagingSound;
     [SerializeField] private float usageTime;
+    [SerializeField] private int healthAmount;
 
     private float _playerWalkSpeed;
     private float _playerRunSpeed;
@@ -34,7 +35,7 @@ public class HoldableBandage : Holdable
         VRCPlayerApi player = Networking.LocalPlayer;
         player.SetWalkSpeed(_playerWalkSpeed);
         player.SetRunSpeed(_playerRunSpeed);
+        this.player.Health._AddHealth(healthAmount);
         base.OnPickupUseUp();
     }
-
 }

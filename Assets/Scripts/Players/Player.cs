@@ -2,8 +2,10 @@
 using UdonSharp;
 using UnityEngine;
 using VRC.SDK3.Persistence;
+using VRC.SDK3.UdonNetworkCalling;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.Udon.Common.Interfaces;
 
 public class Player : UdonSharpBehaviour
 {
@@ -16,16 +18,21 @@ public class Player : UdonSharpBehaviour
     [SerializeField] private PlayerOverlayEffects playerOverlayEffects;
     [SerializeField] private ClassesManager classesManager;
     [SerializeField] private Transform playerStatReference;
+    [SerializeField] private HudManager hudManager;
+    [SerializeField] private Transform pushComp;
+    
     
     private VRCPlayerApi _vrcPlayer;
     private Health _health;
     private PlayerStat _playerStat;
+    private Push _push;
     private bool _isPlayerRegistered = false;
     private bool _isPersistenceRestored = false;
     private bool _isPlayerInQueue = false;
     private bool _isUsingItem = false;
     private bool _isInGames = false;
     private bool _IsPushed = false;
+    private bool _isDead = false;
     
     public ClassesManager ClassesManager => classesManager;
     public PlayerOverlayEffects PlayerOverlayEffects => playerOverlayEffects;
@@ -40,6 +47,9 @@ public class Player : UdonSharpBehaviour
     public PlayerEffects PlayerEffects => playerEffects;
     public bool IsPushed => _IsPushed;
     public PlayerStat PlayerStat => _playerStat;
+    public HudManager HudManager => hudManager;
+    public Push Push => _push;
+    public bool IsDead => _isDead;
     
     private void Start()
     {
@@ -68,18 +78,38 @@ public class Player : UdonSharpBehaviour
         
         Component stats = Networking.FindComponentInPlayerObjects(player, playerStatReference);
         _playerStat = stats.GetComponent<PlayerStat>();
+        
+        Component push = Networking.FindComponentInPlayerObjects(player, pushComp);
+        _push = push.GetComponent<Push>();
     }
 
     public void Death()
     {
         if (_isInGames) _isInGames = false;
-        Debug.Log("PLAYER HAD DIED");
         _playerStat.DeathStat.AddDeath(1);
+
+        if (_IsPushed)
+        {
+            Debug.Log("[Player] Pushed to death");
+            if (_push.PushedBy != null)
+            {
+                Debug.Log("[Player] You were push killed by " + _push.PushedBy.displayName);
+                SendCustomNetworkEvent(NetworkEventTarget.All, nameof(RewardKiller), _push.PushedBy.playerId);
+            }
+            else
+            {
+                Debug.Log("[Player] No killer found");
+            }
+        }
     }
-    
-    public string GetDisplayName()
+
+    [NetworkCallable]
+    public void RewardKiller(int killerID)
     {
-        return _vrcPlayer.displayName;
+        if (Networking.LocalPlayer.playerId != killerID) return;
+        
+        Debug.Log("[Player] Killed player");
+        _playerStat.KillStat.AddKills(1);
     }
     
     public void SetUsingItem(bool value)
@@ -100,5 +130,10 @@ public class Player : UdonSharpBehaviour
     public void _SetIsPushed(bool value)
     {
         _IsPushed = value;
+    }
+
+    public void _SetIsDead(bool value)
+    {
+        _isDead = value;
     }
 }

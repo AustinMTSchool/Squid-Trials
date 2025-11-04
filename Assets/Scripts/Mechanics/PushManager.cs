@@ -9,13 +9,16 @@ using VRC.Udon.Common;
 public class PushManager : UdonSharpBehaviour
 {
     [SerializeField] private int cooldown;
-
+    [SerializeField] private HudManager hudManager;
+    
     [Header("Desktop"), Space(1)] 
     [SerializeField] private Transform desktopHandContainer;
     [SerializeField] private DesktopHand desktopHand;
     
     [Header("Virtual Reality"), Space(1)]
     [SerializeField] private Transform vrHandContainer;
+    [SerializeField] private Transform vrHandContainerLeft;
+    [SerializeField] private Transform vrHandContainerRight;
     [SerializeField] private HandVR leftHandVR;
     [SerializeField] private HandVR rightHandVR;
     
@@ -29,7 +32,14 @@ public class PushManager : UdonSharpBehaviour
         
         if (!_player.IsUserInVR())
         {
+            desktopHandContainer.gameObject.SetActive(true);
             _UpdateDesktopHand();
+        }
+        else
+        {
+            vrHandContainer.gameObject.SetActive(true);
+            _UpdateVRHandLeft();
+            _UpdateVRHandRight();
         }
     }
 
@@ -41,6 +51,20 @@ public class PushManager : UdonSharpBehaviour
         desktopHandContainer.SetPositionAndRotation(position, rotation);
         
         SendCustomEventDelayedSeconds(nameof(_UpdateDesktopHand), 0.1F);
+    }
+
+    public void _UpdateVRHandLeft()
+    {
+        VRCPlayerApi.TrackingData data = _player.GetTrackingData(VRCPlayerApi.TrackingDataType.LeftHand);
+        vrHandContainerLeft.SetPositionAndRotation(data.position, data.rotation);
+        SendCustomEventDelayedSeconds(nameof(vrHandContainerLeft), 0.1F);
+    }
+    
+    public void _UpdateVRHandRight()
+    {
+        VRCPlayerApi.TrackingData data = _player.GetTrackingData(VRCPlayerApi.TrackingDataType.RightHand);
+        vrHandContainerLeft.SetPositionAndRotation(data.position, data.rotation);
+        SendCustomEventDelayedSeconds(nameof(vrHandContainerRight), 0.1F);
     }
     
     public override void InputUse(bool value, UdonInputEventArgs args)
@@ -71,12 +95,15 @@ public class PushManager : UdonSharpBehaviour
             }
         }
         
+        hudManager.Hud.SetPush(0);
         SendCustomEventDelayedSeconds(nameof(_CooldownTick), 1F);
     }
 
     public void _CooldownTick()
     {
         _currentCooldown++;
+        hudManager.Hud.SetPush(_currentCooldown);
+        
         if (_currentCooldown >= cooldown)
         {
             _isOnCooldown = false;

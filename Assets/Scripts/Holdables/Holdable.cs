@@ -7,6 +7,7 @@ using VRC.Udon;
 public class Holdable : UdonSharpBehaviour
 {
     [SerializeField] protected Application application;
+    [SerializeField] protected Player player;
     [SerializeField] private ItemPlayerObjectController itemPlayerObjectController;
     [SerializeField] private VRC_Pickup pickup;
     [SerializeField] private Rigidbody rigidBody;

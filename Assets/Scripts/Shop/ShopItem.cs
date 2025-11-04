@@ -24,7 +24,7 @@ public class ShopItem : UdonSharpBehaviour
 
     private void Start()
     {
-        _NameDisplay.text = item.name;
+        _NameDisplay.text = item.DisplayName;
         _costDisplay.text = $"${cost}";
         _iconDisplay.sprite = item.Icon;
         _descriptionDisplay.text = item.Description;

@@ -20,13 +20,15 @@ public class Push : UdonSharpBehaviour
     [SerializeField] private float pushForceHorizontal = 5f;
     [SerializeField] private float pushForceVertical = 3f;
 
+    public VRCPlayerApi PushedBy => _sender;
+
     [NetworkCallable]
     public void PushPlayerNetwork(int senderID, float pushForce)
     {
         Debug.Log("Owner: " + Networking.GetOwner(gameObject).displayName + " of " + gameObject.name);
         SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(PushPlayer), senderID, pushForce);
     }
-    
+
     [NetworkCallable]
     public void PushPlayer(int senderID, float pushForce)
     {
@@ -84,9 +86,9 @@ public class Push : UdonSharpBehaviour
     {
         if (Networking.LocalPlayer.IsPlayerGrounded())
         {
-            Debug.Log("Player regrounded");
             _player.Health._SetDamageReduction(0);
             _player._SetIsPushed(false);
+            _sender = null;
             return;
         }
         else
