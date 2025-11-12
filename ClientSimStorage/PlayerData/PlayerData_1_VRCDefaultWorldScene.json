@@ -1,1 +1,10 @@
-{}
+{
+  "twentykills": {
+    "LastUpdated": "2025-11-08T09:17:30.8574541-05:00",
+    "Key": "twentykills",
+    "Value": {
+      "type": "Bool",
+      "value": false
+    }
+  }
+}

@@ -11,12 +11,15 @@ public class PlayerInventory : UdonSharpBehaviour
     [SerializeField] protected Player player;
     [SerializeField] private InventoryDesktop inventoryDesktop;
     [SerializeField] private InventoryVR inventoryVR;
+    [SerializeField] private float actionCooldown = 1F;
+    public bool Initialized => _initialized;
+    
     private Inventory _inventory;
     private VRCPlayerApi _player;
     private bool _initialized = false;
     private int _currentSlotSelected = -1;
+    private float _lastActionTIme = 1F;
     
-    public bool Initialized => _initialized;
 
 
     private void Start()
@@ -48,29 +51,41 @@ public class PlayerInventory : UdonSharpBehaviour
 
     public void Update()
     {
+        _lastActionTIme += Time.deltaTime;
+        if (_lastActionTIme <= actionCooldown)
+        {
+            Debug.Log("Cooldown on item " + _lastActionTIme + " <= " + actionCooldown);
+            return;
+        }
+        
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (player.IsUsingItem) return;
             _currentSlotSelected = 1;
             _inventory.GetSlotByIndex(_currentSlotSelected).Select();
+            _lastActionTIme = 0F;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (player.IsUsingItem) return;
             _currentSlotSelected = 2;
             _inventory.GetSlotByIndex(_currentSlotSelected).Select();
+            _lastActionTIme = 0F;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (player.IsUsingItem) return;
             _currentSlotSelected = 3;
             _inventory.GetSlotByIndex(_currentSlotSelected).Select();
+            _lastActionTIme = 0F;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (player.IsUsingItem) return;
             _currentSlotSelected = 4;
             _inventory.GetSlotByIndex(_currentSlotSelected).Select();
+            _lastActionTIme = 0F;
         }
     }
 

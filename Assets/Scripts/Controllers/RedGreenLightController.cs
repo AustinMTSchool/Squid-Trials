@@ -29,7 +29,6 @@ public class RedGreenLightController : GameController
 
     [Space, Header("Animators")]
     [SerializeField] private Animator[] doorAnimators;
-
     [SerializeField] private Animator scareCrowAnimator;
     
     [Space, Header("Sounds")]

@@ -11,6 +11,8 @@ public class PlayerEffects : UdonSharpBehaviour
     private readonly float walkSpeed = 2;
     private readonly float strafeSpeed = 2;
     private readonly float runSpeed = 4;
+    private float _currentSpeedBoost = 0F;
+    private bool _hasSpeedBoost = false;
 
     private void Start()
     {
@@ -77,5 +79,39 @@ public class PlayerEffects : UdonSharpBehaviour
         _player.SetWalkSpeed(walk);
         _player.SetRunSpeed(run);
         _player.SetStrafeSpeed(walk);
+    }
+    
+    public void _AddSpeedDuration(int time, float speedBoost)
+    {
+        if (_hasSpeedBoost) return;
+        
+        _hasSpeedBoost = true;
+        _currentSpeedBoost = speedBoost;
+        
+        float currentWalk = _player.GetWalkSpeed();
+        float currentRun = _player.GetRunSpeed();
+
+        currentWalk += _currentSpeedBoost;
+        currentRun += _currentSpeedBoost * 2;
+        
+        _player.SetWalkSpeed(currentWalk);
+        _player.SetRunSpeed(currentRun);
+        
+        SendCustomEventDelayedSeconds(nameof(_EndSpeedDuration), time);
+    }
+
+    public void _EndSpeedDuration()
+    {
+        Debug.Log("Speed boost ended");
+        float currentWalk = _player.GetWalkSpeed();
+        float currentRun = _player.GetRunSpeed();
+        
+        currentWalk -= _currentSpeedBoost;
+        currentRun -= _currentSpeedBoost * 2;
+        
+        _player.SetWalkSpeed(currentWalk);
+        _player.SetRunSpeed(currentRun);
+
+        _hasSpeedBoost = false;
     }
 }

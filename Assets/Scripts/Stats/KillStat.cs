@@ -7,6 +7,7 @@ using VRC.Udon;
 
 public class KillStat : UdonSharpBehaviour
 {
+    [SerializeField] private KillsAchievement killsAchievement;
     [SerializeField] private TextMeshProUGUI display;
     [SerializeField] private PointStat pointStat;
     [SerializeField] private LevelStat levelStat;
@@ -21,6 +22,8 @@ public class KillStat : UdonSharpBehaviour
         if (!player.isLocal) return;
         
         display.text = _kills.ToString();
+        killsAchievement._Init(_kills);
+        
         RequestSerialization();
     }
 
@@ -30,6 +33,7 @@ public class KillStat : UdonSharpBehaviour
         display.text = _kills.ToString();
         pointStat.AddPoints(150);
         levelStat.AddExperience(800);
+        killsAchievement._UpdateCompletion(_kills);
         RequestSerialization();
     }
     

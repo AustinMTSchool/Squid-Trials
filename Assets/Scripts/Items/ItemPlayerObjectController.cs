@@ -8,13 +8,15 @@ using VRC.Udon;
 public class ItemPlayerObjectController : UdonSharpBehaviour
 {
     [SerializeField] private Holdable holdable;
+    
     [UdonSynced] private bool _isItemActive = false;
     public Holdable Holdable => holdable;
-
+    
     public void SetItemActive(bool value)
     {
         _isItemActive = value;
         holdable.gameObject.SetActive(_isItemActive);
+        
         RequestSerialization();
     }
 
