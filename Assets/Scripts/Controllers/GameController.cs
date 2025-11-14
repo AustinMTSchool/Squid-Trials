@@ -141,6 +141,7 @@ public class GameController : UdonSharpBehaviour
         {
             Debug.Log("[GameController] Removing you from game");
             application.GameManager.SendCustomNetworkEvent(NetworkEventTarget.Owner, nameof(application.GameManager.PlayerRemoveFromGame), $"{Networking.LocalPlayer.playerId}");
+            application.Player.Death();
             application.Player.VRCPlayerApi.TeleportTo(application.GameManager.SpawnPoint.position, Quaternion.identity); // TODO rewards all players in session. Move to outro ?
             application.Player.PlayerEffects._Reset();
         }
@@ -156,6 +157,7 @@ public class GameController : UdonSharpBehaviour
     {
         if (_forceEnd)
         {
+            // This calls when 2 players pass and 1 doesnt, because the amount of players required is force ending
             Debug.Log("[GameController] Ignoring removal of player game is ending");
             return;
         }

@@ -20,8 +20,7 @@ public class Reward : UdonSharpBehaviour
 
     public void _Init()
     {
-        _display.text = $"Reward\n" +
-                        $"- Experience: {experience}\n" +
+        _display.text = $"- Experience: {experience}\n" +
                         $"- Points: {points}";
     }
     

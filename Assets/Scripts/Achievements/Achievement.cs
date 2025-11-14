@@ -11,9 +11,15 @@ using VRC.Udon;
 public class Achievement : UdonSharpBehaviour
 {
     [SerializeField] protected string achievementName;
+    [SerializeField] protected string achievementDescription;
+    [SerializeField] protected Color nonCompleteColor = new Color(0.541F,0.541F,0.541F);
+    [SerializeField] protected Color completeColor = new Color(0.149F,0.596F,0.596F);
     [SerializeField] protected TextMeshProUGUI title;
     [SerializeField] protected TextMeshProUGUI current;
     [SerializeField] protected TextMeshProUGUI total;
+    [SerializeField] protected TextMeshProUGUI description;
+    [SerializeField] protected Image icon;
+    [SerializeField] protected Image outline;
     [SerializeField] protected Slider progress;
     [SerializeField] protected string achievementKey;
     [SerializeField] protected Reward reward;
@@ -27,6 +33,7 @@ public class Achievement : UdonSharpBehaviour
     public virtual void Start()
     {
         title.text = achievementName;
+        description.text  = achievementDescription;
     }
 
     public override void OnPlayerRestored(VRCPlayerApi player)
@@ -39,6 +46,13 @@ public class Achievement : UdonSharpBehaviour
         }
         
         _isCompleted = PlayerData.GetBool(player, achievementKey);
+
+        if (_isCompleted)
+        {
+            outline.color = completeColor;
+            icon.color = completeColor;
+        }
+        
         _isInitialized = true;
     }
 
